@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leitfragen Woche 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .mono {
+            font-family: monospace;
+        }
+
+        li, pre {
+            margin: 0.5em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Leitfragen Woche 1</h1>
+        <p>Die Leitfragen sind ein Einstiegspunkt um das Material zu erschließen. Es ist <strong>nicht</strong>
+            ausreichend als Vorbereitung zur Klausur die Fragen zu beantworten!
+        </p>
+        <p>
+        </p>
+    </header>
+    <main>
+        <section>
+            <h2>URLs</h2>
+            <ol>
+                <li>Welche der folgenden erwähnten Beispiele für URIs sind auch URLs?
+                    <ol type="a">
+                        <li>
+                            http://www.quickmeme.com/img/c2/c221d3e29eaaa776aea80ceddce0111bf405e7c61424951f8cb852476ab2e710.jpg
+                            <p class="antwort">Antwort: Diese URI ist eine URL</p>
+                        </li>
+                        <li>mailto:propa@cs.hhu.de<p class="antwort">Antwort: Diese URI ist eine URL</p>
+                        </li>
+                        <li>doi:10.1000/182<p class="antwort">Antwort: Diese URI ist keine URL</p>
+                        </li>
+                        <li>jar:file:/libs/mylib.jar!/configs/web.xml<p class="antwort">Antwort: Diese URI ist eine URL</p>
+                        </li>
+                        <li>jdbc:mysql://dbserver:3306/customers<p class="antwort">Antwort: Diese URI ist eine URL</p>
+                        </li>
+                    </ol>
+                </li>
+
+                <li>Angenommen Sie sind eine Ressource in einem Websystem, zum Beispiel, weil Sie dort Kunde sind.
+                    Überlegen
+                    Sie
+                    sich drei verschiedene Repräsentationen, die das Websystem zurückgeben könnte.
+                    <p class="antwort">Antwort: Man könnte die Kunden-Ressource als JSON-Objekt, als HTML-Seite oder als reine Text-Datei repräsentieren.
+                    </p>
+                </li>
+                <li>
+                    Richtig oder falsch? Der Path Teil der URL beschreibt das Script oder die Datei, die vom Webserver
+                    ausgeführt wird, der Query Teil beschreibt die Parameter, die an das Script übergeben werden.
+                    <p class="antwort">Antwort: Das ist richtig</p>
+                </li>
+                <li>
+                    Der erste bekannte Einsatz einer Webcam war die <a
+                        href="https://de.wikipedia.org/wiki/Trojan-Room-Kaffeemaschine">Trojan-Room-Kaffeemaschine</a>.
+                    Was
+                    können wir als Ressource identifizieren und was wären die Repräsentationen?
+                    <p class="antwort">Antwort: Die Ressource ist hier eine Folge von Bilddateien, die während gestreamt wird, zusammengefügt als Video präsentiert werden </p>
+                </li>
+            </ol>
+        </section>
+        <section>
+            <h2>Das Hypertext Transfer Protocol (HTTP)</h2>
+            <ol>
+
+                <li>Warum sind HTTP/2 und HTTP/3 eigentlich Binärformate, Klartext ist doch so viel einfacher zu
+                    debuggen?
+                    <p class="antwort">Antwort: Das Binärformat erhöht die Effizienz, da der Klartext nicht erst interpretiert werden muss. Daher ist das Wechseln auf ein höheres Protokoll nur als Option im Header beim Versenden von Daten gegeben.</p>
+                </li>
+
+                <li>Was bedeutet der Fehlercode 400? Versuchen Sie z.B. mithilfe von Netcat auf dem Google Webserver den
+                    Fehler
+                    zu provozieren.
+                    <p class="antwort">Antwort: Der Fehlercode "400: Bad Request" gibt an, das etwas mit dem vom Client verschickten Request nicht stimmt, z.B. fehlerhafte Syntax, ungültige HTTP-Action, etc.</p>
+                </li>
+
+                <li>Wir haben gemerkt, dass wir in einer Webanwendung unserer Bank die Kontonummer in der Anfrage stehen
+                    haben,
+                    also zum Beispiel bekommen wir unter <span class="mono">https://mybank.app/kd/144255399/stand</span>
+                    den Kontostand unseres Kontos
+                    mit der Nummer 144255399 angezeigt. Wir beschließen mal zu schauen, was bei anderen Kontonummern
+                    passiert.
+                    Natürlich ist unsere Bank nicht so dumm fremde Informationen so einfach rauszurücken und die
+                    Anwendung
+                    erzeugt natürlich einen Fehler. Welcher HTTP Statuscode ist hier angebracht?
+                    <p class="antwort">Antwort: Der Statuscode "403: Forbidden" wäre hier angebracht, da der Client, der auf diese Daten zugreifen will, in diesem Fall nicht die nötigen Berechtigungen hat (ein Admin z.B. dürfte auf diese Informationen zugreifen). </p>
+                </li>
+
+                <li>Führen Sie mit Netcat einen HEAD Request auf <span class="mono">rheinjug.de</span> durch. Die
+                    Anfrage
+                    können Sie aus dem Beispiel im Wochenblatt übernehmen, ersetzen Sie GET durch HEAD. Vergleichen Sie
+                    das
+                    Resultat des GET und des HEAD Requests.
+                    <p class="antwort">Antwort:</p>
+                </li>
+
+                <li>Wir haben auf GitHub ein privates Repository mit der URL <span class="mono">https://github.com/hhu-propra2/klausur</span>.
+                    Da Sie nicht in der berechtigten Benutzergruppe sind, bekommen Sie einen Fehler, wenn Sie auf die
+                    URL
+                    zugreifen.
+                    Was denken Sie über den Statuscode, den GitHub benutzt hat?
+                    <p class="antwort">Antwort:  Wir bekommen den Fehlercode "404: Not found". Dadurch wird gesichert, dass der anfragende Nutzer nicht weiß, dass das angefragte Repository überhaupt existiert.</p>
+                </li>
+
+                <li>Versuchen Sie mit Netcat einmal einen POST Request eines Browsers mitzuschneiden. Experimentieren
+                    Sie
+                    auch
+                    mit dem Encoding.
+                    <p class="antwort">Antwort: Mit HEAD bekommen wir nur die Metadaten der Response, nicht die eigentliche Response zurückgeliefert. Mit GET bekommen wir beides.</p>
+                </li>
+
+                <li>Gegeben ist folgender HTML Schnipsel, der von einer Anwendung im Rahmen eines
+                    Userinterfaces ausgeliefert wurde. Der Code hat ein sehr ernstes Problem. Identifizieren und
+                    erklären
+                    Sie
+                    das Problem und erläutern Sie mögliche Konsequenzen, die daraus resultieren.
+                    <pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Name&lt;/td&gt;
+        &lt;td&gt;Actions&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Andreas Schmidt&lt;/td&gt;
+        &lt;td&gt;
+        &lt;a href="details/1"&gt;Userprofil anzeigen&lt;/a&gt;
+        &lt;a href="delete/1"&gt;Löschen&lt;/a&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Carola Müller&lt;/td&gt;
+        &lt;td&gt;
+        &lt;a href="details/2"&gt;Userprofil anzeigen&lt;/a&gt;
+        &lt;a href="delete/2"&gt;Löschen&lt;/a&gt;
+    &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+                    </pre>
+                    <p class="antwort">Antwort: Das Problem ist, dass die Löschfunktion frei verfügbar ist, die Anfrage nicht bestätigt wird</p>
+                </li>
+                <li>Wir haben eine Webanwendung geschrieben, mit deren Hilfe Versandaufkleber in der
+                    Versandabteilung gedruckt werden. Dazu senden wir einen Request an die URL
+                    <span class="mono">http://versand/printqueue?name=Jens&adresse=Universitaetsstr.</span> Warum
+                    sollten
+                    wir das lieber nicht so machen und für den Request ein Formular verwenden? Welche Alternativen zu
+                    einem
+                    Formular hätten wir noch?
+                    <p class="antwort">Antwort: Sind in den Parametern Fehler, ist es schon zu spät, da die Request schon gesendet wurde. Durch ein Formular kann die Eingabe validiert werden.</p>
+                </li>
+
+                <li>Wir möchten `PUT` verwenden, um eine Ressource neu zu erstellen. Dazu müsste der Client einen Namen
+                    für
+                    die Ressource erzeugen. Wie könnten wir <strong>rein clientseitig</strong> sicherstellen, dass wir
+                    nicht
+                    versehentlich eine andere Ressource überschreiben? Denken Sie daran, dass potenziell mehrere Clients
+                    gleichzeitig zugreifen
+                    können.
+                    <p class="antwort">Antwort: Auf der Client-Seite wird an den ausgewählten Namen eine Laufnummer drangehängt, um die Einzigartigkeit des Namens zu gewährleisten</p>
+                </li>
+
+                <li>Im Video wird <a href="https://youtu.be/KXN6GRahIKs?t=467">hier</a> gesagt, was POST macht. Stimmt
+                    das
+                    wirklich?
+                    <p class="antwort">Antwort: Ja</p>
+                </li>
+
+                <li>Bei Input Felder von Formularen können wir mithilfe des <a
+                        href="https://www.w3schools.com/tags/att_input_required.asp">required</a> Attributs dafür
+                    sorgen,
+                    dass
+                    das Formular vom Browser nicht abgeschickt wird, wenn das entsprechende Feld nicht ausgefüllt wurde.
+                    Was
+                    müssen wir auf der Serverseite beachten, wenn wir das Attribut verwenden?
+                    <p class="antwort">Antwort: Wir müssen serverseitig beachten, dass auch in die jeweilige Ressource geschrieben wird</p>
+                </li>
+
+                <li>Wie sieht das URL-Encoding von <span
+                        class="mono">Hallo propra@cs.hhu.de, Wir finden HTML total 👏 !`?</span>
+                    <p class="antwort">Antwort: Hallo%20propra%40cs.hhu.de%2C%20Wir%20finden%20HTML%20total%20%F0%9F%91%8F%20!%60
+</p>
+                </li>
+            </ol>
+        </section>
+        <section>
+            <h2>HTML</h2>
+            <ol>
+                <li>Das neue Modulhandbuch für die Informatik ist <a
+                        href="https://www.cs.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Informatik/Studium/Allgemeines/BA_Modulhandbuch_PO2021.pdf">hier</a>
+                    als PDF zu finden. Wählen Sie Ihre Lieblingsveranstaltung aus und erzeugen Sie eine HTML Seite.
+                    Achten
+                    Sie
+                    darauf, die semantischen Strukturen korrekt in HTML abzubilden. TIPP: Das Modulhandbuch macht das
+                    nicht
+                    an
+                    jeder Stelle so, wie es sein sollte!
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Sie erinnern sich sicher an die Registrierung für das Praktikum. Dort sind Sie auf folgendes
+                    Formular
+                    gestoßen. Bauen Sie das Formular selber nach. Das Originalformular ist mit Bootstrap realisiert
+                    worden,
+                    vermutlich ist
+                    es sinnvoll das auch zu nutzen.
+                    <div><img src="register1.png" alt="Formular zur Propra Registrierung mit Eingabefeldern für Name, Matrikelnummer,
+        Unikennung und Github Benutzername und einem Button um das Formular abzuschicken"></div>
+                    <p class="antwort">Antwort:</p>
+                </li>
+
+                <li>Was Sie nicht gesehen haben, ist die Ergebnis-Tabelle. Bauen Sie auch eine solche Tabelle nach. Auch
+                    hier
+                    wurde Bootstrap benutzt.
+                    <div><img src="register2.png"
+                              alt="Tabelle, die die Eingaben für alle Studierenden darstellt. Die Tabellenspalten haben die Überschriften der Eingabefelder aus dem Formular">
+                    </div>
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Schreiben Sie eine "About me" HTML Seite und stylen Sie diese mithilfe von CSS. Seien Sie ruhig
+                    kreativ
+                    und
+                    experimentieren Sie mit verschiedenen CSS Features. Falls Sie Lust auf etwas ganz Besonderes haben,
+                    können
+                    Sie sich auch einmal <a href="https://www.w3schools.com/css/css3_animations.asp">CSS Animationen</a>
+                    anschauen. Verlinken Sie auf der Seite einige andere Webseiten, experimentieren Sie hier ein wenig
+                    mit
+                    dem
+                    Target.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>
+                    Wir haben folgendes HTML Fragment, das eine Liste von Dokumenten anzeigt und uns ermöglicht
+                    Dokumente
+                    anzuzeigen und zu löschen. Das Fragment ist im Hinblick auf die Verwendung von HTTP Verben korrekt
+                    umgesetzt, aber wir würden das schon
+                    ganz gerne in einer einheitlichen Optik haben, also `anzeigen` und `löschen` sollen beide gleich
+                    aussehen.
+                    <pre>
+&lt;ul&gt;
+    &lt;li&gt;JFK_assassination.doc
+        &lt;a href="files.php?a=show&id=1"&gt;anzeigen&lt;/a&gt;
+        &lt;form action="files.php" method="post"&gt;
+            &lt;input type="hidden" name="a" value="delete"&gt;
+            &lt;input type="hidden" name="id" value="1"&gt;
+            &lt;button type="submit"&gt;löschen&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/li&gt;
+    &lt;li&gt;bernsteinzimmer_map.jpg
+            &lt;a href="files.php?a=show&id=2"&gt;anzeigen&lt;/a&gt;
+            &lt;form action="files.php" method="post"&gt;
+            &lt;input type="hidden" name="a" value="delete"&gt;
+            &lt;input type="hidden" name="id" value="2"&gt;
+            &lt;button type="submit"&gt;löschen&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+                    </pre>
+                    <ol type="a">
+                        <li>Schreiben Sie das notwendige CSS (oder ändern Sie das HTML), sodass `anzeigen` und `löschen`
+                            beide
+                            wie
+                            Buttons aussehen.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li>Schreiben Sie das notwendige CSS, sodass `anzeigen` und `löschen` beide wie Links aussehen.
+                            Hier
+                            dürfen Sie auf keinen Fall aus dem Formular einen Link machen!
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li>Warum dürfen Sie auf keinen Fall aus dem Formular einen Link machen?<p class="antwort">
+                            Antwort:</p>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </section>
+        <section>
+            <h2>Offene Fragen</h2>
+            <p>Notieren Sie, wenn Sie bei der Bearbeitung des Stoffs etwas nicht verstanden haben.</p>
+            <ul>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+            </ul>
+        </section>
+    </main>
+</div>
+</body>
+</html>
