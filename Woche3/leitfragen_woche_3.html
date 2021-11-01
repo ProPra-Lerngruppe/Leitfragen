@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leitfragen Woche 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .mono {
+            font-family: monospace;
+        }
+
+        li, pre {
+            margin: 0.5em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Leitfragen Woche 3</h1>
+        <p>Die Leitfragen sind ein Einstiegspunkt um das Material zu erschließen. Es ist <strong>nicht</strong>
+            ausreichend als Vorbereitung zur Klausur die Fragen zu beantworten!
+        </p>
+        <p>
+        </p>
+    </header>
+    <main>
+        <section>
+            <h2>Datenbanken, Ziegel24</h2>
+            <ol>
+                <li>Wir haben beim <span class="mono">INSERT</span> Statement gesehen, dass es neben der Form, bei der
+                    alle Attribute gesetzt werden (z.B. <span class="mono">INSERT INTO kunde VALUES (1, "Müller GmbH", "somewhere")</span>) auch eine Form gibt, bei der wir uns aussuchen können, welche
+                    Attribute wir setzen (z.B. <span class="mono">INSERT INTO kunde (name, adresse) VALUES ("Müller GmbH", "somewhere")</span>). Warum ist diese Form sinnvoll? Welche der beiden Formen erwarten Sie häufiger in der Anwendungsentwicklung zu sehen und warum?
+                    <p class="antwort">Antwort:</p>
+                    <p>Die zweite Form ist sinnvoll, da es Werte gibt, die automatisch durch z.B. <code>'auto_increment'</code> oder in der Datenbank durch Stored Procedures gesetzt werden können und nicht notwendigerweise vom Benutzer bestimmt werden müssen, wie IDs.
+                    </p>
+                </li>
+
+                <li>Löschen Sie mit einem SQL Statement alle Bestellpositionen aus der Bestellung mit der Nummer 8. Stellen Sie danach den ursprünglichen Zustand wieder her, indem Sie alle anderen Bestellpositionen auch löschen und dann den entsprechenden SQL Befehl aus der Datei <span class="mono">V2__example_data.sql</span> ausführen.
+                    <p class="antwort">Antwort:</p>
+                    <div class="containter p-3 mb-2 bg-light">
+                        <code>
+                        DELETE FROM bestellposition WHERE bestellung = 8 ;
+DELETE FROM bestellposition;</code>
+                    </div>
+                    <p><a href="Datenbanken/V4__Delete_bestellnr_8.sql">V4__Delete_bestellnr.sql</a></p>
+                </li>
+                <li>Die folgende Query gibt die Gesamtsummen aus den einzelnen Bestellungen aus. Wir bekommen 12
+                    Ergebnisse, aber die Tabelle <span class="mono">bestellung</span> enthält 15 Bestellungen. Warum
+                    bekommen wir nur 12 Ergebnisse?
+                    <div class="p-3 mb-2 bg-light">
+                    <pre><code>
+SELECT name, adresse, sum(anzahl*preis) wert
+FROM bestellung b
+         JOIN kunde k on k.nr = b.kunde
+         JOIN bestellposition b2 on b.nr = b2.bestellung
+         JOIN produkt p on b2.produkt = p.nr
+GROUP BY b.nr;
+</code>
+</pre>
+</div>
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Wir haben schon folgende Query kennengelernt, mit deren Hilfe wir herausfinden konnten, wie viel
+                    Umsatz wir mit welchen Kunden gemacht haben.
+                    <ol type="a">
+                        <li>Ändern Sie die Query so ab, dass nur noch Kunden angezeigt werden, mit denen wir mindestens
+                            4000 Euro verdient haben.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li>Ändern Sie die Query so ab, dass nur noch die Top 5 Kunden angezeigt werden.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+
+                        <pre>
+SELECT name, sum(preis*anzahl) FROM produkt p
+ JOIN bestellposition b ON p.nr = b.produkt
+ JOIN bestellung bst ON bst.nr = b.bestellung
+ JOIN kunde k ON bst.kunde = k.nr
+GROUP BY
+ k.name
+</pre>
+                        <p class="antwort">Antwort:</p>
+                        </li>
+
+                        <li>
+                            Im Hinblick auf die Query ist unsere Modellierung vielleicht problematisch. Erklären
+                            Sie, warum es zu Problemen kommen könnte und wie wir die Modellierung ändern sollten, damit
+                            das Problem nicht auftritt.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                    </ol>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Datenbanken, AUAS</h2>
+            <p>Für die folgenden Aufgaben nutzen wir einen anonymisierten Datenbankdump eines früher in der Informatik
+                verwendeten Abgabesystems. Sie finden den Datenbankdump im Ordner <span class="mono">auasdb</span>.
+            </p>
+            <p>
+                In dem Ordner finden Sie auch zwei Diagramme, die die Tabellen und die Beziehungen zueinander erklären.
+                Die Funktionen der Tabellen sind:
+            <ul>
+                <li>Students: Information über Studierende</li>
+                <li>Editors: Beteiligte an einer Abgabe</li>
+                <li>Participants: Zuordnung von Studierenden zu den Kursen, die sie belegen (erzeugt eine n:m Relation
+                    zwischen Students und Courses)
+                </li>
+                <li>Courses: Angebotene Kurse</li>
+                <li>Sheets: Übungsblätter</li>
+                <li>Assignments: Unteraufgaben der Übungsblätter</li>
+                <li>PostMetas: Informationen zu den Einreichungen</li>
+                <li>Posts: Lösungsversionen, die eingereicht wurden</li>
+            </ul>
+            </p>
+            <p>
+                Schauen Sie am besten einmal in die konkreten Daten rein. </p>
+            <ol>
+                <li>
+                    Starten Sie die Datenbank, indem Sie im Ordner <span class="mono">auasdb</span> das Kommando <span
+                        class="mono">docker-compose up</span> ausführen (oder alternativ aus IntelliJ heraus starten)
+                    und richten Sie eine Verbindung zur Datenbank in IntelliJ (oder DBeaver) ein. Die Details zum Port
+                    und Passwort können Sie dem Docker Compose File entnehmen. <strong>Das Starten der Datenbank kann je
+                    nach Rechner einen Moment dauern, da der Datenbankdump entpackt etwa 120 MB hat.</strong>
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Schreiben Sie SQL Queries, die folgende Fragen beantworten:
+                    <ol type="a">
+                        <li> Wie viele Studierende haben das Geschlecht <span class="mono">none</span> in der Datenbank
+                            zugeordnet?
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li> Was ist die höchste ID einer Abgabe, die den String "Bett" enthält?
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li> Welche Email-Adressen haben die Studierenden, die am Programmierpraktikum teilgenommen
+                            haben?
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li> Wie viele Punkte haben die Studierenden, die im Wintersemester 2016 an der Veranstaltung
+                            Programmierung teilgenommen haben, erreicht? Die Ergebnistabelle sollte die Matrikelnummer
+                            der Studierenden und deren Gesamtpunktzahl enthalten. Tipp: Hier müssen Sie einen Join über
+                            mehrere Tabellen durchführen.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                    </ol>
+                <li>
+                    Schreiben Sie SQL Kommandos, die folgende Änderungen an der Datenbank durchführen:
+                    <ol type="a">
+                        <li> Löschen Sie alle Studierenden mit gerader Matrikelnummer.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li> Löschen Sie die Tabelle <span class="mono">ZZalteUebungen</span>.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li> Ändern Sie die Mailadresse des Angestellten Kasimir Rosenkranz auf <span
+                                class="mono">kasimir@hhu.de</span>.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+
+                    </ol>
+                </li>
+
+            </ol>
+        </section>
+
+        <section>
+            <h2>Spring JDBC API</h2>
+            <ol>
+                <li>Können wir mit <span class="mono">JdbcTemplate</span> Code schreiben, der SQL Injection Angriffe zulässt? Demonstrieren Sie es, falls es geht. 
+                    <p class="antwort">Antwort:</p>
+                </li>
+                 <li>Erweitern Sie die Kundenliste um ein Formular, mit dem unscharf nach Kunden gesucht werden kann. Ist bei dem Formular GET oder POST angebracht? 
+                    <p class="antwort">Antwort:</p>
+                </li>
+
+                <li>Erweitern Sie die Ziegel24 Implementierung um eine Anzeige einer Bestellung mit den Bestellpositionen.  
+                    <p class="antwort">Antwort:</p>
+                </li>
+
+                <li>Erweitern Sie die Ziegel24 Implementierung um eine Löschfunktion für Kunden. Achten Sie darauf, dass nur Kunden gelöscht werden können, die keine Bestellungen getätigt haben.   
+                    <p class="antwort">Antwort:</p>
+                </li>
+
+                <li>Schreiben Sie eine Webanwendung, mit der sich Studierende für das Praktikum registrieren können. Es sollen Name, Matrikelnummer, GitHub Benutzerkennung und Universitätskennung erfasst und in einer Datenbank gespeichert werden. Wir wollen dabei die GitHub Benutzerkennung als Primärschlüssel verwenden, allerdings ignoriert GitHub die Groß-/Kleinschreibung, die Benutzernamen `Bendisposto`,`bendisposto` und `bEnDiIsPoSTo` sollen daher in unserer Anwendung alle äquivalent sein. Die Anwendung soll auch eine Web-Ansicht zur Verfügung stellen, in der alle registrierten Personen aufgelistet sind.
+                    <p class="antwort">Antwort:</p>
+                </li>
+
+            </ol>
+        </section>
+
+        <section>
+            <h2>Hackme</h2>
+            <p>Im Ordner <span class="mono">hackme</span> finden Sie eine Webanwendung, die anfällig für eine SQL Attacke ist. Starten Sie die Datenbank mit Docker Compose und die Anwendung über Ihre IDE. Öffnen Sie <a href="http://localhost:8080">http://localhost:8080</a> in Ihrem Browser. Dort finden Sie die weiteren Informationen.</p>
+            <p class="antwort">Antwort:</p>
+            
+        </section>
+
+        <section>
+            <h2>Offene Fragen</h2>
+            <p>Notieren Sie, wenn Sie bei der Bearbeitung des Stoffs etwas nicht verstanden haben.</p>
+            <ul>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+            </ul>
+
+          
+
+        </section>
+    </main>
+</div>
+</body>
+</html>
