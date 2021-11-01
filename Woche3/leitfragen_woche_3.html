@@ -6,13 +6,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
+        header{
+            margin-top: 1rem;
+        }
+
+        body{
+            margin-top: 1rem;
+        }
+
         .mono {
             font-family: monospace;
         }
 
-        li, pre {
-            margin: 0.5em;
+        li,pre {
+            margin : 0.5em;
         }
+
     </style>
 </head>
 <body>
@@ -40,9 +49,9 @@
                 <li>Löschen Sie mit einem SQL Statement alle Bestellpositionen aus der Bestellung mit der Nummer 8. Stellen Sie danach den ursprünglichen Zustand wieder her, indem Sie alle anderen Bestellpositionen auch löschen und dann den entsprechenden SQL Befehl aus der Datei <span class="mono">V2__example_data.sql</span> ausführen.
                     <p class="antwort">Antwort:</p>
                     <div class="containter p-3 mb-2 bg-light">
-                        <code>
-                        DELETE FROM bestellposition WHERE bestellung = 8 ;
-DELETE FROM bestellposition;</code>
+                        <pre>
+DELETE FROM bestellposition WHERE bestellung = 8 ;
+DELETE FROM bestellposition;</pre>
                     </div>
                     <p><a href="Datenbanken/V4__Delete_bestellnr_8.sql">V4__Delete_bestellnr.sql</a></p>
                 </li>
@@ -50,17 +59,17 @@ DELETE FROM bestellposition;</code>
                     Ergebnisse, aber die Tabelle <span class="mono">bestellung</span> enthält 15 Bestellungen. Warum
                     bekommen wir nur 12 Ergebnisse?
                     <div class="p-3 mb-2 bg-light">
-                    <pre><code>
-SELECT name, adresse, sum(anzahl*preis) wert
+                    <pre>SELECT name, adresse, sum(anzahl*preis) wert
 FROM bestellung b
-         JOIN kunde k on k.nr = b.kunde
-         JOIN bestellposition b2 on b.nr = b2.bestellung
-         JOIN produkt p on b2.produkt = p.nr
-GROUP BY b.nr;
-</code>
-</pre>
+    JOIN kunde k on k.nr = b.kunde
+    JOIN bestellposition b2 on b.nr = b2.bestellung
+    JOIN produkt p on b2.produkt = p.nr
+GROUP BY b.nr;</pre>
 </div>
                     <p class="antwort">Antwort:</p>
+                    <p>Nach dem ersten JOIN erhält man eine 1:1 Zuordnung von Bestellung mit entsprechendem Kunden. Nach dem zweiten JOIN mit den Bestellpositionen fällt die Bestellung mit der ID 15 weg, da dieser keine Bestellposition zugeordnet wurde. Im letzten JOIN werden die Werte der Produkte angehangen. Es ändert sich jedoch nichts da in jeder Bestellposition ein Produkt angegeben ist.
+                        Erhalte am Ende jedoch 14 Ergebnisse 🤷🏻‍♂️.
+                        </p>
                 </li>
                 <li>Wir haben schon folgende Query kennengelernt, mit deren Hilfe wir herausfinden konnten, wie viel
                     Umsatz wir mit welchen Kunden gemacht haben.
@@ -68,20 +77,36 @@ GROUP BY b.nr;
                         <li>Ändern Sie die Query so ab, dass nur noch Kunden angezeigt werden, mit denen wir mindestens
                             4000 Euro verdient haben.
                             <p class="antwort">Antwort:</p>
+                            <div class="p-3 mb-2 bg-light">
+                                <pre>
+SELECT name, adresse, sum(anzahl*preis) AS wert
+FROM bestellung b
+   	JOIN kunde k on k.nr = b.kunde
+   	JOIN bestellposition b2 on b.nr = b2.bestellung
+   	JOIN produkt p on b2.produkt = p.nr
+GROUP BY k.nr HAVING sum(anzahl*preis) >= 4000;</pre>
+                            </div>
                         </li>
                         <li>Ändern Sie die Query so ab, dass nur noch die Top 5 Kunden angezeigt werden.
                             <p class="antwort">Antwort:</p>
                         </li>
 
-                        <pre>
-SELECT name, sum(preis*anzahl) FROM produkt p
- JOIN bestellposition b ON p.nr = b.produkt
- JOIN bestellung bst ON bst.nr = b.bestellung
- JOIN kunde k ON bst.kunde = k.nr
+                        <pre>SELECT name, sum(preis*anzahl) FROM produkt p
+    JOIN bestellposition b ON p.nr = b.produkt
+    JOIN bestellung bst ON bst.nr = b.bestellung
+    JOIN kunde k ON bst.kunde = k.nr
 GROUP BY
- k.name
-</pre>
+    k.name</pre>
                         <p class="antwort">Antwort:</p>
+                        <div class="p-4 mb-2 bg-light"> <pre>SELECT name, sum(preis*anzahl) FROM produkt p
+	JOIN bestellposition b ON p.nr = b.produkt
+	JOIN bestellung bst ON bst.nr = b.bestellung
+	JOIN kunde k ON bst.kunde = k.nr
+GROUP BY
+	k.name
+ORDER BY sum(preis*anzahl) DESC
+LIMIT 5;</pre>
+                        </div>
                         </li>
 
                         <li>
@@ -131,19 +156,47 @@ GROUP BY
                         <li> Wie viele Studierende haben das Geschlecht <span class="mono">none</span> in der Datenbank
                             zugeordnet?
                             <p class="antwort">Antwort:</p>
+                            <div class="p-3 mb-2 bg-light">
+                                <pre>SELECT COUNT(Gender) AS Anzahl
+FROM Students
+WHERE Gender LIKE "none";</pre>
+                            </div>
                         </li>
                         <li> Was ist die höchste ID einer Abgabe, die den String "Bett" enthält?
                             <p class="antwort">Antwort:</p>
+                            <div class="p-3 mb-2 bg-light">
+                            <pre>SELECT MAX(id)
+FROM Posts
+WHERE Content LIKE "% Bett %";</pre>
+                                </div>
                         </li>
                         <li> Welche Email-Adressen haben die Studierenden, die am Programmierpraktikum teilgenommen
                             haben?
                             <p class="antwort">Antwort:</p>
+                            <div class="p-3 mb-2 bg-light">
+                                <pre>SELECT Email
+FROM Participants p
+   JOIN Students S ON S.ID = p.Student
+   JOIN Courses C ON C.ID = p.Course
+WHERE C.ID = 18;</pre>
+                            </div>
                         </li>
                         <li> Wie viele Punkte haben die Studierenden, die im Wintersemester 2016 an der Veranstaltung
                             Programmierung teilgenommen haben, erreicht? Die Ergebnistabelle sollte die Matrikelnummer
                             der Studierenden und deren Gesamtpunktzahl enthalten. Tipp: Hier müssen Sie einen Join über
                             mehrere Tabellen durchführen.
                             <p class="antwort">Antwort:</p>
+                            <div class="p-3 mb-2 bg-light">
+                                <pre>SELECT student.Matriculation, Sum(PM.Points)
+FROM Editors editor
+	JOIN Students student ON editor.Student = student.ID
+	JOIN Submissions submission ON editor.Submission = submission.ID
+	JOIN PostMetas PM ON editor.Submission = PM.Submission
+	JOIN Participants P ON student.ID = P.Student
+	JOIN Courses C ON C.ID = P.Course
+WHERE C.ID = 23
+GROUP BY student.Matriculation;</pre>
+                            </div>
                         </li>
                     </ol>
                 <li>
@@ -151,13 +204,24 @@ GROUP BY
                     <ol type="a">
                         <li> Löschen Sie alle Studierenden mit gerader Matrikelnummer.
                             <p class="antwort">Antwort:</p>
+                            <div class="p-3 mb-2 bg-light">
+                                <pre>DELETE FROM Students WHERE (Matriculation % 2) = 0;</pre>
+                            </div>
                         </li>
                         <li> Löschen Sie die Tabelle <span class="mono">ZZalteUebungen</span>.
                             <p class="antwort">Antwort:</p>
+                            <div class="p-3 mb-2 bg-light">
+                                <pre>DROP TABLE ZZalteUebungen;</pre>
+                            </div>
                         </li>
                         <li> Ändern Sie die Mailadresse des Angestellten Kasimir Rosenkranz auf <span
                                 class="mono">kasimir@hhu.de</span>.
                             <p class="antwort">Antwort:</p>
+                            <div class="p-3 mb-2 bg-light">
+                                <pre>UPDATE Employees
+SET Email = "kasimir@hhu.de"
+WHERE Forename LIKE "Kasimir" AND Surname LIKE "Rosenkranz";</pre>
+                            </div>
                         </li>
 
                     </ol>
@@ -174,10 +238,76 @@ GROUP BY
                 </li>
                  <li>Erweitern Sie die Kundenliste um ein Formular, mit dem unscharf nach Kunden gesucht werden kann. Ist bei dem Formular GET oder POST angebracht? 
                     <p class="antwort">Antwort:</p>
+                    <code>
+                        <pre>
+@GetMapping("/search-kunde")
+public ModelAndView searchKunde(ModelMap model, String kundenname) {
+    if (!kundenname.isEmpty()) {
+    String sql = """
+            SELECT * 
+            FROM kunde k 
+            WHERE k.name LIKE ?;
+            """;
+    String newKundenname = "%" + kundenname + "%";
+    List<Kunde> kunden = db.query(sql, new DataClassRowMapper<>(Kunde.class), newKundenname);
+    model.addAttribute("kunden", kunden);
+    return new ModelAndView("kunden" , model);
+    }else{
+    return new ModelAndView("redirect:/");
+    }
+}</pre>
+                    </code>
+                    <p><a href="Spring JDBC/KundenController.java">Kunden-Controller.java</a></p>
+                    <code>
+                        <pre>
+&lt;div class="container"&gt;
+    &lt;div class="search-tag-holder-result"&gt;
+        &lt;form method="get" action="#" th:action="@{/search-kunde}"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="search-input">Suche nach Kunden&lt;/label&gt;
+                &lt;input type="text" id="search-input" class="form-control" name="kundenname" placeholder="" /&gt;
+            &lt;/div&gt;
+                &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+                &lt;button type="reset" class="btn btn-secondary"value="Reset"&gt;Reset&lt;/button&gt;
+            &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                    </pre>
+                    </code>
+                    <p><a href="Spring JDBC/kunden.html">kunden.html</a></p>
                 </li>
 
                 <li>Erweitern Sie die Ziegel24 Implementierung um eine Anzeige einer Bestellung mit den Bestellpositionen.  
                     <p class="antwort">Antwort:</p>
+                    <code>
+                        <pre>
+@GetMapping("bestellung")
+public String bestellung(Model model, int nr) {
+    String sql_bestellung = """
+        SELECT b.nr, b.datum, b.kunde AS kundennummer, k.name AS kundenname
+        FROM bestellung b
+            JOIN kunde k ON k.nr = b.kunde
+        WHERE b.nr = ?
+    """;
+
+    String sql_bestellpositionen = """
+    SELECT b.nr AS bestellung, b2.anzahl AS anzahl, p.bezeichnung AS bezeichnung, p.beschreibung AS beschreibung, p.preis AS preis
+    FROM bestellung b
+        JOIN bestellposition b2 ON b.nr = b2.bestellung
+        JOIN produkt p ON p.nr = b2.produkt
+    WHERE b.nr = ?
+    """;
+
+    Bestellung bestellung = db.queryForObject(sql_bestellung, new DataClassRowMapper<>(Bestellung.class), nr);
+    List<Bestellposition> bestellpositionen = db.query(sql_bestellpositionen, new DataClassRowMapper<>(Bestellposition.class), nr);
+
+    model.addAttribute("bestellung", bestellung);
+    model.addAttribute("bestellpostion", bestellpositionen);
+    return "bestellung";
+}</pre>
+                    </code>
+                    <p><a href="Spring JDBC/KundenController.java">Kunden-Controller.java</a></p>
+                    <p><a href="Spring JDBC/bestellung.html">bestellung.html</a></p>
                 </li>
 
                 <li>Erweitern Sie die Ziegel24 Implementierung um eine Löschfunktion für Kunden. Achten Sie darauf, dass nur Kunden gelöscht werden können, die keine Bestellungen getätigt haben.   
