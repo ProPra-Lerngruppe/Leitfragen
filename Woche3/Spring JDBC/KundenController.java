@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.ResultSet;
@@ -82,7 +83,6 @@ public class KundenController {
 
   @GetMapping("bestellung")
   public String bestellung(Model model, int nr) {
-    System.out.println(nr);
     String sql_bestellung = """
         SELECT b.nr, b.datum, b.kunde AS kundennummer, k.name AS kundenname
         FROM bestellung b
@@ -99,13 +99,31 @@ public class KundenController {
         """;
 
     Bestellung bestellung = db.queryForObject(sql_bestellung, new DataClassRowMapper<>(Bestellung.class), nr);
-    System.out.println(nr);
     List<Bestellposition> bestellpositionen = db.query(sql_bestellpositionen,
         new DataClassRowMapper<>(Bestellposition.class), nr);
 
     model.addAttribute("bestellung", bestellung);
     model.addAttribute("bestellpostion", bestellpositionen);
     return "bestellung";
+  }
+
+  @PostMapping("delete-kunde")
+  public String kundeLoeschen(Model model, int nr) {
+    String sql_delete = """
+        DELETE FROM kunde WHERE nr = ?
+        """;
+
+    String sql_bestellungen = """
+        SELECT b.nr, b.datum, b.kunde, k.name FROM bestellung b
+        JOIN kunde k ON k.nr = b.kunde
+        WHERE b.kunde = ?
+        """;
+
+    List<Bestellung> bestellungen = db.query(sql_bestellungen, KundenController::mapBestellung, nr);
+    if (bestellungen.isEmpty()) {
+      db.update(sql_delete, nr);
+    }
+    return liste(model);
   }
 
 }
