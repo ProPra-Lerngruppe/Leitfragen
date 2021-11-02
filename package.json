@@ -1,0 +1,26 @@
+{
+  "name": "leitfragen",
+  "version": "1.0.0",
+  "description": "Diese Webiste dient dazu die Leitfragen der Wochenblätter darstellen zu können.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fnellen/Leitfragen.git"
+  },
+  "author": "Federico Nellen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fnellen/Leitfragen/issues"
+  },
+  "homepage": "https://github.com/fnellen/Leitfragen#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}
