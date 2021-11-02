@@ -1,0 +1,12 @@
+spring:
+  flyway:
+    schemas: students
+    create-schemas: true
+    url: jdbc:mariadb://localhost:3307/
+    user: root
+    password: jensNummel
+  datasource:
+    url: jdbc:mariadb://localhost:3307/students
+    username: root
+    password: jensNummel
+
