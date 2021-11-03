@@ -29,7 +29,7 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <header>
         <h1>Leitfragen Woche 3</h1>
         <p>
@@ -63,6 +63,13 @@
                 durch z.B. <code>'auto_increment'</code> oder in der Datenbank
                 durch Stored Procedures gesetzt werden können und nicht
                 notwendigerweise vom Benutzer bestimmt werden müssen, wie IDs.
+              </p>
+              <p>
+                Die zweite Form ist sinnvoll, weil nicht immer alle Attribute
+                bekannt sind. Bei der Anwendungsentwicklung können wir in
+                einigen Fällen Personen zwingen alle oder valide Angaben zu
+                machen. Letztere Form kommt häufiger vor, denn oft kann man
+                optionale Angaben machen.
               </p>
             </li>
 
@@ -109,6 +116,15 @@ GROUP BY b.nr;</pre
                 werden die Werte der Produkte angehangen. Es ändert sich jedoch
                 nichts da in jeder Bestellposition ein Produkt angegeben ist.
                 Erhalte am Ende jedoch 14 Ergebnisse 🤷🏻‍♂️.
+              </p>
+              <p>
+                JOIN kunde k on k.nr = b.kunde hat 15 Treffer, bzw gibt es 15
+                kunden, die etwas bestellt haben. JOIN bestellposition b2 on
+                b.nr = b2.bestellung, es gibt 15 Bestellnummern aber nur 14
+                verschiedene bestellpositionen, wodurch eine rausgefiltert wird
+                (in bestellposition.bestellung gibt es 15 nicht). JOIN produkt p
+                on b2.produkt = p.nr, wir können alles zuordnen. Wir bekommen 14
+                Ergebnisse!
               </p>
             </li>
             <li>
@@ -455,6 +471,29 @@ public String kundeLoeschen(Model model, int nr){
               eine Web-Ansicht zur Verfügung stellen, in der alle registrierten
               Personen aufgelistet sind.
               <p class="antwort">Antwort:</p>
+              <p>
+                <a
+                  href="prorpa-registry/src/main/java/de/propralerngruppe/prorparegistry/StudentController.java"
+                  >StudentController.java</a
+                >
+              </p>
+              <p>
+                <a
+                  href="prorpa-registry/src/main/java/de/propralerngruppe/prorparegistry/dto/Student.java"
+                  >Student.java</a
+                >
+              </p>
+              <p>
+                <a
+                  href="prorpa-registry/src/main/resources/templates/anmeldung.html"
+                  >anmeldung.html</a
+                >
+              </p>
+              <p>
+                <a href="prorpa-registry/src/main/resources/templates/student.html"
+                  >student.html</a
+                >
+              </p>
             </li>
           </ol>
         </section>
