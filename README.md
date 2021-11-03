@@ -2,7 +2,7 @@
 
 ## Neue Blätter hinzufüfen
 
-Erstellt ihm Ordner `public` einen neuen Ordner `WocheX` mit den neuen Leitfragen. Das Leitfragendokument sollte bestenfalls `leitfragenWocheX.html`heißen.
+Erstellt im Ordner `public` einen neuen Ordner `WocheX` mit den neuen Leitfragen. Das Leitfragendokument sollte bestenfalls `leitfragenWocheX.html`heißen.
 
 ## Heroku Server
 
