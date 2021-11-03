@@ -1,5 +1,9 @@
 # ProPra Leitfragen
 
+## Neue Blätter hinzufüfen
+
+Erstellt ihm Ordner `public` einen neuen Ordner `WocheX` mit den neuen Leitfragen. Das Leitfragendokument sollte bestenfalls `leitfragenWocheX.html`heißen.
+
 ## Heroku Server
 
 Link: https://propra-leitfragen.herokuapp.com
