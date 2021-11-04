@@ -12,6 +12,14 @@ Der Node-Server ist auf Heroku gehostet und hat ein Limit von 550-1,000 dyno stu
 
 Wenn jemand zugang zum Heroku-Server möchte, kann mir einfach auf Discord schreiben: https://discordapp.com/users/444853663345934346
 
+## Lokal testen
+
+Um die Anwendung lokal zu testen, reicht es das Repo zu clonen und folgende Commands auszuführen. Vorher ist es wichtig node installiert zu haben:
+
+- `npm i` (installiert alle angegebenen packages in package.json)
+
+- `npm start` führt die Anwendung aus. Der Webserver sollte dann unter localhost:3000 erreichbar sein.
+
 ### Path's
 
 Alles was sich im Ordner `public` befindet, kann in der `index.html` referenziert werden: z.B.
