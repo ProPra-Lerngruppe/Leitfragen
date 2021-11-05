@@ -14,7 +14,7 @@ public record Data(int gewicht, String geschlecht, int wodka, int whiskey, int w
             reductionsfactor = 0.55;
         }
 
-        int alkMl = wodka + whiskey + wein + bier + korn;
+        double alkMl = wodka*0.4 + whiskey*0.43 + wein*0.12 + bier*0.05 + korn*0.32;
 
         return alkMl/(gewicht*reductionsfactor);
     }
