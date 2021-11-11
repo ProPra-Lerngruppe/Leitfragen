@@ -225,7 +225,7 @@ LIMIT 5;</pre
                 >Das Starten der Datenbank kann je nach Rechner einen Moment
                 dauern, da der Datenbankdump entpackt etwa 120 MB hat.</strong
               >
-              <p class="antwort">Antwort:</p>
+              <p class="antwort">Antwort: Port ändern auf 3306:3306</p>
             </li>
             <li>
               Schreiben Sie SQL Queries, die folgende Fragen beantworten:
@@ -233,7 +233,8 @@ LIMIT 5;</pre
                 <li>
                   Wie viele Studierende haben das Geschlecht
                   <span class="mono">none</span> in der Datenbank zugeordnet?
-                  <p class="antwort">Antwort:</p>
+                  <p class="antwort">Antwort: SELECT COUNT(*) FROM Students WHERE Gender = 'none' </p>
+		  <p class="antwort">Ergebnis: 804</p>
                   <div class="p-3 mb-2 bg-light">
                     <pre>
 SELECT COUNT(Gender) AS Anzahl
@@ -298,7 +299,7 @@ GROUP BY student.Matriculation;</pre
               <ol type="a">
                 <li>
                   Löschen Sie alle Studierenden mit gerader Matrikelnummer.
-                  <p class="antwort">Antwort:</p>
+                  <p class="antwort">Antwort:DELETE FROM Students WHERE Matriculation % 2 = 0</p>
                   <div class="p-3 mb-2 bg-light">
                     <pre>
 DELETE FROM Students WHERE (Matriculation % 2) = 0;</pre
@@ -308,7 +309,7 @@ DELETE FROM Students WHERE (Matriculation % 2) = 0;</pre
                 <li>
                   Löschen Sie die Tabelle
                   <span class="mono">ZZalteUebungen</span>.
-                  <p class="antwort">Antwort:</p>
+                  <p class="antwort">Antwort:DELETE FROM ZZalteUebungen</p>
                   <div class="p-3 mb-2 bg-light">
                     <pre>DROP TABLE ZZalteUebungen;</pre>
                   </div>
@@ -316,7 +317,7 @@ DELETE FROM Students WHERE (Matriculation % 2) = 0;</pre
                 <li>
                   Ändern Sie die Mailadresse des Angestellten Kasimir Rosenkranz
                   auf <span class="mono">kasimir@hhu.de</span>.
-                  <p class="antwort">Antwort:</p>
+                  <p class="antwort">Antwort:UPDATE Employees SET Email = 'kasimir@hhu.de' WHERE Forename='Kasimir' and Surname ='Rosenkranz'</p>
                   <div class="p-3 mb-2 bg-light">
                     <pre>
 UPDATE Employees
