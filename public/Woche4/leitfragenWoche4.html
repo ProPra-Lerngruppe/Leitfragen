@@ -33,101 +33,51 @@
       </header>
       <main>
         <section>
-          <h2>Muster</h2>
-          <ol>
-            <li>
-              Warum sind künstliche Identitäten oft besser als natürliche
-              Identitäten?
-              <p class="antwort">Antwort:</p>
-              <p>
-                Natürliche Identitäten können sich ändern oder eine Bezug auf
-                die Eigenschaften eines Objektes haben.
-              </p>
-              <p>
-                Eine künstliche Identität ist unabhängig und kann meist mit
-                einer hoher Wahrscheinlichkeit einzigartig erstellt werden.
-              </p>
-            </li>
-            <li>
-              Entitäten sind dadurch gekennzeichnet, dass sie sich über die Zeit
-              hinweg ändern können. Angenommen jemand behauptet, dass auch
-              Entitäten <strong>immer</strong> als unveränderliche Objekt
-              umgesetzt können. Stimmt das?
-              <p class="antwort">Antwort:</p>
-            </li>
-            <li>
-              Wieso müssen wir die <span class="mono">hashCode</span> Methode
-              immer überschreiben, wenn wir
-              <span class="mono">equals</span> überschrieben? Gilt das
-              eigentlich auch umgekehrt?
-              <p class="antwort">Antwort:</p>
-              <p>
-                Die <code>hashCode</code>-Methode muss ebenfalls überschrieben
-                werden, da andernfalls zwei Instanzen der selben Entitäten in
-                einer Hashmap als zwei verschiedene Entitäten gespeichert werden
-                können.
-              </p>
-              <p>
-                Die <code>hashCode</code>-Methode soll den selben Hashwert einer
-                Entität erzeugen, auch wenn eine andere Instanz der selben
-                Entität gehasht werden sollte.
-              </p>
-            </li>
-            <li>
-              Vergleichen Sie statische Factory Methoden, Konstruktoren und
-              Builder. Welche Gemeinsamkeiten und welche Unterschiede können Sie
-              identifizieren?
-              <p class="antwort">Antwort:</p>
-              <p>
-                Ein <u>Konstruktor</u> hat die Aufgabe ein neues Objekt der
-                Klasse zu instanziieren. Zusätzlich kann dieses Objekt mit
-                Parametern initialisiert werden.
-              </p>
-              <p>
-                <u>Statische Factory Methoden</u> stellen eine Schnittstelle zur
-                Anwendung dar. Dies erhöht die Kapselung Durch diese wird dann
-                innerhalb der Klasse der eigentliche Konstruktor aufgerufen, der
-                von außerhalb nicht erreichbar ist.
-              </p>
-              <p>
-                <u>Builder</u> werden dafür genutzt um komplexe Objekte zu
-                konstruieren. Sie können dafür genutzt werden, um Abhängigkeiten
-                von Eigenschaften der Entität oder die Einhaltung gegebene
-                Regeln sicherzustellen. Der Builder liefert solange sich selbst
-                als Objekt wieder, bis die Entität richtig konfiguriert ist.
-              </p>
-              <p>
-                <strong>Gemeinsamkeiten:</strong> Alle haben gemeinsam, dass sie
-                ein Objekt erzeugen können.
-              </p>
-              <p>
-                <strong>Unterschiede:</strong> Sie unterscheiden sich in der
-                Zugänglichkeit zur Erstellung eines Objektes.
-              </p>
-            </li>
-            <li>
-              Wir haben folgenden Record gegeben, der ein Wertobjekt umsetzen
-              soll. Was muss für die Klassen <span class="mono">Strasse</span>,
-              <span class="mono">Postleitzahl</span> und
-              <span class="mono">Stadt</span> gelten?
-              <pre>
+            <h2>Muster</h2>
+            <ol>
+                <li>Warum sind künstliche Identitäten oft besser als natürliche Identitäten?
+                    <p class="antwort">Antwort: Bei natürlichen Identitäten ist nicht immer garantiert, dass diese sich nie mehr ändern werden.
+                    Weiterhin kriegen wir künstliche Identitäten unter unsere Kontrolle und können diese durch das Objekt selbst erzeugen lassen.</p>
+                </li>
+                <li>Entitäten sind dadurch gekennzeichnet, dass sie sich über die Zeit hinweg ändern können. Angenommen
+                    jemand behauptet, dass auch Entitäten <strong>immer</strong> als unveränderliche Objekte umgesetzt
+                    können. Stimmt das?
+                    <p class="antwort">Antwort: Entitäten zeichnen sich unter anderem dadurch aus, dass sie einen Lebenszyklus haben:
+                    Sie werden kreiert und verschwinden wieder. Insofern macht es sowieso für kaum bis keine Kontexte Sinn, unveränderliche
+                    Objekte als Entities umzusetzen.</p>
+                </li>
+                <li>Wieso müssen wir die <span class="mono">hashCode</span> Methode immer überschreiben, wenn wir <span
+                        class="mono">equals</span> überschrieben? Gilt das eigentlich auch umgekehrt?
+                    <p class="antwort"> Antwort: Das gleichzeitige Überschreiben von hashCode()  und equals()
+                    gewährleistet das richtige Funktionieren von HashMaps und HashSets etc. Wird in einem HashSet das in dem definierten Attribut
+                    gleiche Objekt reingeschrieben (also gibt die überschriebene equals()-Methode true zurück) erkennt das HashSet
+                    trotzdem nicht, dass diese Objekte gleich sind => das HashSet funktioniert nicht. </p>
+                </li>
+                <li>Vergleichen Sie statische Factory Methoden, Konstruktoren und Builder. Welche Gemeinsamkeiten und
+                    welche Unterschiede können Sie identifizieren?
+                    <p class="antwort">Antwort: Statische Factory-Methoden und Builder kapseln die Konstruktion eines Objekts. Der Unterschied ist jedoch,
+                    dass Builder-Klassen für die Integrität der Eigenschaften des Objekts sorgen (und somit die Logik dahinter kapseln) während statische
+                    Factory-Methoden dies nicht tun. Statische Factory-Methoden haben den Vorteil, dass sie, im Gegensatz zu Konstruktoren, aufgerufen werden können,
+                    ohne vorher ein Objekt der Klasse zu haben.</p>
+                </li>
+                <li>
+                    Wir haben folgenden Record gegeben, der ein Wertobjekt umsetzen soll. Was muss für die Klassen <span
+                        class="mono">Strasse</span>, <span class="mono">Postleitzahl</span> und <span
+                        class="mono">Stadt</span> gelten?
+                    <pre>
 public record Adresse(Strasse strasse, Postleitzahl plz, Stadt stadt) {}
-                    </pre
-              >
-              <p class="antwort">Antwort:</p>
-              <p>
-                Die Klassen müssen die equals und hashCode Methoden
-                überschreiben.
-              </p>
-            </li>
-            <li>
-              Eine Regel für Aggregate lautet "Es sind nur Referenzen auf die
-              Wurzel-Entität gestattet". Was folgt daraus, wenn wir eine Methode
-              auf einer Entität aufrufen wollen, die innerhalb des Aggregat
-              (also nicht der Root) ist?
-              <p class="antwort">Antwort:</p>
-            </li>
-          </ol>
+                    </pre>
+                    <p class="antwort">Antwort: Die Objekte müssen final sein. Außerdem: Da Wertobjekte keine Identität haben, müssen die Tupel aus Straße, PLZ und Stadt eindeutig unterscheidbar sein.
+                    Wenn es zwei Orte mit gleichem Stadtnamen, PLZ und Straßennamen gäbe, würde es zu Problemen kommen, da die beiden Objekte im Sinne eines Wertobjekts identisch wären.
+                    Dies wird in diesem Fall hauptsächlich durch die Postleitzahl verhindert.</p>
+
+                </li>
+                <li>Eine Regel für Aggregate lautet "Es sind nur Referenzen auf die Wurzel-Entität gestattet". Was folgt
+                    daraus, wenn wir eine Methode auf einer Entität aufrufen wollen, die innerhalb des Aggregats (also
+                    nicht der Root) ist?
+                    <p class="antwort">Antwort: </p>
+                </li>
+            </ol>
         </section>
 
         <section>
