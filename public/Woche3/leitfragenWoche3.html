@@ -225,7 +225,7 @@ LIMIT 5;</pre
                 >Das Starten der Datenbank kann je nach Rechner einen Moment
                 dauern, da der Datenbankdump entpackt etwa 120 MB hat.</strong
               >
-              <p class="antwort">Antwort:</p>
+              <p class="antwort">Antwort: Port ändern auf 3306:3306</p>
             </li>
             <li>
               Schreiben Sie SQL Queries, die folgende Fragen beantworten:
@@ -234,6 +234,7 @@ LIMIT 5;</pre
                   Wie viele Studierende haben das Geschlecht
                   <span class="mono">none</span> in der Datenbank zugeordnet?
                   <p class="antwort">Antwort:</p>
+		  <p class="antwort">Ergebnis: </p>
                   <div class="p-3 mb-2 bg-light">
                     <pre>
 SELECT COUNT(Gender) AS Anzahl
@@ -298,7 +299,7 @@ GROUP BY student.Matriculation;</pre
               <ol type="a">
                 <li>
                   Löschen Sie alle Studierenden mit gerader Matrikelnummer.
-                  <p class="antwort">Antwort:</p>
+                  <p class="antwort"></p>
                   <div class="p-3 mb-2 bg-light">
                     <pre>
 DELETE FROM Students WHERE (Matriculation % 2) = 0;</pre
