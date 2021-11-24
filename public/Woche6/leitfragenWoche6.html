@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leitfragen Woche 5</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <style>
+        .mono {
+            font-family: monospace;
+        }
+
+        li, pre {
+            margin: 0.5em;
+        }
+
+        .antwort {
+            color: #006ab3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Leitfragen Woche 6</h1>
+        <p>Die Leitfragen sind ein Einstiegspunkt, um das Material zu erschließen. Es ist <strong>nicht</strong>
+            ausreichend als Vorbereitung zur Klausur die Fragen zu beantworten!
+        </p>
+        <p>
+        </p>
+    </header>
+    <main>
+        <section>
+            <h2>Besser testen</h2>
+            <ol>
+                <li>Gehen Sie <strong>jeden</strong> Test aus dem <span class="mono">checkout</span>
+                    Projekt von Woche 6 durch und überlegen Sie, ob der Test den Zweck des
+                    getesteten Codes sinnvoll kommuniziert.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Wenn Sie Tests finden, die verbessert werden können
+                    (und die gibt es auf jeden Fall!), überprüfen Sie, dass die Tests laufen und
+                    <strong>refactorn</strong> Sie den Testcode. Verwenden Sie, soweit möglich, die
+                    IDE und prüfen Sie immer wieder, dass die Tests noch durchlaufen.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Verwenden Sie die Template Technik, die im Video von Benedikt Ritter gezeigt
+                    wurde, um die unsystematische Erzeugung von Fachobjekten im
+                    <span class="mono">checkout</span> Projekt konsequent zu verbessern.
+                    <p class="antwort">Antwort:</p>
+                </li>
+            </ol>
+        </section>
+
+
+        <section>
+            <h2>ArchUnit</h2>
+            <ol>
+                <li>Im <span class="mono">reflection</span> Ordner finden Sie den Reflection Code aus dem Video.
+                    Bringen Sie den Test in <span class="mono">StringReflect</span> zum Laufen. Sie dürfen nur Code
+                    in der Testmethode im markierten Bereich ändern.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Wie funktioniert die Dependency Injection der Klasse <span class="mono">RechnungService</span>
+                    in <span class="mono">archunit</span>?
+                    Die Klasse darf ja keine Dependency zum Spring Framework haben.
+                    Tipp: Schauen Sie mal in der Startklasse der Anwendung nach.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Schreiben Sie ein PlantUML Diagramm der Architektur der MwSt Anwendung und
+                    verwenden Sie das Diagramm für einen Archunit Test.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Setzen Sie folgende Architekturregeln als ArchUnit Tests. Schreiben Sie unbedingt
+                    auch Beispielcode, der die Regel verletzt und reparieren Sie den Code dann. <strong>
+                        Die Regeln sind dazu gedacht, ArchUnit zu erforschen.
+                        Sie sind ausdrücklich nicht als Beispiel für gute Architekturregeln zu verstehen!</strong>
+                    <ol>
+                        <li>Klassen, die in einem Aggregat Package liegen und public sind, müssen entweder mit <span
+                                class="mono">@AggregateRoot</span> oder <span class="mono">@SharedValue</span> annotiert
+                            sein.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li>Klassen, die in einem Aggregat Package liegen und mit <span
+                                class="mono">@AggregateRoot</span> oder <span class="mono">@SharedValue</span>annotiert
+                            sind, müssen public sein.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li>Klassen, die mit <span class="mono">@SharedValue</span> annotiert sind, dürfen nur Attribute
+                            haben, die <span class="mono">final</span> sind.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li>Es darf keine zyklischen Abhängigkeiten zwischen Klassen geben.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li>Alle Methoden in Spring Controllern, die eine <span class="mono">@GetRequest</span>
+                            Annotation haben, müssen einen <span class="mono">String</span> oder ein <span class="mono">ModelAndView</span>
+                            Objekt zurückgeben.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                        <li>Es darf keine Methoden geben, die <span class="mono">foo</span> oder <span
+                                class="mono">bar</span> heißen.
+                            <p class="antwort">Antwort:</p>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Continuous Integration</h2>
+            <ol>
+                <li><p>Im Unterordner <span class="mono">schaltjahr</span> finden Sie ein Programm, welches berechnet,
+                    ob
+                    ein Jahr ein Schaltjahr ist. Schreiben Sie eine GitHub Action, die bei einem Push in Ihr Repository
+                    die Tests für das Schaltjahr-Programm laufen lässt. Überprüfen Sie, dass die Action fehlschlägt,
+                    wenn Sie einen Fehler im Code einbauen. </p>
+                    <p>Tipp: Achten Sie darauf, dass Sie Gradle in dem richtigen Unterordner laufen lassen.
+                    <p>
+
+
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Es ist Zeit ein wenig zu trollen! Erzeugen Sie ein privates Repository und fügen Sie dort einen
+                    Workflow hinzu, der Issues, die erstellt oder wieder geöffnet werden, sofort automatisch mit einem
+                    Kommentar wie z.B. <span class="mono">Won't fix</span> schließt. Tipp: Schauen Sie einmal auf dem
+                    GitHub Marketplace, ob Sie passende Actions finden können.
+                    <p class="antwort">Antwort:</p>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>SpotBugs</h2>
+            <ol>
+                <li>Schauen Sie sich den Fehlerreport im SpotBugs Projekt an.
+                    Verstehen Sie jeden der Fehler und überlegen Sie sich, wie er behoben werden könnte.
+                    Schalten Sie einen der Fehler mithilfe einer Annotation ab.<br>
+                    <p class="antwort">Antwort:</p>
+                </li>
+
+            </ol>
+        </section>
+
+        <section>
+            <h2>Offene Fragen</h2>
+            <p>Notieren Sie, wenn Sie bei der Bearbeitung des Stoffs etwas nicht verstanden haben.</p>
+            <ul>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+            </ul>
+
+
+        </section>
+    </main>
+</div>
+</body>
+</html>
