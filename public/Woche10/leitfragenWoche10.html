@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Apple macOS version 5.8.0">
+  <meta charset="UTF-8">
+  <title>Leitfragen Woche 10</title>
+  <link href=
+  "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+  rel="stylesheet" integrity=
+  "sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+  crossorigin="anonymous">
+  <style>
+        .mono {
+            font-family: monospace;
+        }
+
+        li, pre {
+            margin: 0.5em;
+        }
+
+        .antwort {
+            color: #006ab3;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Leitfragen Woche 10</h1>
+      <p>Die Leitfragen sind ein Einstiegspunkt um das Material zu
+      erschließen. Es ist <strong>nicht</strong> ausreichend als
+      Vorbereitung zur Klausur die Fragen zu beantworten!</p>
+    </header>
+    <main>
+      <section>
+        <h2>Architekturmuster II</h2>
+        <ol>
+          <li>Erinnern wir uns an die Marketinganwendung von Onkel
+          Giacomos Eiscafé (Woche 09 im Sommersemester). Die
+          Anwendung hat je nach Wetter und Wochentag Mails an einen
+          Teil der registrierten Kunden geschickt. So wurde
+          beispielsweise an einem Samstag, wenn es nicht zu kalt
+          oder zu heiß war Tante Irmas wunderbare Zuppa Inglese
+          empfohlen. Überlegen Sie, ob und wie eines der in dieser
+          Woche diskutierten Architekturmuster eingesetzt werden
+          könnte.
+            <p class="antwort">Antwort:</p>
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>Bounded Context</h2>
+        <ol>
+          <li>Stellen wir uns einmal vor, wir würden ein Kino
+          betreiben und würden gerne ein System zur Filmplanung
+          entwickeln. Überlegen Sie, welche Bounded Contexts es in
+          dem System geben könnte/sollte. Leider haben wir keinen
+          Fachexperten zur Hand, aber es gibt ein Interview mit
+          einem Manager in der Datei <a href=
+          "interview.adoc">interview.adoc</a>. Den rest müssen Sie
+          selber ergänzen. <strong>Achtung! In einem echten Projekt
+          sollten Sie das auf gar keinen Fall machen!</strong>
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>Warum ist es sinnvoll bei der Definition der
+          Ubiquitous Language mit der Fachsprache der Domäne
+          anzufangen?
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>Welche Konsequenz hat es für die einzelnen Begriffe
+          und auch für die resultierenden Objekte, wenn der Bounded
+          Context viel zu groß gewählt ist?
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>In Woche 4 haben wir <a href=
+          "https://youtu.be/myOkmpJYYAo?t=359">gelernt</a>, was
+          eine Tiefenzahl ist. Vergegenwärtigen Sie sich noch
+          einmal, warum die Tiefenzahl in der Manöverplanung und
+          der Tiefenmessung unterschiedliche Bedeutungen hat. Wie
+          würde eine Klasse aussehen, die beide Bedeutungen
+          vereinigt?
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>Events</h2>
+        <ol>
+          <li>Angenommen, wir hätten Ziegel24 als Monolithen
+          entwickelt. Wir haben dort eine ganz saubere Trennung des
+          Checkout-BC und Fulfillment-BS implementiert, indem wir
+          internes Messaging verwendet haben. Da alles in der
+          gleichen Anwendung läuft haben wir doch eigentlich keine
+          Entkopplung durch die Verwendung von Events erreicht.
+          Oder haben wir das doch?
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>Warum ist es nützlich, Events als "Ding" zur
+          Verfügung zu haben?
+            <p class="antwort">Antwort:</p>
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>Monolithen, Microservices und Co.</h2>
+        <ol>
+          <li>Was ist der Zusammenhang zwischen Microservice
+          Architektur und dem Information Hiding Prinzip? Gibt es
+          auch einen teilweisen Zusammenhang zu den SOLID
+          Prinzipien?
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>Wir wollen eine Microservice Architektur einführen
+          und der Architekt schlägt vor, dass wir einen
+          Produkt-Dienst haben, der alle Informationen zu einem
+          Produkt (Beschreibungen, Packmaße, Preis, etc.)
+          bereitstellt. Andere Dienste wie die Suche, Bestellung
+          und Rechnungsstellung können diese Informationen von dem
+          Dienst erfragen. Wie stehen Sie zu dem Vorschlag?
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>Angenommen wir haben einen Monolithen und dort gibt
+          es ein Modul, das alle Informationen zu einem Produkt
+          (Beschreibungen, Packmaße, Preis, etc.) bereitstellt.
+          Kommen Sie zu einer anderen Bewertung als in der
+          Microservice Architektur?
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>Warum ist es wichtig, dass Services keine Tabellen in
+          der Datenbank teilen? Schließlich ist die Datenbank doch
+          super dafür geeignet konsistente Sichten auf die Daten zu
+          liefern? Ist es nicht auch sehr teuer für jeden
+          Microservice einen eigenen Datenbankserver zu betreiben?
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>Was sind die wesentlichen Einschränkungen, die ein
+          SCS von einer "normalen" Microservice Architektur
+          unterscheiden?
+            <p class="antwort">Antwort:</p>
+          </li>
+          <li>Welche Vorteile hat eine SCS Architektur?
+            <p class="antwort">Antwort:</p>
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>Offene Fragen</h2>
+        <p>Notieren Sie, wenn Sie bei der Bearbeitung des Stoffs
+        etwas nicht verstanden haben.</p>
+        <ul>
+          <li>...</li>
+          <li>...</li>
+          <li>...</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
