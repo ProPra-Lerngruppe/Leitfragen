@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leitfragen Woche 8</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .mono {
+            font-family: monospace;
+        }
+
+        li, pre {
+            margin: 0.5em;
+        }
+
+        .antwort {
+            color: #006ab3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Leitfragen Woche 8</h1>
+        <p>Die Leitfragen sind ein Einstiegspunkt um das Material zu erschließen. Es ist <strong>nicht</strong>
+            ausreichend als Vorbereitung zur Klausur die Fragen zu beantworten!
+        </p>
+        <p>
+        </p>
+    </header>
+    <main>
+        <section>
+            <h2>Zustand und HTTP</h2>
+            <ol>
+                <li>Arbeiten Sie den Quellcode in den Projekten <span class="mono">wizard</span> und <span class="mono">sessions</span>
+                    durch und verstehen Sie, wie der Code funktioniert.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>In Woche 5 haben Sie eine Todo Anwendung geschrieben.
+                    Sie haben dort vermutlich die Datenbank durch ein Repository Objekt gefaked und dort
+                    die Todo Listen zwischengespeichert. Ändern Sie die Anwendung so ab, dass die Todo-Listen
+                    in einer Session festgehalten werden. Verwenden Sie dazu Session Attributes.
+                    <p class="antwort">Antwort:</p>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Sicherheit von Webanwendungen</h2>
+            <ol>
+                <li>Welches ist das Root Zertifikat, das am Ende der Kette den Aufruf der <a href="https://www.hhu.de/">Startseite der HHU</a> zertifiziert?
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Angenommen wir wollen die interne Kommunikation zwischen einer Anwendung und einem reverse Proxy mit TLS verschlüsseln.
+                    Warum geht das nicht gut mit Let's encrypt Zertifikaten?
+                    <p class="antwort">Antwort:</p>
+                </li>
+
+                <li>Schreiben Sie eine Webanwendung (oder ändern Sie eine bestehende Anwendung ab), die verwundbar gegen eine persistent
+                    XSS Attacke ist und führen Sie einen Angriff durch.
+                    <p class="antwort">Antwort:</p>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Spring Security</h2>
+            <ol>
+                <li>Ergänzen Sie die Anwendung im Ordner <span class="mono">autorisierung</span> um eine zusätzliche Rolle und zwei Endpunkte.
+                    Einer der Endpunkte soll mithilfe der Konfiguration für die neue Rolle gesichert werden, der andere per Annotation.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Ergänzen Sie die Anwendung im Ordner <span class="mono">autorisierung</span> um eine geschützte Seite, die einen POST Request ausführt.
+                    Es soll in einem Formular ein Text eingegeben werden und der Text soll im Controller entgegengenommen und ausgegeben werden.
+                    Tipp: Wenn Sie auf einen 404 Fehler stoßen liegt es nicht daran, das die Seite nicht gefunden wird, sondern am CSRF Schutz von Spring Security.
+                    <p class="antwort">Antwort:</p>
+                </li>
+                <li>Schreiben Sie die Anwendung in <span class="mono">autorisierung</span> so um, dass eine Datenbank anstelle der In-Memory Version verwendet wird.
+                    Verwenden Sie eine richtige kryptografische Hashfunktion (z.B. BCrypt, SCrypt oder Argon2) um die Passwörter gesaltet
+                    und gehasht in der Datenbank zu speichern.
+                    In diesem <a href="https://www.baeldung.com/spring-security-registration-password-encoding-bcrypt">Tutorial</a> wird
+                    gezeigt, wie zum Beispiel BCrypt verwendet wird.
+                    <p class="antwort">Antwort:</p>
+                </li>
+            </ol>
+        </section>
+
+
+        <section>
+            <h2>Offene Fragen</h2>
+            <p>Notieren Sie, wenn Sie bei der Bearbeitung des Stoffs etwas nicht verstanden haben.</p>
+            <ul>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+            </ul>
+
+
+        </section>
+    </main>
+</div>
+</body>
+</html>
