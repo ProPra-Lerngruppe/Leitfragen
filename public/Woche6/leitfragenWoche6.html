@@ -48,6 +48,7 @@
                     wurde, um die unsystematische Erzeugung von Fachobjekten im
                     <span class="mono">checkout</span> Projekt konsequent zu verbessern.
                     <p class="antwort">Antwort:</p>
+                    <p>Ordner <code>domain-Tests</code></p>
                 </li>
             </ol>
         </section>
@@ -66,10 +67,57 @@
                     Die Klasse darf ja keine Dependency zum Spring Framework haben.
                     Tipp: Schauen Sie mal in der Startklasse der Anwendung nach.
                     <p class="antwort">Antwort:</p>
+                    <p>Mittels </p>
+<code>
+    <pre>
+@ComponentScan(
+    includeFilters = {
+        @ComponentScan.Filter(type = ANNOTATION, classes = DomainService.class)
+    }
+)
+</pre>
+</code>
+                     <p>kann Spring nach der Annotaion <code>@DomainSerive</code> suchen und für die Dependency Injektion verwenden.</p>
                 </li>
                 <li>Schreiben Sie ein PlantUML Diagramm der Architektur der MwSt Anwendung und
                     verwenden Sie das Diagramm für einen Archunit Test.
                     <p class="antwort">Antwort:</p>
+                    <p>Die <code>architecture.puml</code> liegt im <code>test/resources/mwst</code> Ordner</p>
+                    <code>
+<pre>
+@startuml
+
+[Domain] <<..domain..>>
+[Appservices] <<..services..>>
+[Kalender] <<..kalender..>>
+[Persistence] <<..katalog..>>
+[GUI] <<..web..>>
+[Stereotypes] <<..annotations..>>
+
+[Domain] --> [Stereotypes]
+[Appservices] --> [Stereotypes]
+[GUI] --> [Stereotypes]
+[Persistence] --> [Stereotypes]
+[Kalender] --> [Stereotypes]
+[Appservices] --> [Domain]
+[Persistence] --> [Appservices]
+[Persistence] --> [Domain]
+[GUI] --> [Appservices]
+[Kalender] --> [Appservices]
+
+@enduml
+</pre>
+            </code>
+            <p>ArchTest-Implementierung</p>
+            <code>
+                <pre>
+@ArchTest
+ArchRule diagramTest = classes()
+        .should(adhereToPlantUmlDiagram(
+                        getClass().getResource("architecture.puml"),
+                        consideringOnlyDependenciesInDiagram()));
+                                        </pre>
+            </code>
                 </li>
                 <li>Setzen Sie folgende Architekturregeln als ArchUnit Tests. Schreiben Sie unbedingt
                     auch Beispielcode, der die Regel verletzt und reparieren Sie den Code dann. <strong>
@@ -80,27 +128,90 @@
                                 class="mono">@AggregateRoot</span> oder <span class="mono">@SharedValue</span> annotiert
                             sein.
                             <p class="antwort">Antwort:</p>
+                            <code><pre>
+@ArchTest
+static final ArchRule rule1 = classes().that()
+        .resideInAPackage("..aggregate..")
+        .and()
+        .arePublic()
+        .should()
+        .beAnnotatedWith(AggregateRoot.class)
+        .orShould()
+        .beAnnotatedWith(SharedValue.class);
+                            </pre></code>
                         </li>
                         <li>Klassen, die in einem Aggregat Package liegen und mit <span
                                 class="mono">@AggregateRoot</span> oder <span class="mono">@SharedValue</span>annotiert
                             sind, müssen public sein.
                             <p class="antwort">Antwort:</p>
+                            <code>
+                                <pre>
+@ArchTest
+static final ArchRule rule2 = classes().that()
+        .resideInAPackage("..aggregate..")
+        .and()
+        .areAnnotatedWith(AggregateRoot.class)
+        .or()
+        .areAnnotatedWith(SharedValue.class)
+        .should()
+        .bePublic();
+                                </pre>
+                            </code>
                         </li>
                         <li>Klassen, die mit <span class="mono">@SharedValue</span> annotiert sind, dürfen nur Attribute
                             haben, die <span class="mono">final</span> sind.
                             <p class="antwort">Antwort:</p>
+                            <code>
+                                <pre>
+@ArchTest
+static final ArchRule rule3 = classes().that()
+        .areAnnotatedWith(SharedValue.class)
+        .should()
+        .haveOnlyFinalFields();
+                                </pre>
+                            </code>
                         </li>
                         <li>Es darf keine zyklischen Abhängigkeiten zwischen Klassen geben.
                             <p class="antwort">Antwort:</p>
+                            <code>
+                                <pre>
+@ArchTest
+static final ArchRule rule4 = slices()
+    .matching("..ddd.(**)..")
+    .should()
+    .beFreeOfCycles();
+                                    </pre>
+                                </code>
                         </li>
                         <li>Alle Methoden in Spring Controllern, die eine <span class="mono">@GetRequest</span>
                             Annotation haben, müssen einen <span class="mono">String</span> oder ein <span class="mono">ModelAndView</span>
                             Objekt zurückgeben.
                             <p class="antwort">Antwort:</p>
+                            <code><pre>
+@ArchTest
+static final ArchRule rule5 = methods()
+    .that()
+    .areAnnotatedWith(GetMapping.class)
+    .and()
+    .areDeclaredInClassesThat()
+    .areAnnotatedWith(Controller.class)
+    .should()
+    .haveRawReturnType(String.class)
+    .orShould()
+    .haveRawReturnType(ModelAndView.class);
+                            </pre></code>
                         </li>
                         <li>Es darf keine Methoden geben, die <span class="mono">foo</span> oder <span
                                 class="mono">bar</span> heißen.
                             <p class="antwort">Antwort:</p>
+                            <code><pre>
+@ArchTest
+static final ArchRule rule6 = noMethods()
+        .should()
+        .haveNameMatching("foo")
+        .orShould()
+        .haveNameMatching("bar");
+                            </pre></code>
                         </li>
                     </ol>
                 </li>
