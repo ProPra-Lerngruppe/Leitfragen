@@ -1,0 +1,13 @@
+
+spring:
+  flyway:
+    schemas: todo
+    create-schemas: true
+    url: jdbc:mariadb://localhost:3311/
+    user: root
+    password: iamgroot
+  datasource:
+    url: jdbc:mariadb://localhost:3311/todo
+    username: root
+    password: iamgroot
+

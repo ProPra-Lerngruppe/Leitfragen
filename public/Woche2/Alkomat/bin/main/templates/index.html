@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alkomat</title>
+    <link href="../static/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"
+          th:href="@{/node_modules/bootstrap/dist/css/bootstrap.min.css}">
+</head>
+<body>
+    <form action="#" th:action="@{/index}" th:object="${data}" method="post">
+        <h5>Persönliches</h5>
+        <p>Gewicht: <input type="number" th:field="*{gewicht}" required /></p>
+        <p>Geschlecht: <input type="text" th:field="*{geschlecht}" /></p>
+        <h5>Getränke</h5>
+        <p>Korn: <input type="number" th:field="*{korn}" /></p>
+        <p>Bier: <input type="text" th:field="*{bier}" /></p>
+        <p>Wein: <input type="number" th:field="*{wein}" /></p>
+        <p>Wodka: <input type="text" th:field="*{wodka}" /></p>
+        <p>Whiskey: <input type="number" th:field="*{whiskey}" /></p>
+        <p><input type="submit" value="Submit" />
+    </form>
+
+    <p>Ihr Massenanteil des Alkohols im Körper in Prozent:</p>
+    <p th:text="*{blutalk}">
+
+</body>
+</html>
