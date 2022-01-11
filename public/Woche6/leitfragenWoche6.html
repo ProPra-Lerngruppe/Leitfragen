@@ -226,10 +226,29 @@ static final ArchRule rule6 = noMethods()
                     ein Jahr ein Schaltjahr ist. Schreiben Sie eine GitHub Action, die bei einem Push in Ihr Repository
                     die Tests für das Schaltjahr-Programm laufen lässt. Überprüfen Sie, dass die Action fehlschlägt,
                     wenn Sie einen Fehler im Code einbauen. </p>
-                    <p>Tipp: Achten Sie darauf, dass Sie Gradle in dem richtigen Unterordner laufen lassen.
-                    <p>
+                    <p>Tipp: Achten Sie darauf, dass Sie Gradle in dem richtigen Unterordner laufen lassen.</p>
+                    <p>Mit working-directory wird der richtige Ordner im Repository aufgerufen (Bezieht sich auf das Repo Wochenblatt-6).</p>
+                    <code>
+                        <pre>
+name: wochenblatt-6
 
+on: [push, pull_request]
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        name: Git Checkout
+      - name: Java Installieren
+        uses: actions/setup-java@v1
+        with: 
+          java-version: 17
+      - name: Run Gradle
+        working-directory: ./schaltjahr
+        run: ./gradlew check
+                        </pre>
+                    </code>
                     <p class="antwort">Antwort:</p>
                 </li>
                 <li>Es ist Zeit ein wenig zu trollen! Erzeugen Sie ein privates Repository und fügen Sie dort einen
