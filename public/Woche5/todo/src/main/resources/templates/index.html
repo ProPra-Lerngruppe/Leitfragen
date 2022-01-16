@@ -35,20 +35,22 @@
                             <div class="col-10 form-inline">
                                 <form th:action="@{/toggle-state}" method="post">
                                     <div class="form-check">
-                                        <input type="hidden" name="itemId" th:value="${todoList.root.id}">
+                                        <input type="hidden" name="listId" th:value="${todoList.id}">
+                                        <input type="hidden" name="list_key" th:value="-1">
                                         <input
-                                            th:checked="${todoList.root.completed}"
-                                            th:id="${todoList.root.id}"
+                                            th:checked="${todoList.isMainTaskCompleted}"
+                                            th:id="${todoList.getMainTaskDescription}"
                                             class="form-check-input"
                                             type="checkbox"
                                             onclick="this.form.submit()">
-                                        <label th:for="${todoList.root.id}"><span th:text="*{todoList.root.description}" class="checkbox">Test</span></label>
+                                        <label th:for="${todoList.getMainTaskDescription}"><span th:text="*{todoList.getMainTaskDescription}" class="checkbox">Test</span></label>
                                     </div>
                                 </form>
                             </div>
                             <div class="col-2">
                                 <form class="form" th:action="@{/delete-todo}" method="post">
-                                    <input type="hidden" name="itemId" th:value="${todoList.root.id}">
+                                    <input type="hidden" name="listId" th:value="${todoList.id}">
+                                    <input type="hidden" name="list_key" th:value="-1">
                                     <button class="form-control btn btn-danger" type="submit">
                                         <span class="material-icons">
                                             delete
@@ -59,26 +61,28 @@
                         </div>
                     </div>
                     <ul class="list-group inset-group">
-                        <li class="list-group-item inset-item" th:each="todoItem: *{todoList.subtasks}">
+                        <li class="list-group-item inset-item" th:each="todoItem, index: *{todoList.subtasks}">
                             <div class="container">
                                 <div class="row justify-content-start">
                                     <div class="col-10 form-inline">
                                         <form th:action="@{/toggle-state}" method="post">
                                             <div class="form-check">
-                                                <input type="hidden" name="itemId" th:value="${todoItem.id}">
+                                                <input type="hidden" name="listId" th:value="${todoList.id}">
+                                                <input type="hidden" name="list_key" th:value="${index.index}">
                                                 <input
                                                         th:checked="${todoItem.completed}"
                                                         class="form-check-input"
                                                         type="checkbox"
-                                                        th:id="${todoItem.id}"
+                                                        th:id="${todoItem.description}"
                                                         onclick="this.form.submit()">
-                                                <label th:for="${todoItem.id}"><span th:text="*{todoItem.description}">Test</span></label>
+                                                <label th:for="${todoItem.description}"><span th:text="*{todoItem.description}">Test</span></label>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="col-2">
                                         <form class="form" th:action="@{/delete-todo}" method="post">
-                                            <input type="hidden" name="itemId" th:value="${todoItem.id}">
+                                            <input type="hidden" name="listId" th:value="${todoList.id}">
+                                            <input type="hidden" name="list_key" th:value="${index.index}">
                                             <button class="form-control btn btn-outline-danger">
                                                 <span class="material-icons">
                                                     delete
