@@ -1,6 +1,5 @@
 package de.lerngruppe.todo.web;
 
-import de.lerngruppe.todo.domain.TodoItem;
 import de.lerngruppe.todo.domain.TodoList;
 import de.lerngruppe.todo.services.TodoService;
 import org.springframework.stereotype.Controller;
@@ -8,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Controller
@@ -30,14 +27,14 @@ public class TodoController {
     }
 
     @PostMapping("/toggle-state")
-    public String toggleState(Long itemId){
-        if (itemId != null) service.toggleState(itemId);
+    public String toggleState(Long listId, Integer list_key){
+        service.toggleState(listId, list_key);
         return "redirect:/";
     }
 
     @PostMapping("/delete-todo")
-    public String deleteTodo(Long itemId){
-        if (itemId != null) service.deleteTodo(itemId);
+    public String deleteTodo(Long listId, Integer list_key){
+        service.deleteTodo(listId, list_key);
         return "redirect:/";
     }
 

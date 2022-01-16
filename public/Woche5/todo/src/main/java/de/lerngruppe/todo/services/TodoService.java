@@ -1,8 +1,6 @@
 package de.lerngruppe.todo.services;
 
-import de.lerngruppe.todo.db.TodoItemRepositoryImpl;
 import de.lerngruppe.todo.db.TodoListRepositoryImpl;
-import de.lerngruppe.todo.domain.TodoItem;
 import de.lerngruppe.todo.domain.TodoList;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +9,9 @@ import java.util.List;
 @Service
 public class TodoService {
 
-    TodoItemRepositoryImpl todoItemRepository;
     TodoListRepositoryImpl todoListRepository;
 
-    public TodoService(TodoItemRepositoryImpl todoItemRepository, TodoListRepositoryImpl todoListRepository) {
-        this.todoItemRepository = todoItemRepository;
+    public TodoService( TodoListRepositoryImpl todoListRepository) {
         this.todoListRepository = todoListRepository;
     }
 
@@ -23,46 +19,33 @@ public class TodoService {
         return todoListRepository.getAllLists();
     }
 
-    public void toggleState(Long itemId){
-        boolean isRootTodo = todoListRepository.isRootTodo(itemId);
-        if(isRootTodo) {
-            TodoList list = todoListRepository.getTodoListByRootId(itemId);
-            if (list != null) {
-                if (!list.areSubtasksCompleted()) {
-                    return;
-                }
-            }else{
-                return;
-            }
-        }
-        todoItemRepository.toggleState(itemId);
+    public void toggleState(Long list, int todo_key){
+        todoListRepository.toggleState(list, todo_key);
     }
 
-    public void deleteTodo(Long itemId){
-        boolean isRootTodo = todoListRepository.isRootTodo(itemId);
-        if (isRootTodo){
-            TodoList list = todoListRepository.getTodoListByRootId(itemId);
-            list.getSubtasks().forEach(t-> todoItemRepository.delete(t.getId()));
-            todoItemRepository.delete(list.getRoot().getId());
-            todoListRepository.deleteList(list.getId());
-            System.out.println("Deleting list");
+    public void deleteTodo(Long listId, int list_key) {
+        TodoList list = todoListRepository.getListById(listId);
+        if (list != null) {
+            if (list_key == -1) {
+                todoListRepository.deleteList(list.getId());
+                System.out.println("Deleting list");
+            } else {
+                list.getSubtasks().remove(list_key);
+                todoListRepository.saveList(list);
+                System.out.println("Deleting single item");
+            }
         }else{
-            todoListRepository.deleteListReference(itemId);
-            todoItemRepository.delete(itemId);
-            System.out.println("Deleting single item");
+            System.out.println("No list found with this index");
         }
     }
 
     public void createTodo(Long listId, String description){
-        TodoItem todoItem = new TodoItem(null, description, false);
-        TodoItem save = todoItemRepository.save(todoItem);
-        todoListRepository.addItemToList(listId, save);
+        todoListRepository.addItemToList(listId, description, false);
     }
 
     public void createTodoList(String description){
-        TodoItem todoItem = new TodoItem(null, description, false);
-        TodoItem save = todoItemRepository.save(todoItem);
-        TodoList todoList = new TodoList(null, save, null);
+        TodoList todoList = new TodoList(null);
+        todoList.replaceMainTask(description, false);
         todoListRepository.saveList(todoList);
     }
 }

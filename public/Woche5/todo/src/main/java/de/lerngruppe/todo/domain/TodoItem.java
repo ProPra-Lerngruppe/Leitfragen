@@ -1,41 +1,9 @@
 package de.lerngruppe.todo.domain;
 
+import de.lerngruppe.todo.stereotypes.ValueObject;
 
-public class TodoItem {
-
-    Long id;
-    String description;
-    Boolean completed;
-
-    public TodoItem(Long id, String description, Boolean completed) {
-        this.id = id;
-        this.description = description;
-        this.completed = completed;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(Boolean completed) {
-        this.completed = completed;
-    }
+@ValueObject
+record TodoItem(String description, Boolean completed) {
 
     @Override
     public boolean equals(Object o) {
@@ -44,11 +12,14 @@ public class TodoItem {
 
         TodoItem todoItem = (TodoItem) o;
 
-        return id.equals(todoItem.id);
+        if (!description.equals(todoItem.description)) return false;
+        return completed.equals(todoItem.completed);
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        int result = description.hashCode();
+        result = 31 * result + completed.hashCode();
+        return result;
     }
 }
