@@ -5,3 +5,7 @@ npm-debug.log
 *.class
 
 public/Woche3/RegisterPraktikum/.gradle/checksums/
+
+*.lock
+
+*.bin
