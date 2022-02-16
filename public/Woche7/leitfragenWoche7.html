@@ -37,6 +37,8 @@
                 <p> Im Ordner <span class="mono">nebenlaeufig</span> ist eine Spring Boot Anwendung, bei der es zwei Probleme im Code gibt. Reparieren Sie die Anwendung, ohne das SQL anzupassen. 
                 <p>Tipp: In beiden Fällen ist nur eine kleine Änderung notwendig. Es sind in beiden Problemfällen aber unterschiedliche Lösungen und nur eine hat etwas mit Datenbank-Transaktionen zu tun.</p>
                     <p class="antwort">Antwort:</p>
+                    <p>In der Klasse <a href="/public/Woche7/nebenläufigkeit/ReservationRepository.java">ReservationRepository</a> müssen die Methoden <code>save_version1</code> und <code>save_version2</code> mit der Spring Annotation <code>@Transactional</code> annotiert werden.</p>
+                    <p>In der Klasse <a href="/public/Woche7/nebenläufigkeit/ReservationService.java">ReservationService</a> müssen die Methoden <code>reservieren_version1</code> und <code>reservieren_version2</code> mit dem Keyword <code>synchronized</code> deklariert werden.</p>
                 </li>
                     </ol>
 
@@ -44,7 +46,7 @@
         <section>
             <h2>Spring Data JDBC</h2>
             <ol>
-                <li>Angenommen wir wollen eine Anwendung nach dem Onion Architekturmuster strukturieren. Gleichzeitig wollen wir Spring Data JDBC zum Persistieren verwenden. In der Onion Architektur liegt das Repository Interface in der Applicationservice-Schicht. Bei der Verwendung von Spring Data erweitern wir zum Beispiel das Interface <span style="mono">CrudRepository</span> und Spring implementiert für uns einen ganzen Teil der Methoden. Allerdings haben wir so eine Dependency auf das Spring Framework in der Applicationservice-Schicht und damit verletzten wir unser Architekturmuster. Wie wird das Problem gelöst? 
+                <li>Angenommen wir wollen eine Anwendung nach dem Onion Architekturmuster strukturieren. Gleichzeitig wollen wir Spring Data JDBC zum Persistieren verwenden. In der Onion Architektur liegt das Repository Interface in der Applicationservice-Schicht. Bei der Verwendung von Spring Data erweitern wir zum Beispiel das Interface CrudRepository und Spring implementiert für uns einen ganzen Teil der Methoden. Allerdings haben wir so eine Dependency auf das Spring Framework in der Applicationservice-Schicht und damit verletzten wir unser Architekturmuster. Wie wird das Problem gelöst? 
                     <p class="antwort">Antwort:</p>
                 </li>
                 <li>Ein weiteres Problem bei der Kombination von Spring Data JDBC und der Onion Architektur ist die <span class="mono">@Id</span> Annotation am Aggregat Root. Die Annotation ist Teil von Spring, also der Infrastruktur und hat nichts in der Domänenschicht verloren. Finden Sie auch hier einen Weg, das Problem zu beseitigen.
