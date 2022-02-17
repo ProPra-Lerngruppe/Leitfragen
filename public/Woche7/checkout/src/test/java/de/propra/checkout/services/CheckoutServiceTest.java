@@ -1,6 +1,7 @@
 package de.propra.checkout.services;
 
 
+import de.propra.checkout.db.BestellungRepoImpl;
 import de.propra.checkout.domain.Bestellung;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ public class CheckoutServiceTest {
     int nr = r.nextInt(43587);
     Bestellung target = new Bestellung(nr, Collections.emptyList());
 
-    BestellungRepository repository = mock(BestellungRepository.class);
+    BestellungRepoImpl repository = mock(BestellungRepoImpl.class);
     when(repository.findBestellungById(nr)).thenReturn(target);
 
     CheckoutService service = new CheckoutService(repository, mock(FulfillmentSystem.class));
@@ -37,7 +38,7 @@ public class CheckoutServiceTest {
   @Test
   @DisplayName("Die Bestellung kann abgeschlossen werden")
   void test_2() {
-    BestellungRepository repository = mock(BestellungRepository.class);
+    BestellungRepoImpl repository = mock(BestellungRepoImpl.class);
     when(repository.findBestellungById(anyInt())).thenReturn(new Bestellung(3, Collections.emptyList()));
 
     FulfillmentSystem fulfillment = mock(FulfillmentSystem.class);

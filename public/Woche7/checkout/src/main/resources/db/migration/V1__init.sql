@@ -1,8 +1,8 @@
-drop table if exists bestellposition;
+drop table if exists bestellposition_dto;
 drop table if exists rechnung;
-drop table if exists bestellung;
+drop table if exists bestellung_dto;
 drop table if exists kunde;
-drop table if exists produkt;
+drop table if exists produkt_dto;
 
 create table kunde
 (
@@ -13,26 +13,24 @@ create table kunde
         primary key (nr)
 );
 
-create table bestellung
+create table bestellung_dto
 (
-    nr int auto_increment,
+    id int auto_increment,
     datum date not null,
     kunde int not null,
     constraint bestellung_pk
-        primary key (nr),
+        primary key (id),
     constraint bestellung_kunde_nr_fk
         foreign key (kunde) references kunde (nr)
 );
 
-create table produkt
+create table produkt_dto
 (
-    nr int auto_increment,
+    id int auto_increment primary key,
     bezeichnung varchar(400) not null,
     beschreibung text null,
     preis decimal(8,2) default 999999.99 not null,
-    bestand int default 0 not null,
-    constraint produkt_pk
-        primary key (nr)
+    bestand int default 0 not null
 );
 
 create table rechnung
@@ -44,20 +42,15 @@ create table rechnung
     constraint rechnung_pk
         primary key (nr),
     constraint rechnung_bestellung_nr_fk
-        foreign key (bestellnr) references bestellung (nr)
+        foreign key (bestellnr) references bestellung_dto (id)
 );
 
-create table bestellposition
+create table bestellposition_dto
 (
-    produkt int not null,
-    bestellung int not null,
-    anzahl int default 0 not null,
-    constraint table_name_pk
-        primary key (produkt, bestellung),
-    constraint table_name_bestellung_nr_fk
-        foreign key (bestellung) references bestellung (nr),
-    constraint table_name_produkt_nr_fk
-        foreign key (produkt) references produkt (nr)
+    id int auto_increment primary key,
+    produkt_dto int not null references produkt_dto (id),
+    bestellung_dto int not null references bestellung_dto (id),
+    anzahl int default 0 not null
 );
 
 

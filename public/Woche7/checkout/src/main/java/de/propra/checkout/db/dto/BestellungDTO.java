@@ -1,13 +1,13 @@
 package de.propra.checkout.db.dto;
 
+import de.propra.checkout.domain.Bestellung;
 import org.springframework.data.annotation.Id;
 
-import java.util.List;
+import java.util.Set;
 
 public record BestellungDTO (
         @Id
         Integer id,
-        List<BestellpositionDTO> positionen,
-        Integer versandoption
+        Set<BestellpositionDTO> positionen
 ){
 }

@@ -6,6 +6,4 @@ public record Bestellposition(String bezeichnung, int anzahl, Money einzelpreis)
   public Money preis() {
     return einzelpreis.multiply(anzahl);
   }
-
-
 }
