@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Repository
 public class BestellungRepoImpl implements BestellungRepository {
 
@@ -34,8 +36,7 @@ public class BestellungRepoImpl implements BestellungRepository {
     }
 
     private Bestellung convertToBestellung(BestellungDTO bestellungDTO){
-        List<Bestellposition> positionen = new ArrayList<>();
-        bestellungDTO.positionen().forEach(e -> positionen.add(this.convertToBestellPosition(e)));
+        List<Bestellposition> positionen = bestellungDTO.positionen().stream().map(this::convertToBestellPosition).toList();
         return new Bestellung(bestellungDTO.id(), positionen);
     }
 
