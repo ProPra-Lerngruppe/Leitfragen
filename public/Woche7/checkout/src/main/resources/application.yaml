@@ -1,0 +1,12 @@
+spring:
+  flyway:
+    schemas: ziegel24
+    create-schemas: true
+    url: jdbc:mariadb://localhost:3310/
+    user: root
+    password: iamgroot
+  datasource:
+    url: jdbc:mariadb://localhost:3310/ziegel24
+    username: root
+    password: iamgroot
+

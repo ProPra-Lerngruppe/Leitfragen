@@ -55,6 +55,7 @@
                 <li>Angenommen wir wollen die interne Kommunikation zwischen einer Anwendung und einem reverse Proxy mit TLS verschlüsseln.
                     Warum geht das nicht gut mit Let's encrypt Zertifikaten?
                     <p class="antwort">Antwort:</p>
+                    <p>Let's encrypt benötigt eine offene Verbindung über Port 80 um die Zertifikate auszuhandeln. Dies ist für interne Anwendungen nicht geeignet.</p>
                 </li>
 
                 <li>Schreiben Sie eine Webanwendung (oder ändern Sie eine bestehende Anwendung ab), die verwundbar gegen eine persistent

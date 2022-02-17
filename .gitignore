@@ -2,3 +2,10 @@ node_modules/*
 npm-debug.log
 .DS_Store
 /*.env
+*.class
+
+public/Woche3/RegisterPraktikum/.gradle/checksums/
+
+*.lock
+
+*.bin

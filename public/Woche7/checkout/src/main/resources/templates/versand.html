@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Versandoptionen - Ziegel24</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+    <style>
+        tfoot tr {
+            border-top: 2px solid white;
+        }
+        tfoot tr:first-child {
+            border-top: 2px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container pt-5">
+    <header>
+        <h1>Versandoptionen für Ihre Bestellung</h1>
+    </header>
+    <main class="pt-5">
+        <section>
+        <h2>Bestellübersicht</h2>
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th>Bezeichnung</th>
+                <th>Einzelpreis</th>
+                <th>Stückzahl</th>
+                <th>Preis</th>
+            </tr>
+            </thead>
+            <tbody th:remove="all-but-first">
+            <tr th:each="pos : ${bestellung.getPositionen()}">
+                <td th:text="${pos.bezeichnung}">Unipor Mauerziegel 10 DF 30,7 cm x 24 cm x 23,8 cm</td>
+                <td th:text="${pos.einzelpreis}">EUR 3.39</td>
+                <td th:text="${pos.anzahl}">80</td>
+                <td th:text="${pos.preis()}">EUR 271.20</td>
+            </tr>
+            <tr>
+                <td>Mauerziegel 3DF 24 x 17,5 x 11,3 cm</td>
+                <td>0.99€</td>
+                <td>1500</td>
+                <td>1485.00€</td>
+            </tr>
+            <tr>
+                <td>Silka Kalksandstein 2DF-L 240 mm x 115 mm x 113 mm</td>
+                <td>0.49€</td>
+                <td>835</td>
+                <td>409.15€</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td>Bestellwert</td>
+                <td></td>
+                <td></td>
+                <td th:text="${bestellung.bestellwert}">2165,35€</td>
+            </tr>
+            <tr>
+                <td>Versandkosten</td>
+                <td th:text="${bestellung.getVersandOption().getVersandkostenProPalette()}">EUR 130.00</td>
+                <td th:text="${bestellung.anzahlPaletten()}">5</td>
+                <td th:text="${bestellung.versandkosten()}">650.00€</td>
+            </tr>
+            <tr>
+                <td>Versandkosten Rabatt</td>
+                <td></td>
+                <td></td>
+                <td class="text-danger">- <span th:text="${bestellung.rabatt()}">EUR 13.00</span></td>
+            </tr>
+            <tr class="table-secondary">
+                <th>Gesamtpreis</th>
+                <th></th>
+                <th></th>
+                <th th:text="${bestellung.gesamtpreis()}">2802,35€</th>
+            </tr>
+            </tfoot>
+        </table>
+        </section>
+        <section>
+            <h2>Versandoptionen</h2>
+            <form method="get">
+                <input type="hidden" name="nr" th:value="${bestellung.nr}">
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="versandoption"
+                           id="standardRadio"
+                           onchange="this.form.submit()"
+                           value="STANDARD" th:checked="${bestellung.isVersandOption('STANDARD')}"
+                    >
+                    <label class="form-check-label" for="standardRadio">
+                        Standardversand (2-4 Werktage)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="versandoption"
+                           id="expressRadio"
+                           onchange="this.form.submit()"
+                           value="EXPRESS" th:checked="${bestellung.isVersandOption('EXPRESS')}" >
+                    <label class="form-check-label" for="expressRadio">
+                        Expressversand (48 Stunden)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="versandoption"
+                           onchange="this.form.submit()"
+                           id="direktRadio"
+                           value="DIREKTFAHRT" th:checked="${bestellung.isVersandOption('DIREKTFAHRT')}" >
+                    <label class="form-check-label" for="direktRadio">
+                        Direktfahrt (max. 24 Stunden)
+                    </label>
+                </div>
+            </form>
+            <form method="post">
+                <input type="hidden" name="nr" th:value="${bestellung.nr}">
+                <input type="hidden" name="versandoption" th:value="${bestellung.versandOption}">
+                <button class="btn btn-primary mt-5">Bestellen</button>
+            </form>
+        </section>
+    </main>
+    <footer class="pt-5">
+        <hr>
+        <h2 class="h6">© Ziegel24</h2>
+        <p>Alle Preisangaben enthalten die gesetzl. MwSt.</p>
+    </footer>
+</div>
+</body>
+</html>

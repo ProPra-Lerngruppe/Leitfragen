@@ -1,86 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Leitfragen Woche 7</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <style>
-        .mono {
-            font-family: monospace;
-        }
+      .mono {
+        font-family: monospace;
+      }
 
-        li, pre {
-            margin: 0.5em;
-        }
+      li,
+      pre {
+        margin: 0.5em;
+      }
 
-        .antwort {
-            color: #006ab3;
-        }
+      .antwort {
+        color: #006ab3;
+      }
     </style>
-</head>
-<body>
-<div class="container">
-    <header>
+  </head>
+  <body>
+    <div class="container">
+      <header>
         <h1>Leitfragen Woche 7</h1>
-        <p>Die Leitfragen sind ein Einstiegspunkt um das Material zu erschließen. Es ist <strong>nicht</strong>
-            ausreichend als Vorbereitung zur Klausur die Fragen zu beantworten!
-        </p>
         <p>
+          Die Leitfragen sind ein Einstiegspunkt um das Material zu erschließen.
+          Es ist <strong>nicht</strong>
+          ausreichend als Vorbereitung zur Klausur die Fragen zu beantworten!
         </p>
-    </header>
-    <main>
+        <p></p>
+      </header>
+      <main>
         <section>
-            <h2>Transaktionen</h2>
-            <ol>
-                <li>Nebenläufigkeit ist auch bei Datenbanken manchmal ein schwieriges Thema.  
-                <p> Im Ordner <span class="mono">nebenlaeufig</span> ist eine Spring Boot Anwendung, bei der es zwei Probleme im Code gibt. Reparieren Sie die Anwendung, ohne das SQL anzupassen. 
-                <p>Tipp: In beiden Fällen ist nur eine kleine Änderung notwendig. Es sind in beiden Problemfällen aber unterschiedliche Lösungen und nur eine hat etwas mit Datenbank-Transaktionen zu tun.</p>
-                    <p class="antwort">Antwort:</p>
-                </li>
-                    </ol>
-
+          <h2>Transaktionen</h2>
+          <ol>
+            <li>
+              Nebenläufigkeit ist auch bei Datenbanken manchmal ein schwieriges
+              Thema.
+              <p>
+                Im Ordner <span class="mono">nebenlaeufig</span> ist eine Spring
+                Boot Anwendung, bei der es zwei Probleme im Code gibt.
+                Reparieren Sie die Anwendung, ohne das SQL anzupassen.
+              </p>
+              <p>
+                Tipp: In beiden Fällen ist nur eine kleine Änderung notwendig.
+                Es sind in beiden Problemfällen aber unterschiedliche Lösungen
+                und nur eine hat etwas mit Datenbank-Transaktionen zu tun.
+              </p>
+              <p class="antwort">Antwort:</p>
+              <p>
+                In der Klasse
+                <a
+                  href="/public/Woche7/nebenläufigkeit/ReservationRepository.java"
+                  >ReservationRepository</a
+                >
+                müssen die Methoden <code>save_version1</code> und
+                <code>save_version2</code> mit der Spring Annotation
+                <code>@Transactional</code> annotiert werden.
+              </p>
+              <p>
+                In der Klasse
+                <a href="/public/Woche7/nebenläufigkeit/ReservationService.java"
+                  >ReservationService</a
+                >
+                müssen die Methoden <code>reservieren_version1</code> und
+                <code>reservieren_version2</code> mit dem Keyword
+                <code>synchronized</code> deklariert werden.
+              </p>
+            </li>
+          </ol>
         </section>
         <section>
-            <h2>Spring Data JDBC</h2>
-            <ol>
-                <li>Angenommen wir wollen eine Anwendung nach dem Onion Architekturmuster strukturieren. Gleichzeitig wollen wir Spring Data JDBC zum Persistieren verwenden. In der Onion Architektur liegt das Repository Interface in der Applicationservice-Schicht. Bei der Verwendung von Spring Data erweitern wir zum Beispiel das Interface <span style="mono">CrudRepository</span> und Spring implementiert für uns einen ganzen Teil der Methoden. Allerdings haben wir so eine Dependency auf das Spring Framework in der Applicationservice-Schicht und damit verletzten wir unser Architekturmuster. Wie wird das Problem gelöst? 
-                    <p class="antwort">Antwort:</p>
-                </li>
-                <li>Ein weiteres Problem bei der Kombination von Spring Data JDBC und der Onion Architektur ist die <span class="mono">@Id</span> Annotation am Aggregat Root. Die Annotation ist Teil von Spring, also der Infrastruktur und hat nichts in der Domänenschicht verloren. Finden Sie auch hier einen Weg, das Problem zu beseitigen.
-                    <p class="antwort">Antwort:</p>
-                </li>
-                <li>Spring Data JDBC hat keine Änderungsverfolgung (Change Tracking). Jens Schauder diskutiert das Thema in der Frage und Antwort Sitzung am Ende des Talks ca. bei 1:18:20. Im Repository gibt es einen neuen Test <span class="mono">modelChangeBrick</span>, der eine Änderung am Aggregat durchführt und das Aggregat dann neu speichert. Schauen Sie sich die SQL Befehle an, dort können Sie das fehlende Change Tracking ebenfalls erkennen. Was sind die Konsequenzen des fehlenden Trackings? Wann könnte das zu einem Problem werden?
-                    <p class="antwort">Antwort:</p>
-                </li>
+          <h2>Spring Data JDBC</h2>
+          <ol>
+            <li>
+              Angenommen wir wollen eine Anwendung nach dem Onion
+              Architekturmuster strukturieren. Gleichzeitig wollen wir Spring
+              Data JDBC zum Persistieren verwenden. In der Onion Architektur
+              liegt das Repository Interface in der Applicationservice-Schicht.
+              Bei der Verwendung von Spring Data erweitern wir zum Beispiel das
+              Interface <code>CrudRepository</code> und Spring implementiert für
+              uns einen ganzen Teil der Methoden. Allerdings haben wir so eine
+              Dependency auf das Spring Framework in der
+              Applicationservice-Schicht und damit verletzten wir unser
+              Architekturmuster. Wie wird das Problem gelöst?
+              <p class="antwort">Antwort:</p>
+              <p>
+                In der Applicationservice-Schicht wird ein Repository Interface
+                erstellt, dass die geforderten Methoden definiert. In der
+                Infrastruktur-Schicht wird dann das Interface implementiert und
+                eine weitere Klasse eingebunden, die das
+                <code>CRUD</code> Repository erweitert. Somit besteht dann keine
+                Dependency in der Applicationservice-Schicht mehr.
+              </p>
+              <img
+                src="DB-CRUD-Struktur.png"
+                alt="Onionarchitekture CRUD Struktur"
+              />
+            </li>
+            <li>
+              Ein weiteres Problem bei der Kombination von Spring Data JDBC und
+              der Onion Architektur ist die
+              <span class="mono">@Id</span> Annotation am Aggregat Root. Die
+              Annotation ist Teil von Spring, also der Infrastruktur und hat
+              nichts in der Domänenschicht verloren. Finden Sie auch hier einen
+              Weg, das Problem zu beseitigen.
+              <p class="antwort">Antwort:</p>
+              <p>
+                Anstatt das AggregateRoot direkt zu speichern, speichert man ein
+                äquivalentes DTO (Data-Transfer-Object), welches in der
+                Infrastruktur-Schicht definiert wird. Es dient als
+                Datencontainer welcher die für Spring üblichen Annotationen
+                verwenden kann.
+              </p>
+            </li>
+            <li>
+              Spring Data JDBC hat keine Änderungsverfolgung (Change Tracking).
+              Jens Schauder diskutiert das Thema in der Frage und Antwort
+              Sitzung am Ende des Talks ca. bei 1:18:20. Im Repository gibt es
+              einen neuen Test <span class="mono">modelChangeBrick</span>, der
+              eine Änderung am Aggregat durchführt und das Aggregat dann neu
+              speichert. Schauen Sie sich die SQL Befehle an, dort können Sie
+              das fehlende Change Tracking ebenfalls erkennen. Was sind die
+              Konsequenzen des fehlenden Trackings? Wann könnte das zu einem
+              Problem werden?
+              <p class="antwort">Antwort:</p>
+            </li>
+            <li>
+              Im
+              <a
+                href="https://docs.spring.io/spring-data/jdbc/docs/2.1.3/reference/html/#mapping.object-creation"
+                >Beispiel 56</a
+              >
+              wird die <span class="mono">id</span> von der statischen Factory
+              Methode auf <span class="mono">null</span> gesetzt und auch Maciej
+              Walkowiak macht das im
+              <a href="https://youtu.be/EaHlancPA14?t=318">ersten Tutorial</a>
+              so. Warum?
+              <p class="antwort">Antwort:</p>
+              <p>
+                Ist das Attribut id mit <code>@ID</code> annotiert, wird beim
+                Persistieren durch SpringDataJDBC der Wert automatisch gesetzt.
+              </p>
+            </li>
+            <li>
+              Welche Rückgabetypen könnten wir bei einer Derived Query, die
+              genau ein Aggregat zurückgibt, verwenden? Was ist der Unterschied?
+              <p class="antwort">Antwort:</p>
+              <ul>
+                <li>Derived query to return basic type or null.</li>
+                <li>Derived query to return an Optional/entity.</li>
+                <li>Derived query for multiple fields.</li>
                 <li>
-                Im <a href="https://docs.spring.io/spring-data/jdbc/docs/2.1.3/reference/html/#mapping.object-creation">Beispiel 56</a> wird die <span class="mono">id</span> von der statischen Factory Methode auf <span class="mono">null</span> gesetzt und auch Maciej Walkowiak macht das im <a href="https://youtu.be/EaHlancPA14?t=318">ersten Tutorial</a> so. Warum? 
-                    <p class="antwort">Antwort:</p>
+                  Derived query method to get Collection OR Java 8 Streams.
                 </li>
-                <li>Welche Rückgabetypen könnten wir bei einer Derived Query, die genau ein Aggregat zurückgibt, verwenden? Was ist der Unterschied?
-                    <p class="antwort">Antwort:</p>
-                </li>
-                <li>Wann benötigen wir ein <span class="mono">_key</span> Attribut in der Datenbank?
-                    <p class="antwort">Antwort:</p>
-                </li>
-                <li>Schreiben Sie die Checkout Anwendung aus Woche 5 so um, dass Spring Data JDBC benutzt wird. Achten Sie darauf, das die Onion Architektur erhalten bleibt. 
-                    <p class="antwort">Antwort:</p>
-                </li>
-            </ol>
+              </ul>
+            </li>
+            <li>
+              Wann benötigen wir ein <span class="mono">_key</span> Attribut in
+              der Datenbank?
+              <p class="antwort">Antwort:</p>
+              <p>
+                Das Attribut <code>_key</code> wird benutzt, wenn eine Liste in
+                einer Datenbank persistiert werden soll. Es stellt sicher, dass
+                die Reihenfolge der Eltemente gespeichert wird.
+              </p>
+            </li>
+            <li>
+              Schreiben Sie die Checkout Anwendung aus Woche 5 so um, dass
+              Spring Data JDBC benutzt wird. Achten Sie darauf, das die Onion
+              Architektur erhalten bleibt.
+              <p class="antwort">Antwort:</p>
+              <p>
+                Eine Mögliche Lösung befindet sich im
+                <code>Woche7/checkout</code> Ordner.
+              </p>
+            </li>
+          </ol>
         </section>
-
-        <section>
-            <h2>Offene Fragen</h2>
-            <p>Notieren Sie, wenn Sie bei der Bearbeitung des Stoffs etwas nicht verstanden haben.</p>
-            <ul>
-                <li>...</li>
-                <li>...</li>
-                <li>...</li>
-            </ul>
-
-
-        </section>
-    </main>
-</div>
-</body>
+      </main>
+    </div>
+  </body>
 </html>

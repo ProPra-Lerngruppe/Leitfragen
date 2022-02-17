@@ -1,0 +1,18 @@
+Ziegel 24 - Versand
+===================
+
+Die Anwendung ist für das Auslösen des Versands der Ziegelbestellung zuständig. 
+Die Bestellung selber ist bereits in der Datenbank angelegt. 
+
+Die Ziegel werden auf einer Europalette vom Typ EPAL-1 ausgeliefert. Auf eine EPAL-1 passen 500 Ziegel.
+
+Transportkosten: 
+- Standard: 130.00 Euro pro EPAL-1 Gebinde
+- Express: 150.00 Euro pro EPAL-1 Gebinde
+- Direktfahrt: 200.00 Euro pro EPAL-1 Gebinde
+
+Es gibt auf die Transportkosten folgende Mengenrabatte
+- Ab 5 Paletten: 2%
+- Ab 10 Paletten: 5%
+- Ab 25 Paletten: 15% 
+
