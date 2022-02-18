@@ -1,0 +1,11 @@
+spring:
+  flyway:
+    schemas: auth
+    create-schemas: true
+    url: jdbc:mysql://localhost:3306
+    user: root
+    password: password
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth
+    username: root
+    password: password

@@ -51,6 +51,13 @@
             <ol>
                 <li>Welches ist das Root Zertifikat, das am Ende der Kette den Aufruf der <a href="https://www.hhu.de/">Startseite der HHU</a> zertifiziert?
                     <p class="antwort">Antwort:</p>
+                    <ul>
+                        <pre>
+T-TeleSec GlobalRoot Class 2
+    DFN-Verein Certification Authority 2
+        DFN-Verein Global Issuing CA
+                        </pre>
+                    </ul>
                 </li>
                 <li>Angenommen wir wollen die interne Kommunikation zwischen einer Anwendung und einem reverse Proxy mit TLS verschlüsseln.
                     Warum geht das nicht gut mit Let's encrypt Zertifikaten?
@@ -71,11 +78,53 @@
                 <li>Ergänzen Sie die Anwendung im Ordner <span class="mono">autorisierung</span> um eine zusätzliche Rolle und zwei Endpunkte.
                     Einer der Endpunkte soll mithilfe der Konfiguration für die neue Rolle gesichert werden, der andere per Annotation.
                     <p class="antwort">Antwort:</p>
+                    <code>
+                        <pre>
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.inMemoryAuthentication()
+        .withUser("user")
+        .password("user")
+        .roles("USER")
+        .and()
+        .withUser("manager")
+        .password("manager")
+        .roles("MANAGER")
+        .and()
+        .withUser("admin")
+        .password("admin")
+        .roles("ADMIN")
+        .and()
+        .withUser("supervisor")
+        .password("supervisor")
+        .roles("SUPERVISOR");
+}
+                        </pre>
+                    </code>
+                    <code>
+                        <pre>
+@GetMapping("/public/supervisor")
+@Secured("ROLE_SUPERVISOR")
+public String supervisorPublic() {
+    return "supervisor";
+}
+                        </pre>
+                    </code>
                 </li>
                 <li>Ergänzen Sie die Anwendung im Ordner <span class="mono">autorisierung</span> um eine geschützte Seite, die einen POST Request ausführt.
                     Es soll in einem Formular ein Text eingegeben werden und der Text soll im Controller entgegengenommen und ausgegeben werden.
                     Tipp: Wenn Sie auf einen 404 Fehler stoßen liegt es nicht daran, das die Seite nicht gefunden wird, sondern am CSRF Schutz von Spring Security.
                     <p class="antwort">Antwort:</p>
+                    <code>
+                        <pre>
+&#60;form th:action="@{/intranet/supervisor}" method="post"&#62;
+    &#60;!--&#60;input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/&#62;--&#62;
+    &#60;label for="nameInput"&#62;Name&#60;/label&#62;
+    &#60;input id="nameInput" type="text" name="name"&#62;
+    &#60;button type="submit" class="btn btn-primary"&#62;Submit&#60;/button&#62;
+&#60;/form&#62;
+                        </pre>
+                    </code>
                 </li>
                 <li>Schreiben Sie die Anwendung in <span class="mono">autorisierung</span> so um, dass eine Datenbank anstelle der In-Memory Version verwendet wird.
                     Verwenden Sie eine richtige kryptografische Hashfunktion (z.B. BCrypt, SCrypt oder Argon2) um die Passwörter gesaltet
@@ -83,6 +132,111 @@
                     In diesem <a href="https://www.baeldung.com/spring-security-registration-password-encoding-bcrypt">Tutorial</a> wird
                     gezeigt, wie zum Beispiel BCrypt verwendet wird.
                     <p class="antwort">Antwort:</p>
+                    <p>Docker-File für eine generische Mysql Datenbank:</p>
+                    <code>
+                        <pre>
+version: "3.7"
+services:
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: 'auth'
+      MYSQL_ROOT_PASSWORD: 'password'
+                        </pre>
+                    </code>
+                    <p><code>Application.yml</code> Datei für Flyway und Datasource Konfiguration:</p>
+                    <code>
+                        <pre>
+spring:
+  flyway:
+    schemas: auth
+    create-schemas: true
+    url: jdbc:mysql://localhost:3306
+    user: root
+    password: password
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth
+    username: root
+    password: password
+                        </pre>
+                    </code>
+                    <p>Flyway Migrations Dateien</p>
+                    <code>
+                        <pre>
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS authorities;
+
+CREATE TABLE users
+(
+    username VARCHAR(50)  NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    enabled  TINYINT      NOT NULL DEFAULT 1,
+    PRIMARY KEY (username)
+);
+
+CREATE TABLE authorities
+(
+    username  VARCHAR(50) NOT NULL,
+    authority VARCHAR(50) NOT NULL,
+    FOREIGN KEY (username) REFERENCES users (username)
+);
+                        </pre>
+                    </code>
+                    <code>
+                        <pre>
+INSERT INTO users (username, password, enabled)
+VALUES ('user', '$2a$12$ii4cBfSirPfnfETnUi1Mv.NhvXaSeLObkkcucYBMdRS9O5mXaJfvi', true);
+
+INSERT INTO users (username, password, enabled)
+    VALUES ('admin', '$2a$12$FVFjpJOoMZjJ7dO6qJ1lVe6p1R6vea0InnPJDrKZgueeBeEG1cveW', true);
+
+INSERT INTO authorities (username, authority)
+    VALUES('user', 'ROLE_USER');
+
+INSERT INTO authorities (username, authority)
+    VALUES ('admin', 'ROLE_ADMIN');
+                        </pre>
+                    </code>
+                    <p>Websecurity Configuartion:</p>
+                    <code>
+                        <pre>
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    DataSource dataSource;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.jdbcAuthentication()
+            .dataSource(dataSource);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+    http.authorizeRequests()
+        .antMatchers("/admin")
+        .hasAnyRole("ADMIN")
+        .antMatchers("/intranet/manager")
+        .hasAnyRole("MANAGER", "SUPERVISOR", "ADMIN")
+        .antMatchers("/intranet/supervisor")
+        .hasAnyRole("SUPERVISOR", "ADMIN")
+        .antMatchers("/intranet").authenticated()
+        .antMatchers("/").permitAll()
+        .and().formLogin();
+    }
+
+    @Bean
+    PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+}
+                        </pre>
+                    </code>
                 </li>
             </ol>
         </section>
