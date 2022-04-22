@@ -1,0 +1,1143 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>ProPra II Zusammenfassung</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1cf9ec30-16c1-424b-8b16-d88d653d720d" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">✏️</span></div><h1 class="page-title">ProPra II Zusammenfassung</h1><table class="properties"><tbody><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Daten</th><td><time>@April 23, 2022</time></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Art</th><td><span class="selected-value select-value-color-blue">🔍 Prüfung</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Themen</th><td></td></tr><tr class="property-row property-row-file"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesFile"><path d="M5.94578,14 C4.62416,14 3.38248,13.4963 2.44892,12.585 C1.514641,11.6736 1,10.4639 1,9.17405 C1.00086108,7.88562 1.514641,6.67434 2.44892,5.76378 L7.45612,0.985988 C8.80142,-0.327216 11.1777,-0.332396 12.5354,0.992848 C13.9369,2.36163 13.9369,4.58722 12.5354,5.95418 L8.03046,10.2414 C7.16278,11.0877 5.73682,11.0894 4.86024,10.2345 C3.98394,9.37789 3.98394,7.98769 4.86024,7.1327 L6.60422,5.4317 L7.87576,6.67196 L6.13177,8.37297 C6.01668,8.48539 6.00003,8.61545 6.00003,8.68335 C6.00003,8.75083 6.01668,8.88103 6.13177,8.99429 C6.36197,9.21689 6.53749,9.21689 6.76768,8.99429 L11.2707,4.70622 C11.9645,4.03016 11.9645,2.91757 11.2638,2.23311 C10.5843,1.57007 9.40045,1.57007 8.72077,2.23311 L3.71342,7.0109 C3.12602,7.58406 2.79837,8.35435 2.79837,9.17405 C2.79837,9.99459 3.12602,10.7654 3.72045,11.3446 C4.90947,12.5062 6.98195,12.5062 8.17096,11.3446 L10.41911,9.15165 L11.6906,10.3919 L9.4425,12.585 C8.50808,13.4963 7.2664,14 5.94578,14 Z"></path></svg></span>Datei</th><td></td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M3.73333,3.86667 L7.46667,3.86667 C8.49613,3.86667 9.33333,4.70387 9.33333,5.73333 C9.33333,6.7628 8.49613,7.6 7.46667,7.6 L6.53333,7.6 C6.01813,7.6 5.6,8.0186 5.6,8.53333 C5.6,9.04807 6.01813,9.46667 6.53333,9.46667 L7.46667,9.46667 C9.5284,9.46667 11.2,7.79507 11.2,5.73333 C11.2,3.6716 9.5284,2 7.46667,2 L3.73333,2 C1.6716,2 0,3.6716 0,5.73333 C0,7.124 0.762067,8.33453 1.88953,8.97713 C1.87553,8.83107 1.86667,8.6836 1.86667,8.53333 C1.86667,7.92013 1.98753,7.33447 2.2036,6.7978 C1.99267,6.4954 1.86667,6.12953 1.86667,5.73333 C1.86667,4.70387 2.70387,3.86667 3.73333,3.86667 Z M12.1095,5.28907 C12.1231,5.4356 12.1333,5.58307 12.1333,5.73333 C12.1333,6.34607 12.0101,6.9294 11.7931,7.46513 C12.0059,7.768 12.1333,8.13573 12.1333,8.53333 C12.1333,9.5628 11.2961,10.4 10.2667,10.4 L6.53333,10.4 C5.50387,10.4 4.66667,9.5628 4.66667,8.53333 C4.66667,7.50387 5.50387,6.66667 6.53333,6.66667 L7.46667,6.66667 C7.98187,6.66667 8.4,6.24807 8.4,5.73333 C8.4,5.2186 7.98187,4.8 7.46667,4.8 L6.53333,4.8 C4.4716,4.8 2.8,6.4716 2.8,8.53333 C2.8,10.59507 4.4716,12.2667 6.53333,12.2667 L10.2667,12.2667 C12.3284,12.2667 14,10.59507 14,8.53333 C14,7.14267 13.2375,5.93167 12.1095,5.28907 Z"></path></svg></span>URL</th><td></td></tr></tbody></table></header><div class="page-body"><nav id="99ec76ad-691b-481a-96d9-2870eff042e2" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b47a2e86-e5ed-4543-a890-06f5dacec04d">Woche 1</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a8e617b8-fbc6-41b7-ae70-8cf9696fe0c1">Woche 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#22826287-8ac7-42c0-b394-3e5b35510670">Web MVC </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4e9c63bd-dc27-4bbf-b008-e8b16eb0e4ff">Validierung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f08df3a9-b5ac-46a4-8ca3-e04bc285965e">Objekt mit Validierung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bd7e0186-47ef-42b7-984c-6e157702e333">Controller mit @Valid</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#29fe0ca1-2af6-466d-aca5-2f368cec14bd">HTML mit Validierung</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#65db2c07-67d3-4397-a131-8d602b4edb60">Woche 4</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b85fa228-63d6-432f-a664-6002d523569e">DDD</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bb0bf7da-bd1d-4624-ad78-aad0bc1c2e5f">Domain {#domain}</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5e119287-cef1-4cc9-ae43-d1a10d427f84">Model {#model}</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6835e699-0b80-4a2a-af1f-8a420858cd90">Ubiquitous Language</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fcbbe247-6cd2-44f2-98c3-955845a0351f">Context {#context}</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2caa5771-6bb1-4e32-9b49-df396c932a4f">Bounded Context</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ab1c6cd-4b89-4202-8bf5-d194c2dc7e08">Fachliche Datentypen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#51e99ec2-b995-4cd1-895c-2951bb5bca84">Enity und Value Objekte</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f2dd9ba6-4188-49c6-8eb1-ed8522231c08">Entitäten in Java</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#30504b52-7b32-445f-9ec3-ad8e6b61afa6">Wertobjekte in Java</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75011d11-bad0-4be5-9aa4-d1fbe3f2b833">Aggregate</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#26ed3450-cc01-46fb-8711-f8a15d30a760">Schichtenarchitektur</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1bb8fa29-c5d9-4f36-9960-88672d6ca316">Onion Architecture</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#938e2284-9582-4aa8-9b02-c79651a2b5a1">Woche 5</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d770ec9c-cb73-4c70-888f-0d22c0c06ad5">Woche 6</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#059c0597-1189-4b0c-9ba8-6e4eaab8ad18">Woche 7</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#76d3b2e8-336f-4608-a91a-12cf31fdc0e9">Spring Data JDBC</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8b3971c1-9b79-4649-8c0d-553bf81d625b">One-To-One Relationship</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#68184069-c1aa-44e8-9e19-8c1131a954ff">One-To-Many Relationship</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3cc4cb7d-8fd7-4400-84ca-d2b0f6abe805">Many-To-Many</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#64e3489f-3a42-4179-99a7-736f31f13ce3">Transactional</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2e58870d-b89c-48dc-8fda-47b5c38ca440">Woche 8 </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#79a38f4b-9c11-4858-8489-79e697f54d40">Zustand</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3d9781d4-e8e4-4912-b17b-b3fd13527ee6">Cookies</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#edb75f79-92c6-4204-9b47-2b9e0514f3d2">Hidden Fields</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#77bbebea-267c-4112-a950-1bd10a80d08f">Sessions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#81a182cb-f47c-4a3d-8d2b-f340f6d4b8f5">Verschlüsselte Kommunikation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#68016bd7-3d9e-4e8d-9e63-e7f36cd6aeee">Symmetrische Verschlüsselung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cfcaba0f-9d46-4025-8556-3ec696a7f66f">Asymmetrische Verschlüsselung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cf808716-5089-4c37-bf46-e7919ab207d7">Signaturen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bfe4a589-394a-4c76-9aca-d2f5aac07072">Zertifikate</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d0a481ec-e227-431b-afeb-1065a7065c3a">CSRF</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#075de07a-1efc-461e-b011-54bd3f6bfa41">Angriff</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e8141e55-0159-493d-96b8-0042a1a54888">Abwehr</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#107728cd-047a-4bac-8423-ff712702aa46">Cross Site Scripting</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8acad998-a2be-49d6-a272-14e3646a5ea5">Reflect XSS</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fbd668f1-75a1-4024-b0e5-f293b9f1bd95">Stored XSS</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ca720587-6a7e-400d-bdbe-f82a8a6362c8">Zugriffskontrolle</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2c3f05af-f419-4be2-9577-c6486f5a8a8d">Authentifizierung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9aec0188-832b-4999-a9f7-080b61f085ba">Autorisierung</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dbd523e1-6df7-40e5-8444-0eee98bb62b6">Security</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c4e3bb3e-a836-4d97-8055-d4bd9c223c00">Authentication</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b45929c8-d72c-47e5-bef5-9f9f4735b752">In-Memory Authentication</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cb9e5048-3cd0-4c94-b5d4-5ada5e3645c1">GitHub Authentication</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2b667e53-11e9-4660-8419-7fd34bcd29a1">Authorization</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c697e74c-9a29-4c44-b860-91e8030093a0">Woche 9</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9fa34d3a-17ce-427e-b39f-ec1992ec6282">Ende-Zu-Ende Tests</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#32badfa0-bcf8-4c69-a801-1d15cb9c2f4c">Docker</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#39abb400-d2d7-4a45-a87e-76d2cc8c5a34">Virtualisierung Typ 2 </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#490cab80-fa55-4d0b-8876-5521eb3707fb">Virtualisierung Typ 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#332a7ccb-5444-4bc1-a1d0-243466bbf830">Isolationsspektrum</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dafb7160-2caa-456e-ad5f-3ad58f484438">Filesystem</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5b09cb5c-7b18-46ab-9852-8417cbfe4427">Dockerfile</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3a1548ae-b32a-45ad-a0f8-8c20fb715e6e">Multistage Build</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d6f31a47-a481-43a1-a246-7a2358990f02">Netzwerk</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3b4946cb-1623-47fc-8309-7dcb8f0e5e70">Volumes</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ed77b923-3af7-4f5d-99f9-4ce3c08f74e4">Docker Compose</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b7e6c3ea-5c17-4d34-ad52-f392cf527418">Entwicklung</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#71c741e6-124b-4f24-aa58-0b6d5915eec1">Woche 10</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9960801d-561f-456b-b971-f207ede10e45">Architekturmuster II</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ec4ad49f-3377-4c2c-a19e-ac4a62f9debc">Pipes and Filters</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33522690-c04a-433c-ac0f-ea831937da9c">Microkernel</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#451148a3-145d-4646-819b-a79c488bab56">Bounded Context</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1b6e315c-b2a5-41ba-979c-888d084c7bb7">DDD</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#aee0f34c-1aa2-4499-8bc7-37b4ed003970">Domain</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3b84b774-a709-485b-a1d6-597e22f80ba3">Domain Experts</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2dc43829-d465-42ef-82e9-6ee96df84edf">Ubiquitous Language</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9d6cc1e0-5cd3-4b05-b3be-daace99be6c4">Bounded Contexts</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bd055e15-f734-4134-91f2-3e5eff4e41aa">Entities</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0913ec34-226c-4f7c-96f0-4817a4e29da9">Aggregates</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7fe3b94a-8b20-4da5-bd30-331342dd1e26">Invarianten</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#21dc4c51-c0dc-4010-8da1-f4aeb5afe04c">Domain Services</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#18b9a3f1-6977-4ed6-bfcd-a2540c654d04">Application Services</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#03ea91a5-b6ef-4cce-99da-88a69ff29ba5">Domain Events</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#afc74827-218e-46da-b385-f988623a5bd1">Deployment-Einheiten</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#54585509-6fb1-4546-b7d9-29a9fcea2a54">Serverless Architecture und Function as a Service</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cadb77cc-5dec-4ca6-adb7-31ea4d0ffa00">Monolithen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fb3dc7fe-fcf5-468b-95d4-11a38fb96dc2">Pro</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#21d931c7-de26-4d3c-9ff0-15e428512e41">Contra</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c8e972d4-f166-426f-ac9c-35a4526f8fde">Skalierung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c3054d3d-70a8-40ab-afb8-93c527333606">Vertikale Skalierung (Scale Up)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b57432ae-b2df-4d6e-b306-531805fe94fa">Horizontale Skalierung (Scale Out)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#550ec60f-2631-438a-a869-32656b05a70f">Microservices</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6ba85099-04f2-4557-92b8-56e51204b4f8"><strong>Skalierung</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#634be2ad-fef9-4723-8ebd-288704d84be0"><strong>Komponentenbildung</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1ca6983e-7ab6-41fe-8533-6a3a73ec7db8"><strong>Polyglotte Programmierung</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b3a50ba4-062e-4d3f-9ed5-a417ac383694"><strong>Robustheit</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#79f5acd3-47f8-4775-8b45-dab64f319671"><strong>Aufteilung</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2267187c-79c5-4988-820b-e94c60751951"><strong>Makroarchitektur</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#02ea7d92-822d-4a99-8e0f-afebb4f57bbf"><strong>Autonomie</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d9a5c568-fb1b-44f0-87ca-139eda0cfa0b"><strong>Pro</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#712a0250-2bb4-42a7-808c-e336b88b1e87"><strong>Contra</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0740050a-5338-4829-88c9-daac8c2562ab">SCS (Self Contained Systems)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d150f94f-df11-4685-9903-9901332e8dd9">Integration im Frontend</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ad16f463-320d-4c1e-9f7a-d66d3eacc5f8">Woche 11</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#065d8872-9013-44f4-a6f9-8329fcaf85d1">Accessibility (a11y)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0bbe6a2f-132f-41da-a0c2-4e64d17bd49f">Woche 12 </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8f859eae-f4e4-424d-9c8c-8fbf7888b1ab">HTML-Unit</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#427f7427-2f08-4f46-9257-91bb1da95869">Woche 13</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#02877ce5-199a-4501-a8d3-3d806f1287d9">Entwicklungsprozesse</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3f8bda5e-d4c1-433c-ba1d-8989d08c11b7">Sequentielle Modelle</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#be9934fd-8aa6-4b13-b4e4-1cba22ac0f32">V-Modell</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ca4e5ee0-e166-4445-848a-2b76d4b843fb">Prototypes und Spikes</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6dd91cae-3499-4438-8c50-e4eec64c7576">Evolutionäres Vorgehen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#50896730-1e7c-4ca1-8bdb-aee46ec814a0">Agiles Vorgehen</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a73d21c4-264f-4fc5-8f42-b51c57f2f7fb">Scrum</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#73e5f9e9-8d3f-4a01-80bc-929bf9e2d914">Rollen</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3cba54b5-bb11-4e43-a331-befcfc3f44c2">Product Backlog</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fbfd7a2c-25c0-4ec5-bb6a-00b758aeefe4">Sprint</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7fb3b883-564c-4116-9d84-b54ffc1b3692">Daily Scrum</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e7e5c805-175b-4ca3-81d9-2ef92bb58451">Sprint Review</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5d9f6ae4-118d-4e6f-afca-5509471561eb">Sprint Retrospektive</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a056276f-3b93-44c1-b770-cf4b14b60583">Kanban</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19b75d9e-c12c-4b1c-8674-486e59812a48">Scrum vs. Kanban</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a43049e4-b552-4d42-a312-4d863a21a97c">Architekturdokumentation</a></div></nav><h1 id="b47a2e86-e5ed-4543-a890-06f5dacec04d" class="">Woche 1</h1><div id="62f1b6b6-af9c-4d69-a8e9-ac9a1825e2fc" class="collection-content"><h4 class="collection-title">HTTP Verben</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Verb</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>ausgelöst durch</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Anforderung an die Implementierung</th></tr></thead><tbody><tr id="06872905-3f47-42de-a770-3d510c8b5748"><td class="cell-title"><a href="https://www.notion.so/GET-068729053f4742dea7703d510c8b5748">GET</a></td><td class="cell-`}iT">• Eingabe einer URL
+• Tags im HTML (img, link, …​)
+• Klick auf einen Link
+• Abschicken eines Formulars</td><td class="cell-qBwo">seiteneffektfrei (safe)</td></tr><tr id="6c52bcc7-809a-484a-b1ef-1f52bb52e6f2"><td class="cell-title"><a href="https://www.notion.so/PUT-6c52bcc7809a484ab1ef1f52bb52e6f2">PUT</a></td><td class="cell-`}iT">JavaScript</td><td class="cell-qBwo">idempotent</td></tr><tr id="761430e0-433a-44f3-b6da-e4759f5c306b"><td class="cell-title"><a href="https://www.notion.so/DELETE-761430e0433a44f3b6dae4759f5c306b">DELETE</a></td><td class="cell-`}iT">JavaScript</td><td class="cell-qBwo">idempotent</td></tr><tr id="eb0b0e99-ff7f-422e-8a4d-a20f89a408be"><td class="cell-title"><a href="https://www.notion.so/POST-eb0b0e99ff7f422e8a4da20f89a408be">POST</a></td><td class="cell-`}iT">Abschicken eines Formulars</td><td class="cell-qBwo">keine</td></tr></tbody></table></div><h1 id="a8e617b8-fbc6-41b7-ae70-8cf9696fe0c1" class="">Woche 2</h1><h2 id="22826287-8ac7-42c0-b394-3e5b35510670" class="">Web MVC </h2><figure id="9abeaac6-4be7-435a-bab6-8848950b1e21" class="image"><a href="Bilder/Untitled.png"><img style="width:672px" src="Bilder/Untitled.png"/></a></figure><p id="408186af-f4e0-4d47-a60e-0bb29c74c68b" class="">Der Request kommt beim DispatcherServlet an. Im Handler mapping wird die entsprechende Methode zurückgegeben, die die angeforderte URL im Request verarbeiten kann. Danach wird diese Methode im jeweiligen Controller aufgerufen, welcher ein Model (HashMap mit Key-Value Paaren) und ein Logischen View Name (Name einer HTML-Datei in der bestimmte Daten erstetzt werden können). Im ViewResolver wird das View Template anhand des Namen geladen  und letztlich im DispatchServlet mit dem Model vereinigt und als Response zurückgegeben.</p><figure id="5c868545-5ea6-4dfc-866d-43fc994d9a45" class="image"><a href="Bilder/Untitled%201.png"><img style="width:993px" src="Bilder/Untitled%201.png"/></a></figure><p id="597847ac-49f7-403f-873f-d0afcfc8b342" class="">Sollte man kein View-Template benutzen wollen, so kann man im Controller z.B. JSON oder einen String mit HTML Code zurückgeben und als Resonse verschicken.</p><pre id="ad53cba1-c58e-4f8d-979c-d2229dbea6c1" class="code"><code>@RequestMapping(method=RequestMethod.GET, path=&quot;/&quot;)
+public @ResponseBody String index(){
+	return &quot;Hallo!&quot;;
+}</code></pre><pre id="34fc46cb-f307-46e0-95c8-8fcc74ba0a0e" class="code"><code>@RequestMapping(method=RequestMethod.GET, path=&quot;/&quot;)
+public void index(HttpServletResponse resp) throws IOException{
+	resp.setContentType(&quot;text/html&quot;);
+	resp.getWriter().printlin(&quot;Hello!&quot;);
+}</code></pre><h2 id="4e9c63bd-dc27-4bbf-b008-e8b16eb0e4ff" class="">Validierung</h2><h3 id="f08df3a9-b5ac-46a4-8ca3-e04bc285965e" class="">Objekt mit Validierung</h3><pre id="f9a39c96-4ec9-47d6-9405-7a42f5df21ec" class="code"><code>public class PersonForm {
+
+	@NotNull
+	@Size(min=2, max=30)
+	private String name;
+
+	@NotNull
+	@Min(18)
+	private Integer age;
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public String toString() {
+		return &quot;Person(Name: &quot; + this.name + &quot;, Age: &quot; + this.age + &quot;)&quot;;
+	}
+}</code></pre><h3 id="bd7e0186-47ef-42b7-984c-6e157702e333" class="">Controller mit @Valid</h3><pre id="224ecb55-e9e4-4f5d-a1d3-2936c05302c2" class="code"><code>@GetMapping(&quot;/&quot;)
+	public String showForm(PersonForm personForm) {
+		return &quot;form&quot;;
+	}
+
+	@PostMapping(&quot;/&quot;)
+	public String checkPersonInfo(@Valid PersonForm personForm, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return &quot;form&quot;;
+		}
+
+		return &quot;redirect:/results&quot;;
+	}</code></pre><h3 id="29fe0ca1-2af6-466d-aca5-2f368cec14bd" class="">HTML mit Validierung</h3><pre id="3d588aa4-eb26-4323-863b-2ce8535b8756" class="code"><code>&lt;form action=&quot;#&quot; th:action=&quot;@{/}&quot; th:object=&quot;${personForm}&quot; method=&quot;post&quot;&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Name:&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;text&quot; th:field=&quot;*{name}&quot; /&gt;&lt;/td&gt;
+            &lt;td th:if=&quot;${#fields.hasErrors(&#x27;name&#x27;)}&quot; th:errors=&quot;*{name}&quot;&gt;Name Error&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Age:&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;text&quot; th:field=&quot;*{age}&quot; /&gt;&lt;/td&gt;
+            &lt;td th:if=&quot;${#fields.hasErrors(&#x27;age&#x27;)}&quot; th:errors=&quot;*{age}&quot;&gt;Age Error&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/form&gt;</code></pre><h1 id="65db2c07-67d3-4397-a131-8d602b4edb60" class="">Woche 4</h1><h2 id="b85fa228-63d6-432f-a664-6002d523569e" class="">DDD</h2><h3 id="bb0bf7da-bd1d-4624-ad78-aad0bc1c2e5f" class="">Domain {#domain}</h3><p id="4c3ba769-150e-4812-bb66-a2ac758902c6" class="">Ein Bereich von Wissen, Einfluss oder Aktivität. Das Fachgebiet, auf das der Benutzer ein Programm anwendet, ist die <em>Domain</em> (Dt.: Domäne) der Software.</p><h3 id="5e119287-cef1-4cc9-ae43-d1a10d427f84" class="">Model {#model}</h3><p id="e0af563e-aadb-493a-85b8-b55199f0b6b6" class="">Ein <em>Model</em> (Dt.: Modell) ist ein System von Abstraktionen, das ausgewählte Aspekte einer Domäne beschreibt und zur Lösung von Problemen im Zusammenhang mit dieser Domäne verwendet werden kann.</p><h3 id="6835e699-0b80-4a2a-af1f-8a420858cd90" class="">Ubiquitous Language</h3><p id="23e56906-6337-481d-bc1a-ae1c66e8d2eb" class="">Die <em>Ubiquitous Language</em> (Dt.: allgegenwärtige Sprache) ist eine Sprache, die um das Domänenmodell herum gruppiert ist und von allen Teammitgliedern in einem <em>Bounded Context</em> verwendet wird, um alle Aktivitäten des Teams mit der Software zu verbinden.</p><h3 id="fcbbe247-6cd2-44f2-98c3-955845a0351f" class="">Context {#context}</h3><p id="f008c5a1-1bbf-444f-8e91-b0eecc3237ca" class="">Der Bereich, in dem ein Wort oder eine Aussage auftaucht und der dabei ihre Bedeutung bestimmt.  <em>Aussagen über ein Modell können nur in einem Context (Dt.: Kontext) verstanden werden.</em></p><h3 id="2caa5771-6bb1-4e32-9b49-df396c932a4f" class="">Bounded Context</h3><p id="214780ca-9059-4e73-825e-26ef80cf9a9e" class="">Der <em>Bounded Context</em> (Dt.: begrenzter Kontext) ist eine Beschreibung einer Grenze (typischerweise ein Subsystem oder die Arbeit eines bestimmten Teams), innerhalb derer ein bestimmtes Modell definiert und anwendbar ist.</p><h2 id="2ab1c6cd-4b89-4202-8bf5-d194c2dc7e08" class="">Fachliche Datentypen</h2><p id="3933fe5b-9c44-4521-9d1e-88aad277c9e5" class="">Diese werden verwendet, wenn Daten auf fachliche Korrektheit geprüft werden müssen. Beispielsweise eine IBAN hat eine bestimmte Länge und Struktur.</p><h3 id="51e99ec2-b995-4cd1-895c-2951bb5bca84" class="">Enity und Value Objekte</h3><p id="4dda0b53-ad5f-453c-8430-490efc94e2ae" class="">Sprachlich unterscheiden wir dasselbe (<em>Entität</em>) und das Gleiche (<em>Wertobjekt</em>).</p><h3 id="f2dd9ba6-4188-49c6-8eb1-ed8522231c08" class="">Entitäten in Java</h3><p id="4112e096-a32b-443c-8771-d846aebd00a0" class="">Eine Entität muss eine Identität haben. Die Identität ist etwas, dass sich nicht ändern kann und das für die Entscheidung benutzt wird, ob zwei Objekte tatsächlich dieselbe Instanz sind.</p><p id="1e24b172-404c-408e-bf07-032999ababdc" class="">Sie werden anhand ihrer Identität (ID) unterschieden:</p><pre id="e086f5e1-a73a-48af-a9a6-a0de12f2a035" class="code code-wrap"><code>@Override
+public boolean equals(Object o) {
+  if (o == null || getClass() != o.getClass()) {
+      return false;
+  }
+  Dog dog = (Dog) o;
+  return id.equals(dog.id);
+}
+
+@Override
+public int hashCode() {
+    return Objects.hash(id);
+}</code></pre><h3 id="30504b52-7b32-445f-9ec3-ad8e6b61afa6" class="">Wertobjekte in Java</h3><p id="3142b907-8962-43e8-9606-36d7083882eb" class="">Bei Wertobjekten interessiert uns die Identität des Objektes nicht. Zwei Wertobjekte sind gleich, wenn ihre Attribute übereinstimmen. Außerdem sind Wertobjekte unveränderlich.</p><p id="bcc33ac3-72a5-4e91-b16b-a10adb4c48c8" class="">Sie werden anhand ihrer Attribute unterschieden (alle):</p><pre id="1efb040c-0eb5-467f-891b-6b63092ec2aa" class="code code-wrap"><code>@Override
+public boolean equals(Object o) {
+  if (this == o) return true;
+  if (o == null || getClass() != o.getClass()) return false;
+  Farbe farbe = (Farbe) o;
+  return r == farbe.r &amp;&amp; g == farbe.g &amp;&amp; b == farbe.b;
+}
+
+@Override
+public int hashCode() {
+  return Objects.hash(r, g, b);
+}</code></pre><h2 id="75011d11-bad0-4be5-9aa4-d1fbe3f2b833" class="">Aggregate</h2><p id="0623ca3f-cc60-457c-a44c-23abc3b00fe4" class="">Es gibt einige Regeln, die wir beachten müssen:</p><ol type="1" id="c3773d21-9828-4630-af63-6ae7aec0efc8" class="numbered-list" start="1"><li>Entitäten, die zu einem Aggregat gehören, haben den 
+gleichen Lebenszyklus. Das heißt, wir erzeugen immer ganze Aggregate. 
+Das passt auch gut zu der Transaktionalität.</li></ol><ol type="1" id="a13f92fa-4dae-4825-a104-52d700886a4f" class="numbered-list" start="2"><li>Jedes Aggregat hat eine Wurzel-Entität (aggregate root)</li></ol><ol type="1" id="a79bb05c-bae6-4c8d-aac0-5292521c4478" class="numbered-list" start="3"><li>Es sind nur Referenzen auf die Wurzel-Entität gestattet.</li></ol><ol type="1" id="b389b807-579c-4e4e-ae37-9b44e8ea8f25" class="numbered-list" start="4"><li>Noch besser ist es, wenn nicht einmal eine Referenz auf 
+die Wurzel gehalten wird. Stattdessen können wir den Aggregaten 
+Identitäten (in Form eines Value Objekts) zuordnen und diese Identitäten
+ verwenden, um andere Aggregate zu referenzieren.</li></ol><ol type="1" id="e021c4b7-ea76-4e44-b844-343e3b2bcffe" class="numbered-list" start="5"><li>Aggregate überschreiten niemals die Grenzen eines Bounded Context.</li></ol><ol type="1" id="f4bf5abd-c3a6-461b-af88-3433116d2ced" class="numbered-list" start="6"><li>Die Objekte, die ein Aggregat bilden, sind in einem verteilten System immer auf dem gleichen Rechner.</li></ol><ol type="1" id="9184b4b7-f757-4d05-b45e-747ff8d143e5" class="numbered-list" start="7"><li>Der Aggregate Root ist der Einstiegspunkt, der die Schnittstelle des Aggregats nach außen definiert.</li></ol><ol type="1" id="8a909007-013b-49de-861c-3f125e093504" class="numbered-list" start="8"><li>Über Aggregate hinweg gibt es nur sogenannte &quot;eventual 
+consistency&quot;. Das bedeutet, dass der konsistente Zustand sich ggf. 
+zeitlich verzögert einstellt. Stellen wir uns vor, wir modellieren 
+Bankkonten als Aggregate. Wenn Sie eine Überweisung tätigen, dann wird 
+es üblicherweise so sein, dass zunächst das Geld auf dem einen Konto 
+abgebucht wird und erst verzögert auf dem anderen Konto als Geldeingang 
+verbucht wird.</li></ol><h2 id="26ed3450-cc01-46fb-8711-f8a15d30a760" class="">Schichtenarchitektur</h2><figure id="adb85a1d-d4c9-4cc6-b294-0ba10d1ed34a" class="image"><a href="Bilder/Untitled%202.png"><img style="width:421px" src="Bilder/Untitled%202.png"/></a></figure><p id="463bea86-a9c0-4127-8848-a89085fa2c9d" class="">Vorteile</p><ul id="08560ea2-6303-4a5c-aafb-8e0ca4c251cd" class="bulleted-list"><li style="list-style-type:disc">Einfach und leicht zu verstehen</li></ul><ul id="86dc6b50-1034-4ed9-9f4c-5648a59a36d2" class="bulleted-list"><li style="list-style-type:disc">Klare Abhängigkeiten </li></ul><ul id="e9992940-5ff9-41bd-8884-5292fff016f8" class="bulleted-list"><li style="list-style-type:disc">Reduktion der Kopplung von Komponenten (SRP, LCHC Low Coupling, High Cohesion)</li></ul><ul id="5213f516-1b5b-4dd1-8b34-3e37a6ba98be" class="bulleted-list"><li style="list-style-type:disc">einheitlicher Abstraktionsgrad</li></ul><ul id="59b87ad0-a7b0-45e1-ba7a-09dcdf6b5324" class="bulleted-list"><li style="list-style-type:disc">Austausch von ganzen Schichten</li></ul><p id="26372bec-bdbc-405a-a14f-7fceff040542" class="">Nachteile</p><ul id="9108e8c8-2840-4478-adcc-496fc530924a" class="bulleted-list"><li style="list-style-type:disc">Bei Änderungen in der untersten Schicht müssen alle darüberliegenden Schichten geändert werden  </li></ul><h2 id="1bb8fa29-c5d9-4f36-9960-88672d6ca316" class="">Onion Architecture</h2><figure id="68d602cc-93c7-48e9-842c-1edf44498561" class="image"><a href="Bilder/Untitled%203.png"><img style="width:745px" src="Bilder/Untitled%203.png"/></a></figure><figure id="4204aff9-cceb-492a-a0d9-282ed44fb5cf" class="image"><a href="Bilder/Untitled%204.png"><img style="width:1012px" src="Bilder/Untitled%204.png"/></a></figure><ul id="05f92495-949d-4829-9506-1f3815e2fbbb" class="bulleted-list"><li style="list-style-type:disc">Controller extrahieren Daten aus dem Request und bauen ModelAndView zusammen</li></ul><ul id="9b737c34-555f-4fc2-86a2-bd2288503ad2" class="bulleted-list"><li style="list-style-type:disc">Application Services koordinieren einen Geschäftsvorfall (Daten laden, Geschäftslogik aufrufen, Daten speichern)</li></ul><ul id="21087495-a46e-4b92-b3f4-9c4a08eafc0a" class="bulleted-list"><li style="list-style-type:disc">Das Domänen Modell setzt die Geschäftsregeln um</li></ul><ul id="dcd393e3-c2ed-4149-9673-90cdf039975a" class="bulleted-list"><li style="list-style-type:disc">Repositories<ul id="179f366d-43f6-4051-9a6a-d5c0e6722d25" class="bulleted-list"><li style="list-style-type:circle">Haben eine fachliche Schnittstelle in der Geschäftslogik</li></ul><ul id="49e86aae-5305-499d-a98e-cd1bfd2fa9fc" class="bulleted-list"><li style="list-style-type:circle">Werden in der Infrastrukturschicht implementiert</li></ul></li></ul><h1 id="938e2284-9582-4aa8-9b02-c79651a2b5a1" class="">Woche 5</h1><figure id="4e318cb6-0e27-4afa-be5f-20d31dba2cfd" class="image"><a href="Bilder/tyskunei.bmp"><img style="width:1340px" src="Bilder/tyskunei.bmp"/></a></figure><figure id="bfb1cd40-e0bd-4ea3-80eb-0a31765bb020" class="image"><a href="Bilder/Untitled%205.png"><img style="width:601px" src="Bilder/Untitled%205.png"/></a></figure><h1 id="d770ec9c-cb73-4c70-888f-0d22c0c06ad5" class="">Woche 6</h1><p id="8b40a55f-c61c-4fdf-9fa9-bf5bd68c87dc" class="">Onion Architektur</p><pre id="78773692-da83-4886-8ccf-e42ecd7ad924" class="code"><code>private final JavaClasses klassen =
+      new ClassFileImporter().importPackagesOf(MwstApplication.class);
+
+@Test
+@DisplayName(&quot;Die Mwst Anwendung hat eine Onion Architektur&quot;)
+public void rule1()
+    throws Exception {
+  ArchRule rule = onionArchitecture()
+      .domainModels(&quot;mwst.domain..&quot;)
+      .domainServices(&quot;mwst.services..&quot;)
+      .applicationServices(&quot;mwst.services..&quot;)
+      .adapter(&quot;web&quot;, &quot;mwst.web&quot;)
+      .adapter(&quot;persistence&quot;, &quot;mwst.katalog&quot;)
+      .adapter(&quot;kalender&quot;, &quot;mwst.kalender&quot;);
+
+  rule.check(klassen);
+}</code></pre><p id="96f69288-a1dd-4028-acdc-a7745f800be3" class="">Schichtenarchitektur</p><pre id="76b1390b-bd15-43dd-a76a-8a1a5bb95ac1" class="code"><code>@ArchTest
+ArchRule layerTest = layeredArchitecture()
+        .layer(&quot;controller&quot;).definedBy(&quot;..controller&quot;)
+        .layer(&quot;service&quot;).definedBy(&quot;..service&quot;)
+        .layer(&quot;persistence&quot;).definedBy(&quot;..persistence&quot;)
+
+        .whereLayer(&quot;controller&quot;).mayNotBeAccessedByAnyLayer()
+        .whereLayer(&quot;service&quot;).mayOnlyBeAccessedByLayers(&quot;controller&quot;)
+        .whereLayer(&quot;persistence&quot;).mayOnlyBeAccessedByLayers(&quot;service&quot;);</code></pre><figure id="4e412d6b-97af-4863-9a09-8bc30d409b49" class="image"><a href="Bilder/Untitled%206.png"><img style="width:168px" src="Bilder/Untitled%206.png"/></a></figure><h1 id="059c0597-1189-4b0c-9ba8-6e4eaab8ad18" class="">Woche 7</h1><h2 id="76d3b2e8-336f-4608-a91a-12cf31fdc0e9" class="">Spring Data JDBC</h2><h3 id="8b3971c1-9b79-4649-8c0d-553bf81d625b" class="">One-To-One Relationship</h3><p id="6fd7fd86-7ba9-4a3e-b24b-39c7dbffed3e" class="">Wenn eine Klasse ein einzelnes Attribut einer anderen Klasse hat, kann man dies als 1:1 Beziehung auffassen. Dies wird im Datenbankschema so dargestellt:</p><pre id="1c0663dc-3d7f-4dfd-a7f9-145fddb571d6" class="code"><code>DROP TABLE IF EXISTS movie;
+
+CREATE TABLE movie (
+	id serial primary key,
+	title text,
+	description text
+);
+
+CREATE TABLE rental (
+	movie integer primary key references movie (id),
+	duration text,
+	price integer
+);</code></pre><p id="b515a81a-c8d4-43fe-9b55-681150a06f04" class="">oder man kann das Attribut mit der Annotation <code>@Embedded</code> annotieren:</p><pre id="e214535e-2e97-463d-a21f-e26f185073b2" class="code"><code>public class Movie {
+	@Id
+	private Long id;
+	private String title;
+	private String description;
+	@Embedded(onEmpty = Embedded.OnEmpty.USE_NULL, prefix = &quot;prefix_&quot;)
+	private Rental rental;
+
+	public Movie (...){
+		...
+	}
+}</code></pre><pre id="5286d3d9-8090-40b1-afe7-18ff8644639a" class="code"><code>public class Rental{
+	private Duration duration;
+	private Integer price;
+
+	public Rental(...){
+		...
+	}
+}</code></pre><pre id="e9803858-47cf-45f0-b902-7b5d07909a57" class="code"><code>DROP TABLE IF EXISTS movie;
+
+CREATE TABLE movie (
+	id serial primary key,
+	title text,
+	description text,
+	prefix_duration text,
+	prefix_price integer
+);</code></pre><h3 id="68184069-c1aa-44e8-9e19-8c1131a954ff" class="">One-To-Many Relationship</h3><p id="07f415a0-3910-4923-b945-f2807b253dda" class="">Es soll nun eine Collection von Objekten in der Klasse gespeichert werden. Wenn die Reihenfolge unwichtig ist kann ein Set verwendet werden:</p><pre id="1573adb5-7625-4af7-8fda-eb55e1234e92" class="code"><code>public class Movie {
+	@Id
+	private Long id;
+	private String title;
+	private String description;
+	private Set&lt;Rental&gt; rental;
+
+	public Movie (...){
+		...
+	}
+}</code></pre><pre id="12498b07-f9b5-4590-9956-4d26276a100c" class="code"><code>DROP TABLE IF EXISTS movie;
+
+CREATE TABLE movie (
+	id serial primary key,
+	title text,
+	description text
+);
+
+CREATE TABLE rental (
+	id serial primary key,
+	movie integer references movie (id),
+	duration text,
+	price integer
+);</code></pre><p id="4bc52b1f-d7cd-4066-96e0-7b4427c2e2a6" class="">Ansonsten kann eine List verwendet werden. Im Schema wird nun die Position in der Liste gespeichert:</p><pre id="e09c9940-c76f-45cf-977a-d79127379635" class="code"><code>public class Movie {
+	@Id
+	private Long id;
+	private String title;
+	private String description;
+	private List&lt;Rental&gt; rental;
+
+	public Movie (...){
+		...
+	}
+}</code></pre><pre id="393cffe5-57cf-4c9e-b9e5-29ae69e7330d" class="code"><code>DROP TABLE IF EXISTS movie;
+
+CREATE TABLE movie (
+	id serial primary key,
+	title text,
+	description text
+);
+
+CREATE TABLE rental (
+	id serial primary key,
+	movie integer references movie (id),
+	movie_key integer,
+	duration text,
+	price integer
+);</code></pre><h3 id="3cc4cb7d-8fd7-4400-84ca-d2b0f6abe805" class="">Many-To-Many</h3><p id="24b84171-de69-4c44-bf70-5716bb3c0019" class="">Bei N:M Beziehungen werden in Spring Data JDBC Id’s referenziert. </p><pre id="aec21796-be2e-43f0-a065-687a53970e98" class="code"><code>public class Author{
+	@Id
+	private Long id;
+	private String name;
+	private LocalDate birthDate;
+
+	public Author(...){
+		...
+	}
+}</code></pre><pre id="eefe90c9-bc64-42f6-9a8a-4de2680dbd3f" class="code"><code>public class Book{
+	@Id
+	private Long id;
+	private String isbn;
+	private String title;
+	private Set&lt;AuthorRef&gt; authors = new HashSet&lt;&gt;();
+
+	public Book(...){
+		...
+	}
+
+	void addAuthor(Author author){
+		this.authors.add(new AurthorRed(author.getId()));
+	}
+}</code></pre><p id="bdccf5aa-2395-4a83-b2fb-776a64a257f2" class="">Conjunction-Table:</p><pre id="63a0de58-303a-4b0b-8510-31654f323532" class="code"><code>@Table(&quot;book_author&quot;)
+public class AuthorRef{
+	private Long author;
+
+	public AuthorRef(...){
+		...
+	}
+}</code></pre><pre id="98a60465-634b-48e5-8cfd-082f60b44e93" class="code"><code>DROP TABLE IF EXISTS movie;
+
+CREATE TABLE author (
+	id serial primary key,
+	name text,
+	birthdate date
+);
+
+CREATE TABLE book (
+	id serial primary key,
+	title text,
+	isbn text
+);
+
+CREATE TABLE book_author(
+	author integer,
+	book integer,
+	primary key (author, book)
+);</code></pre><p id="ab3c1149-8f25-4d29-8f1a-6c34cf8a901c" class="">Custom Query im CrudRepository:</p><pre id="86d4fae0-06aa-472d-953d-e2f046fb8d90" class="code"><code>public interface BookRepository extends CrudRepository&lt;Book, Long&gt; {
+	
+	@Query(&quot;&quot;&quot;
+	SELECT b.* from book b
+	JOIN book_author ba on b.id = ba.book
+	WHERE ba.author = :id
+	&quot;&quot;&quot;)
+	Set&lt;Book&gt; findByAuthor(@Param(&quot;id&quot;) Long id);
+}</code></pre><h2 id="64e3489f-3a42-4179-99a7-736f31f13ce3" class="">Transactional</h2><p id="ca6c25c1-a98f-4a31-ace5-dc3452a08f4f" class="">Wenn mehrere Benutzer versuchen gleichzeitig auf Daten zuzugreifen und diese zu bearbeiten, ist es wichtig, dass diese Daten isoliert von einander geändert werden. Dies kann mit der Annotation <code>@Transactional</code> sichergestellt werden. Dies funktioniert nur, wenn die Klasse, in der die Methode mit der Annotation definiert wurde, durch Spring injected wurde.</p><h1 id="2e58870d-b89c-48dc-8fda-47b5c38ca440" class="">Woche 8 </h1><h2 id="79a38f4b-9c11-4858-8489-79e697f54d40" class="">Zustand</h2><p id="a33c5d1a-3db3-4500-b12c-2a9d8999d695" class="">HTTP ist Zustandsfrei. Entweder muss der komplette Zustand mitgeschickt werden oder man verwendet einen Bezeichner, der den Zustand auf dem Server identifiziert. Zustand auf dem Server verbraucht Speicher → Dos oder DDos Attacken.</p><ul id="492db256-2a16-4d73-a119-b442826d3ea9" class="bulleted-list"><li style="list-style-type:disc">Pfad + Requestparameter</li></ul><ul id="5062ab2b-6995-4a7c-85c5-e7171fa5b662" class="bulleted-list"><li style="list-style-type:disc">Request Body</li></ul><ul id="1cd95326-a523-491a-a115-cbd2e5790ba9" class="bulleted-list"><li style="list-style-type:disc">Response Body</li></ul><h3 id="3d9781d4-e8e4-4912-b17b-b3fd13527ee6" class="">Cookies</h3><p id="50f97dbb-8f72-4fe9-ae15-88a136c7a61f" class="">Key-Value-Paar im Browser und ist Eigentum des Clients. Werden immer mit gesendet, nachdem sie gesetzt wurden.</p><pre id="c648b2e7-9f0f-4502-b55d-0ea8027a4a6f" class="code"><code>@GetMapping(&quot;/&quot;)
+public String counter(
+	HttpResponse resp, 
+	Model m, 
+	@CookieValue(name=&quot;counter&quot;, defaultValue=&quot;0&quot;) int count){
+	m.addAttribute(&quot;count&quot;, count);
+
+	String newValue = String.valueOf(count+1);
+	Cookie counter = new Cookie(&quot;counter&quot;, newValue);
+	counter.setHttpOnly(true);
+	counter.setSecure(true);
+	response.addCookie(counter);
+
+	return &quot;main&quot;;
+}</code></pre><h3 id="edb75f79-92c6-4204-9b47-2b9e0514f3d2" class="">Hidden Fields</h3><p id="0349ed37-1fbe-41e7-8fd9-a2aa94ad2636" class="">Hilfreich bei Multistage Formularen. Das n+1-Formular erhält die Informationen vom Server aus den vorherigen n Formularen und schickt zusammen mit den neuen zusätzlichen Informationen an den Server zurück. </p><pre id="1855a8d1-80cf-47c3-97f5-f6c201f0d742" class="code"><code>&lt;form method=&quot;post&quot; th:action=&quot;@{/page2}&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;name&quot; th:value=&quot;${name}&quot;&gt;
+	&lt;label&gt;Twitter Handle:
+		&lt;input type=&quot;text&quot; name=&quot;twitter&quot;&gt;
+	&lt;/label&gt;
+	&lt;buttom type=&quot;submit&quot;&gt;Ende&lt;/button&gt;
+&lt;/form&gt;</code></pre><h3 id="77bbebea-267c-4112-a950-1bd10a80d08f" class="">Sessions</h3><p id="e186147a-f6fd-45a5-a124-e003a8d61e41" class="">Zwei unterschiedliche Arten von Zuständen:</p><ul id="798bdd62-57f5-4921-b676-785a0f908113" class="bulleted-list"><li style="list-style-type:disc">Persistenter Zustand</li></ul><ul id="63b55bdb-71f2-4390-a0fb-8e6224b1e920" class="bulleted-list"><li style="list-style-type:disc">Flüchtiger Zustand</li></ul><p id="dab0a4a8-bd8b-4edc-b1a9-f487991c222e" class=""><code>@ModelAttribute</code> kann an Methoden und Parametern geschrieben werden. Sollte im Model ein bestimmter Wert nicht gesetzt sein, wird die Methode aufgerufen, die mit @ModelAttribute annotiert ist und erzeugt dann einen Wert.</p><pre id="d2b9de56-d0b7-4387-969b-a763036b6874" class="code"><code>@ModelAttribute(&quot;log&quot;)
+public LogEntry createModelAttribute(HttpServletRequest req){
+	String ip = req.getRemoteAddr();
+	return new LogEntry(ip);
+}
+
+@GetMapping(&quot;/get&quot;)
+public String getObjectFromModel (@ModelAttribute(&quot;log&quot;) LogEntry log){
+	log.addLog(&quot;Request get&quot;);
+	return &quot;model&quot;;
+}</code></pre><p id="d41b4f5d-5d42-4378-aaf8-109c7fc08894" class=""><code>@SessionAttribute</code> ist eine Annotation für die Controller-Klasse. In der Annotation können Schlüssel-Namen definiert werden für das Modell: <code>@SessionAttribute({”log”, “username”})</code></p><p id="589e0eb5-9bec-44e1-9853-18bdc44d5f3e" class=""><code>@SessionScope</code> erstellt eine Instanz des Controller pro Session. Damit können dann Variablen in der Klasse gespeichert werden (Zustand per Instanzvariable).</p><p id="e91d2344-0670-456a-a3a4-bf74b039c79d" class="">→ Nachteil: Benötigt mehr Ressourcen. </p><h2 id="81a182cb-f47c-4a3d-8d2b-f340f6d4b8f5" class="">Verschlüsselte Kommunikation</h2><h3 id="68016bd7-3d9e-4e8d-9e63-e7f36cd6aeee" class="">Symmetrische Verschlüsselung</h3><p id="3e519595-9959-49d7-877d-cfde770f2b38" class="">Nachricht wird mit dem geteilten Schlüssel verschlüsselt und kann auch nur mit dem selben Schlüssel wieder lesbar gemacht werden. </p><ul id="143eb4ab-c45f-4194-b8e3-1333117f760e" class="bulleted-list"><li style="list-style-type:disc">Schnell</li></ul><ul id="bc74a798-2f8a-4386-938c-9a99e642fb50" class="bulleted-list"><li style="list-style-type:disc">Setzt vorraus, dass beide Parteien einen gemeinsamen, geheimen Schlüssel haben<ul id="ef7e01cf-11dd-4e23-8b27-af78919b584b" class="bulleted-list"><li style="list-style-type:circle">Pro Kommunikationspartner wird ein Schlüssel gebraucht</li></ul><ul id="937b750a-0c3f-4d9c-82d0-5f9e7e2e0326" class="bulleted-list"><li style="list-style-type:circle">Der Schlüssel muss sicher verwahrt werden</li></ul><ul id="92b59d26-979f-42a6-9005-514999614fdb" class="bulleted-list"><li style="list-style-type:circle">Der Schlüssel muss sicher ausgetauscht werden</li></ul></li></ul><h3 id="cfcaba0f-9d46-4025-8556-3ec696a7f66f" class="">Asymmetrische Verschlüsselung</h3><p id="a9ecffbd-43bc-4b10-82c4-10c3f541f78a" class="">Nachricht von Partei A wird mit dem Publickey der Partei B verschlüsselt. Dieser ist frei verfügbar. Die Nachricht von A kann dann nur mit dem Privatekey der von B entschlüsselt werden.</p><ul id="894f282f-f392-4179-ac5c-aab054456977" class="bulleted-list"><li style="list-style-type:disc">Langsam</li></ul><ul id="116f33a2-446a-4e94-a7d0-15cb7025d3e9" class="bulleted-list"><li style="list-style-type:disc">Alle die mit Partei B reden wollen, können denselben Publickey verwenden</li></ul><ul id="128af337-7b36-4e86-a6d8-0ef4eaf03da2" class="bulleted-list"><li style="list-style-type:disc">Partei B muss seinen Privatekey sicher speichern</li></ul><p id="83818264-d786-4182-9cf3-2135e03e043a" class="">Eine Kombination von den beiden Verfahren ermöglicht einen sicheren Austausch des für die symmetrische Verschlüsselung notwendigen geteilten Schlüssel.</p><h3 id="cf808716-5089-4c37-bf46-e7919ab207d7" class="">Signaturen</h3><p id="9e9c2d46-4bd7-430a-a865-af6f71044905" class="">Um sicher zu stellen, dass der Publickey der Parteil B der echte Schlüssel ist, werden Nachrichten Signiert. Nachrichten können mit dem Privatekey verschlüsselt werden und mit dem Publickey wieder entschlüsselt werden.</p><p id="77983562-c631-492b-bf05-d4c3df473d8b" class="">Wenn Partei A nun eine Nachricht senden will, so wird die Nachricht zuerst durch eine Hashfunktion codiert und mit dem Privatekey von Partei A verschlüsselt. Zusammen mit der gehashten Nachricht und der Nachricht im Klartext (oder auch verschlüsselt) werden die beiden Nachrichten an Partei B verschickt. Partei B entschlüsselt mit dem Publickey von Partei A die gehashte und mit dem Privatekey verschlüsselte Nachricht von Partei A. Die Klartextnachricht wird mit der selben Hashfunktion gehasht und mit der entschlüsselten Nachricht verglichen.</p><h3 id="bfe4a589-394a-4c76-9aca-d2f5aac07072" class="">Zertifikate</h3><p id="f53a77e8-0c08-4cc9-97c0-afe3e3d927cc" class="">Serverbetreiber erstellen einen Certificate-Signing-Request (Domain, Organisation, Adresse,...) mit dem Publickey des Servers. Die CA signiert dann das Zertifikat mit ihrem Privatekey.</p><p id="de2afede-5380-4106-b13f-c143937f502a" class="">Rootzertifikate sind fest in Betriebssystemen bzw. Browsern eingebaut, denen direkt vertraut wird.</p><h2 id="d0a481ec-e227-431b-afeb-1065a7065c3a" class="">CSRF</h2><h3 id="075de07a-1efc-461e-b011-54bd3f6bfa41" class="">Angriff</h3><p id="56dfa170-d34b-4fb1-ba46-fabb281422e5" class="">Wenn der Benutzer auf einer bösartigen Website landet, kann diese versuchen einen Request auf eine für CSRF anfällige Website zu senden. </p><p id="5cef1ebc-315c-427d-b979-3636dbf00a6b" class="">In dem Request befinden sich standardmäßig alle Cookies die im Browser zu der Website gespeichert sind. </p><p id="7c51b38e-cac5-4841-9bae-92c7bd0dca12" class="">Die vulnerable Website hält dann diesen Request für legitim. </p><p id="6c30eeef-cd3d-46c8-bb94-12ec0ae28278" class="">Nun ist es möglich, dass der Benutzer durch diesen Request authetifiziert. Dies ermöglicht dem Angreifer Änderungen auf der Seite vorzunehmen (Mail ändern, Überweisung tätigen, ...).</p><h3 id="e8141e55-0159-493d-96b8-0042a1a54888" class="">Abwehr</h3><p id="89a337b0-ae72-41f3-b24b-c555df1ef1fd" class="">Jedes auf der Webiste verfügbares Formular erhält ein benutzerspeziefischen Token. Wird der richtige Token beim abschicken des Formulars mitgeschickt, ist die Anfrage ligitim. </p><p id="49fa622a-c584-48df-9e0f-3ef28cac2efe" class="">Der Token kann nicht abgegriffen werden: </p><ul id="598fd9df-93b8-407b-92c1-76b3a0e81ff8" class="bulleted-list"><li style="list-style-type:disc">Der Angreifer könnte selber versuchen die Website aufzurufen, jedoch bekommt er einen für sich speziefischen Token. </li></ul><ul id="931b8ff0-2eb7-42a1-a531-475cfd32bba3" class="bulleted-list"><li style="list-style-type:disc">Sollte er versuchen mittels des Browsers des Benutzers den Token zu erhalten, wird dies durch die Same-Origin-Policy und CORS (Cross-Origin Resource Sharing) Einstellungen verhindert.  <ul id="e1bd3fa9-6d47-471a-a120-62c5409a5fc7" class="bulleted-list"><li style="list-style-type:circle">Javascript kann wegen der Same-Origin-Policy<strong> </strong>von der bösartigen Website keinen Request an die vulnerabe Website stellen.</li></ul></li></ul><p id="f83e1151-6c75-49ce-afca-49c628c44d1e" class="">In Spring kann man dies mit einem hidden field erreicht werden:</p><pre id="dbf988dd-3047-4bd7-ab42-770a9935ea4d" class="code"><code>&lt;input type=&quot;hidden&quot; th:name=&quot;${_csrf.parameterName}&quot; th:value=&quot;${_csrf.token}&quot;/&gt;</code></pre><p id="823b9af2-d256-4e16-8af7-97f413f7a3c9" class="">oder man verwendet im <code>form</code> tag das attribut <code>th:action=&quot;@{/...}&quot;</code>.</p><h2 id="107728cd-047a-4bac-8423-ff712702aa46" class="">Cross Site Scripting</h2><h3 id="8acad998-a2be-49d6-a272-14e3646a5ea5" class="">Reflect XSS</h3><p id="005423d4-bbcf-4b6a-82d1-4bde8a420689" class="">Schadcode wird dem Server geschickt und dieser integriert den Schadcode in der Seite. Der Schadcode wird nun im Browser gerendert und ausgeführt.</p><h3 id="fbd668f1-75a1-4024-b0e5-f293b9f1bd95" class="">Stored XSS</h3><p id="3462026d-923e-47b8-a042-b290f4b1f28a" class="">Schadcode wird in der Datenbank gespeichert und jedes Mal mitgeliefert.</p><h2 id="ca720587-6a7e-400d-bdbe-f82a8a6362c8" class="">Zugriffskontrolle</h2><h3 id="2c3f05af-f419-4be2-9577-c6486f5a8a8d" class="">Authentifizierung</h3><p id="7ce587a5-1a81-417a-a8d3-a6bcfa164ed9" class="">Methoden zur Authentifizierung <strong>immer mit HTTPS</strong>:</p><ul id="acc3cbb1-170f-4b9e-84df-fbd58c2cc243" class="bulleted-list"><li style="list-style-type:disc">Basic HTTP-Authentication (Kein serverseitiger Logout möglich)</li></ul><ul id="66726762-7edb-464a-8fce-f2ff140fcb44" class="bulleted-list"><li style="list-style-type:disc">Session Cookie<ul id="cbbe90b6-a335-4aca-9761-a58409839db5" class="bulleted-list"><li style="list-style-type:circle">Benuzter erhält ein Session Cookie. Wenn der Benuzter sich erfolgreich authentifiziert, wird serverseitig sich gemerkt, dass er auf bestimmte Ressourcen Zugriff hat.</li></ul><ul id="f7cabb82-c35a-4eb2-9c2d-9ee9a34e9ac2" class="bulleted-list"><li style="list-style-type:circle">Beim Logout kann die Session auf dem Server gelöscht werden. Versucht der Benutzer auf eine geschützte Ressource zuzugreifen wird weiterhin der veraltete Session Cookie mitgesendet. Der Benutzer wird dann wieder zum Login geleitet.</li></ul><ul id="72933a69-1b72-4fc5-9b99-1e600f0869b9" class="bulleted-list"><li style="list-style-type:circle">Probleme entstehen bei Proxies und Load Balancern. Die Sessions müssen entweder zwischen den Anwendungen geteilt werden, oder die Sessions werden im Proxy gehandhabt.</li></ul></li></ul><ul id="59acb95b-e4dd-4421-a8a1-1d1c679f7d64" class="bulleted-list"><li style="list-style-type:disc">Access Token (Stateless)<ul id="bb4dd2bc-06ad-42c7-82ab-905293be5ef0" class="bulleted-list"><li style="list-style-type:circle">Der Client erhält einen Cookie mit allen für die Session notwendigen Informationen (Benutzername, Rollen, Sessiondauer, ...)</li></ul><ul id="893712a7-fa2e-46dc-8e5b-4f32935fd604" class="bulleted-list"><li style="list-style-type:circle">Der Inhalt des Cookies wird vom Server signiert. Es wird ein geheimer Schlüssel gewählt der zusammen mit dem Payload des Cookies gehasht wird. Dem Client wird der klartext Payload und der gehashte Payload mit Schlüssel gegeben.</li></ul><ul id="d067b3ec-1b3d-46da-9416-363fac9609bb" class="bulleted-list"><li style="list-style-type:circle">Der Server überprüft die Güligkeit des Tokens. Berechnet mit dem klartext Payload und dem geheimen Schlüssel einen Hashwert und vergleicht diesen mit dem mitgesendeten gehashten Payload.</li></ul><ul id="c3d3731f-e0de-44be-a39f-3c93e2aa4a36" class="bulleted-list"><li style="list-style-type:circle">In der Anwendung kann entweder mit Symmetrischer Signatur oder Asymmetrischer Signatur gearbeitet werden</li></ul><ul id="194dd3f7-d45f-48c2-8604-efc4aa2cdbaf" class="bulleted-list"><li style="list-style-type:circle">Nun kann auch ein Proxy verwendet werden, um einfache Überprüfungen vorzunehmen (Token vorhanden oder nicht) oder der Proxy übernimmt die Validierung des Tokens. </li></ul><ul id="e141acc9-d51e-43ac-914f-dbcd3b0382de" class="bulleted-list"><li style="list-style-type:circle">JWT (JSON Webtoken)</li></ul><ul id="4b542b7f-1cbf-4906-8a78-0efc1050c1f0" class="bulleted-list"><li style="list-style-type:circle">OAuth 2</li></ul></li></ul><h3 id="9aec0188-832b-4999-a9f7-080b61f085ba" class="">Autorisierung</h3><p id="f43e301a-eaff-44c4-9859-60b70fffd016" class="">In einigen Fällen kann ein vorgeschalteter Proxy die Autorisierung vornehmen (z.B. bestimmtes Subnetz). In den meisten Fällen geschieht dies auf Anwendungsebene.</p><figure id="e12e7af8-5dfb-4b8d-9286-1af3011f0a7d" class="image"><a href="Bilder/Untitled%207.png"><img style="width:336px" src="Bilder/Untitled%207.png"/></a></figure><h2 id="dbd523e1-6df7-40e5-8444-0eee98bb62b6" class="">Security</h2><h3 id="c4e3bb3e-a836-4d97-8055-d4bd9c223c00" class="">Authentication</h3><p id="1f7e4375-7663-4bd2-a391-b44cb993b7cd" class="">In Spring arbeitet mit dem Spring-Security-Filter. Dieser Filter sitzt vor den Servlets, die die Requests verarbeiten. Innerhalb dieses Filters sitzt ein Authentication-Filter, der sich um die Authentifizierung kümmert. Alle Requests werden von ihm abgefangen und entsprechend der Konfiguration überprüft. Filter können so konfiguriert werden, dass sie nur bestimmte URL’s Authentifizierung benötigen, wie z.B. <code>/admin/XXX</code>. </p><p id="cdec9357-7a3c-4da0-acb2-9048cc104dab" class="">Die Zugangsinformationen werden innerhalb eines <code>Authentication</code> Objekts an den <code>AuthenticationManager</code> weitergeleitet. Dieser leitet das Objekt an den entsprechenden <code>AuthenticationProvider</code> weiter, der für die speziefische Anmeldemethode, die Authentifizierung übernimmt. Der <code>AuthenticationProvider</code> gibt dem <code>UserDetailsService</code> den Benutzernamen und erhält z.B. aus der Datenbank ein <code>UserObjekt</code>, welches bei erfolgreicher Anmeldung in das anfängliche <code>Authentication</code> Objekt als Principal gespeichert wird.</p><p id="26e32037-ba3f-4119-b8b5-4d9de14a452c" class="">Im Controller kann auf diesen Principal mittels Injektion zugegriffen werden:</p><pre id="abf3c13b-368d-4fcc-acb3-217f692cde87" class="code"><code>@ModelAttribute(&quot;handle&quot;)
+String handle(Principal user) {
+    return user.getName();
+}</code></pre><figure id="d0835c72-e7db-4c33-8d1f-df7ab2711c2a" class="image"><a href="Bilder/Untitled%208.png"><img style="width:1920px" src="Bilder/Untitled%208.png"/></a></figure><h3 id="b45929c8-d72c-47e5-bef5-9f9f4735b752" class=""><details open=""><summary>In-Memory Authentication</summary></details></h3><div class="indented"><p id="601eedea-0c24-4fd4-b966-5558efda9bdc" class="">Für eine Inmemory Authentifizierung konfiguriert man den <code>AuthenticationManagerBuilder</code> direkt. Mittels Injection erhält man ihn, indem man eine Klasse <code>WebSecurityConfiguration</code> mit der Klasse <code>WebSecurityConfigurerAdapter</code> erweitert, mit <code>@EnableWebSecurity</code> annotiert und dort die Methode <code>configure</code> überschreibt. Hier werden die Benutzer definiert (Benutzername, Password, Rolle). Zusätzlich muss eine Bean definiert werden, die das Passwordencoding handhabt.</p></div><h3 id="cb9e5048-3cd0-4c94-b5d4-5ada5e3645c1" class=""><details open=""><summary>GitHub Authentication</summary></details></h3><div class="indented"><p id="22692746-196c-4a73-acc3-cc9ed2fab923" class="">Um GitHub Authentifizierung zu verwenden müssen folgende Klassen erstellt werden:</p><p id="3b313907-81e4-48a5-a08e-c934d558cccc" class=""><code>MethodSecurityConfiguration</code></p><pre id="f2c009e6-37c4-4f98-ad59-e3287fa91752" class="code"><code>@Configuration
+@EnableGlobalMethodSecurity(
+    prePostEnabled = true,
+    securedEnabled = true,
+    jsr250Enabled = true)
+public class MethodSecurityConfiguration extends GlobalMethodSecurityConfiguration {
+}</code></pre><p id="164de70e-0c5f-4966-8af6-1db1aba1691f" class=""><code>SecurityConfiguration</code></p><pre id="146c5823-167b-470f-85e2-95ab576d110d" class="code"><code>@Configuration
+public class SecurityConfiguration {
+
+
+  @Bean
+  protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
+    return new RegisterSessionAuthenticationStrategy(
+        new SessionRegistryImpl());
+  }
+
+  @Bean
+  public OAuth2AuthorizedClientManager authorizedClientManager(
+      ClientRegistrationRepository clientRegistrationRepository,
+      OAuth2AuthorizedClientRepository authorizedClientRepository) {
+
+    OAuth2AuthorizedClientProvider authorizedClientProvider =
+        OAuth2AuthorizedClientProviderBuilder.builder()
+            .authorizationCode()
+            .refreshToken()
+            .clientCredentials()
+            .password()
+            .build();
+
+    DefaultOAuth2AuthorizedClientManager authorizedClientManager =
+        new DefaultOAuth2AuthorizedClientManager(
+            clientRegistrationRepository, authorizedClientRepository);
+    authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
+
+    return authorizedClientManager;
+  }
+}</code></pre><p id="2fb1c218-8971-456b-8cb2-70e36fc6e65b" class=""><code>WebSecurityConfiguration</code></p><pre id="991f5780-2a3e-40ca-a2a2-826d59e3182d" class="code"><code>@Configuration
+@EnableWebSecurity
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+  private final List&lt;String&gt; tutoren;
+  private final List&lt;String&gt; organisatoren;
+
+	//Hier erhält man die Rollen aus der application.yml Datei
+  public WebSecurityConfiguration(
+      @Value(&quot;${rollen.tutoren}&quot;) List&lt;String&gt; tutoren,
+      @Value(&quot;${rollen.organisatoren}&quot;) List&lt;String&gt; organisatoren) {
+    this.tutoren = List.copyOf(tutoren);
+    this.organisatoren = List.copyOf(organisatoren);
+  }
+
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+
+    HttpSecurity security = http.authorizeRequests(a -&gt; a
+        .antMatchers(&quot;/css/*&quot;, &quot;/js/*&quot;, &quot;/error&quot;, &quot;/stats&quot;).permitAll()
+        .anyRequest().authenticated()
+    );
+    security
+        .logout()
+        .clearAuthentication(true)
+        .deleteCookies()
+        .invalidateHttpSession(true)
+        .permitAll()
+        .and()
+        .oauth2Login().userInfoEndpoint().userService(createUserService());
+  }
+
+  private OAuth2UserService&lt;OAuth2UserRequest, OAuth2User&gt; createUserService() {
+    return new OAuth2UserService&lt;&gt;() {
+
+      final DefaultOAuth2UserService defaultService = new DefaultOAuth2UserService();
+
+      @Override
+      public OAuth2User loadUser(OAuth2UserRequest userRequest)
+          throws OAuth2AuthenticationException {
+        OAuth2User oauth2User = defaultService.loadUser(userRequest);
+
+        Map&lt;String, Object&gt; attributes = oauth2User.getAttributes();
+
+        Set&lt;GrantedAuthority&gt; authorities = new HashSet&lt;&gt;();
+        authorities.add(new SimpleGrantedAuthority(&quot;ROLE_STUDENT&quot;));
+
+        String login = attributes.get(&quot;login&quot;).toString();
+
+        if (tutoren.contains(login)) {
+          authorities.add(new SimpleGrantedAuthority(&quot;ROLE_TUTOR&quot;));
+        }
+        if (organisatoren.contains(login)) {
+          authorities.add(new SimpleGrantedAuthority(&quot;ROLE_ORGANISATOR&quot;));
+        }
+
+        return new DefaultOAuth2User(authorities, attributes, &quot;login&quot;);
+      }
+    };
+  }
+}</code></pre></div><h3 id="2b667e53-11e9-4660-8419-7fd34bcd29a1" class="">Authorization</h3><p id="a77363a5-8dd8-45ad-a16f-e3f4e9704eb5" class="">Man kann bestimmten Routen mit der Annotaion <code>@Secured(&quot;ROLE_XXX&quot;)</code> absichern. Dadurch hat dann eine bestimmte Rolle nur auf Klassen oder Methoden zugriff die mit der selben Annotation annotiert sind. Dafür muss eine <code>MethodSecurityConfiguration</code> geschrieben werden:</p><pre id="f1f5f535-9130-41f8-95cd-b2cb41da8abe" class="code"><code>@Configuration
+@EnableGlobalMethodSecurity(
+	prePostEnabled = true,
+	securedEnabled = true,
+	jsr250Enabled = true)
+public class MethodSecurityConfiguration extends GlobalMethodSecurityConfiguration { }</code></pre><p id="c70e0e0c-56cb-4f8b-af23-a617291bc03f" class="">Danach kann folgendes benutzt werden:</p><pre id="afc8be71-0d35-423a-aa08-4ae79ef3b901" class="code"><code>@Secured(&quot;ROLE_ADMIN&quot;)
+@GetMapping(&quot;/admin&quot;)
+public String admin() {
+	return &quot;admin&quot;;
+}</code></pre><h1 id="c697e74c-9a29-4c44-b860-91e8030093a0" class="">Woche 9</h1><h2 id="9fa34d3a-17ce-427e-b39f-ec1992ec6282" class="">Ende-Zu-Ende Tests</h2><p id="c4283577-1733-4e0c-a63f-d94fb773855a" class="">Bei einem Systemtest wird die Anwendung vollständig gestartet und es werden oft vollständige Pfade durch das System bzw. vollständige Anwendungsfälle getestet.</p><p id="5e8f7282-fad4-4e1b-80fc-d4d772ee9396" class="">Ein Systemtest soll die Anwendung möglichst im gleichen Zustand wie in Produktion testen. Wir sollten also bei Systemtests sehr sparsam mit Mocks umgehen und nur Komponenten mocken, die unerwünschte Effekte verursachen.</p><p id="f52d47cc-21e6-45f6-a3f2-42ddc9e1a009" class="">Die notwendigen Annotationen für einen Ende-Zu-Ende Test:</p><ul id="e11501b0-396b-4887-9bc0-6a26adf7ec01" class="bulleted-list"><li style="list-style-type:disc"><code>@SpringBootTest(</code><code>webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)</code><ul id="94b71675-4bbd-4b14-9bac-671a3d144708" class="bulleted-list"><li style="list-style-type:circle">fährt die komplette Anwendung hoch und führt alle notwendigen Injections durch.</li></ul><ul id="4b15b029-9574-4038-bd46-ffd4a77d8fd7" class="bulleted-list"><li style="list-style-type:circle">Verwendet einen zufälligen Port </li></ul></li></ul><ul id="0098616d-b3ab-46d3-8327-69cf57968414" class="bulleted-list"><li style="list-style-type:disc"><code>@AutoConfigureMockMvc</code><ul id="65a31541-db38-4860-87fb-d630cc4f9e0b" class="bulleted-list"><li style="list-style-type:circle">Ermöglicht die Injection eines MockMvc Objekts.</li></ul><ul id="09e6a7d6-2d28-4ebb-98b1-31cd72829cfa" class="bulleted-list"><li style="list-style-type:circle">Nötig um HTML-Unit zu verwenden</li></ul></li></ul><ul id="22277e54-6226-4efb-8b3c-12f5210e8615" class="bulleted-list"><li style="list-style-type:disc"><code>@ActiveProfiles(&quot;test&quot;)</code><ul id="8d3d52f0-f08a-4554-a58d-f3c1b7fa1297" class="bulleted-list"><li style="list-style-type:circle">Dadruch werden die Standard Einstellungen der <code>application.yml</code> mit den Einstellungen in der <code>application-test.yml</code> ersetzt. Hier kann man eine In-Memory Datenbank definieren.</li></ul></li></ul><ul id="e365b3e2-044f-44f3-b051-33a6e6d69e24" class="bulleted-list"><li style="list-style-type:disc"><code>@Transactional</code><ul id="e0bfbce8-f3da-4a78-9746-bfd01f869c87" class="bulleted-list"><li style="list-style-type:circle">Verhindert dass Daten persistent in der In-Memory Datenbank gespeichert werden.</li></ul></li></ul><pre id="826f5ad3-595a-40c9-8ee0-530bef11c073" class="code"><code>@SpringBootTest()
+@ActiveProfiles(&quot;test&quot;)
+@AutoConfigureMockMvc()
+@Transactional
+public class ChickenSystemTest {
+
+  @Autowired
+  MockMvc mvc;
+
+  @MockBean
+  HeutigesDatumRepository heutigesDatumRepository;
+
+  WebClient webClient;
+
+  @BeforeEach
+  void setupWebClient() {
+    when(heutigesDatumRepository.getDatum()).thenReturn(LocalDate.of(2022, 3, 8));
+    webClient = MockMvcWebClientBuilder
+        .mockMvcSetup(mvc)
+        .build();
+    webClient.getOptions().setThrowExceptionOnScriptError(false);
+    webClient.setJavaScriptErrorListener(new SilentJavaScriptErrorListener());
+  }
+
+  @Test
+  @DisplayName(&quot;Nachdem ein Urlaub belegt wurde, wird der Urlaub in der Übersicht angezeigt.&quot;)
+  @WithMockUser(username = &quot;fnellen&quot;, roles = &quot;STUDENT&quot;)
+  void test_1() throws Exception {
+
+    HtmlPage page = webClient.getPage(&quot;http://localhost:8080/&quot;);
+    HtmlAnchor urlaubBelegenNavButton = page.getElementByName(&quot;urlaub-belegen-a&quot;);
+    page = urlaubBelegenNavButton.click();
+    HtmlForm urlaubBelegenForm = page.getFormByName(&quot;urlaub_anmelden&quot;);
+    HtmlInput urlaubsDatum = urlaubBelegenForm.getInputByName(&quot;urlaubsDatum&quot;);
+    urlaubsDatum.setValueAttribute(&quot;2022-03-10&quot;);
+    HtmlInput urlaubsStart = urlaubBelegenForm.getInputByName(&quot;urlaubsStart&quot;);
+    urlaubsStart.setValueAttribute(&quot;10:00&quot;);
+    HtmlInput urlaubsEnde = urlaubBelegenForm.getInputByName(&quot;urlaubsEnde&quot;);
+    urlaubsEnde.setValueAttribute(&quot;11:00&quot;);
+
+    HtmlSubmitInput button = urlaubBelegenForm.getInputByName(&quot;abschicken&quot;);
+    page = button.click();
+    HtmlTable urlaubsTabelle = page.getElementByName(&quot;urlaub_table&quot;);
+    HtmlTableCell urlaubsDatumZelle = urlaubsTabelle.getCellAt(1, 0);
+    assertThat(urlaubsDatumZelle.getTextContent()).contains(&quot;2022-03-10&quot;);
+  }
+}</code></pre><h2 id="32badfa0-bcf8-4c69-a801-1d15cb9c2f4c" class="">Docker</h2><p id="5159b9e0-75ad-4b0d-929f-ed417e741514" class="">Probleme wenn beispielsweise mehrere Anwendungen mit unterschiedlichen JRE (Java 17 und Java 8) auf dem selben System laufen. </p><p id="c80cf3e5-0b10-4ac8-89b9-1e15159028b9" class="">Deswegen ist es sinnvoll Prozesse und Ausführungskontexte von einander zu isolieren und nicht die Hardware an sich.</p><h3 id="39abb400-d2d7-4a45-a87e-76d2cc8c5a34" class="">Virtualisierung Typ 2 </h3><p id="1530733c-ec1a-4540-b35c-28b6fd7753d8" class="">Der Hypervisor der VM läuft on top auf dem Host Os. </p><figure id="7e0f561c-ebe0-4f66-9d61-04131da0762e" class="image"><a href="Bilder/Untitled%209.png"><img style="width:691px" src="Bilder/Untitled%209.png"/></a></figure><h3 id="490cab80-fa55-4d0b-8876-5521eb3707fb" class="">Virtualisierung Typ 1</h3><p id="7dfee32f-cbea-4a57-9729-a2f94172e349" class="">Hypervisor der VM’s laufen direkt auf der Hardware ohne Host OS (Relativ aufwendig).</p><figure id="587cbc87-a6fd-4057-8400-4eee21702ad8" class="image"><a href="Bilder/Untitled%2010.png"><img style="width:699px" src="Bilder/Untitled%2010.png"/></a></figure><h3 id="332a7ccb-5444-4bc1-a1d0-243466bbf830" class="">Isolationsspektrum</h3><figure id="f5da0b68-7d02-4e34-ad2e-494227153c1a" class="image"><a href="Bilder/Untitled%2011.png"><img style="width:943px" src="Bilder/Untitled%2011.png"/></a></figure><p id="882bca62-0af0-47e4-88a2-c05464a87cf3" class="">Bei OS-Level Virtualisierung wird der Kernel zwischen den VM’s geteilt. Dieser stellt standartmäßig sicher, dass der Adressraum isoliert ist. Zusätlich wird nun ein eigenständiges Filesystem und Netzwerk zur Verfügung für jede VM gestellt.</p><p id="695cc14f-c6d8-49ec-a822-861d9cc1ead7" class="">Ist performanter als Hardware Virtualisierung, es wird <strong>kein </strong>GastOS initialisiert.</p><h3 id="dafb7160-2caa-456e-ad5f-3ad58f484438" class="">Filesystem</h3><p id="d302cf59-8222-422b-94ae-85dcad7e7eb6" class="">Das Docker Image stellt ein lesbares Filesystem und Metadaten (Einstiegspunkte oder Kommandos die beim Hochfahren des Containers ausgeführt werden sollen). Der Docker Container verändert nicht direkt das Filesystem des Images, sondern legt ein Overlay auf das Filesystem, welches eine Art Schablone darstellt. Diese Overlays werden Stapelweise angelegt und man betrachtet immer das oberste Overlay. Dadurch entsteht der anschein, dass z.B. eine Datei gelöscht wurde, indem in der obersten Overlay diese Datei ausgeblendet wird.</p><figure id="b41f9806-2ecb-4773-85b2-1360306f97d0" class="image"><a href="Bilder/Untitled%2012.png"><img style="width:876px" src="Bilder/Untitled%2012.png"/></a></figure><h3 id="5b09cb5c-7b18-46ab-9852-8417cbfe4427" class="">Dockerfile</h3><p id="0a5c2279-eb9a-4325-aa59-415dd57f1e09" class="">Um ein Docker Image zu erstellen, verwendet man <code>docker build</code>. Die Konfiguration zum bauen dieses Images steckt im Dockerfile. Man kann ein Basis-Image verwenden, oder ein komplett leeres. Jede Zeile in einem Dockerfile erzeugt ein weiteres Overlay im Filesystem.</p><pre id="d0f225ea-1ed2-41d5-87bb-69d4396392c2" class="code"><code># Basis-Image
+FROM gradle:7.3-jdk17
+# Arbeitsverzeichnis setzten
+WORKDIR /hello
+# Alles aus dem aktuellem Verzeichnis im OS in das Verzeichnis /hello kopieren
+COPY . /hello
+# Kommando wird auf den im Verzeichnis vorhandenen Dateien ausgeführt
+RUN gradle bootJar
+
+# Befehl, der ausgeführt wird, wenn ein neuer Container erzugt wird
+CMD java -jar /hello/.../anwendung.jar</code></pre><p id="1c4cfb09-1683-4da5-be02-cec4c46edb7a" class=""><strong>Image bauen:</strong></p><pre id="dffe929b-f9d3-4a72-b6c7-049f0e1cf716" class="code"><code>docker build -f Dockerfile_gradle -t hello:gradle .</code></pre><p id="4f28dec2-bd87-4392-991a-487042826ddd" class=""><code>-f</code> Dateinamen angeben</p><p id="fbcb1192-17a3-4ea5-b2f3-6e6db71bc303" class=""><code>-t</code> Image benennen : Tag setzen</p><p id="8b532feb-c664-42d0-b21f-dfbac203fa15" class=""><strong>Container bauen:</strong></p><pre id="7ea3eea3-741f-4941-a7f2-91faea1f2635" class="code"><code>docker run -d --rm -p &quot;9000:80&quot; hello:gradle</code></pre><p id="be4df271-2e3b-4003-8bc5-678426910872" class=""><code>-d</code> detached Modus (keine ausgabe auf der Konsole)</p><p id="85cebe29-ddd6-486b-8297-984cf2df3000" class=""><code>--rm</code> löscht den Container nachdem er gestoppt wurde</p><p id="ed3ef062-cd3a-4b1a-9677-cb4f36568642" class=""><code>-p</code> Portbinding 9000 im OS : 80 innerhalb des Containers</p><h3 id="3a1548ae-b32a-45ad-a0f8-8c20fb715e6e" class="">Multistage Build</h3><p id="1eef9c55-7dae-4312-93df-1957bf537cd0" class="">Ziel: So kleine und minimalistische Images bauen wie möglich (reduziert Gefahr vor Exploits)</p><p id="5077d5b3-47d1-43c6-8595-a2aadc72efc2" class="">Lösung:</p><ul id="8f280ef4-4050-42a4-bd63-adbec15f1f10" class="bulleted-list"><li style="list-style-type:disc">Anwendung wird separat in einem Docker Container gebaut</li></ul><ul id="3b2e1ed5-7ebb-4e34-a5a3-585234aecc79" class="bulleted-list"><li style="list-style-type:disc">Die Ausführung der compilierten Anwendung läuft in einem eigenen Container </li></ul><pre id="9e3293f2-8ac1-47bc-8b8d-91a881be55fc" class="code"><code># Basis-Image zum Bauen der Anwendung
+FROM gradle:7.3-jdk17 AS BUILD
+WORKDIR /hello
+COPY . /hello
+RUN gradle bootJar
+-------------------------------------------------------------------------------
+# Minimales-Image zum ausführen der Anwendung
+FROM eclipse-temurin:17-alpine
+WORKDIR /hello
+# Die compilierte Anwendung aus dem BUILD Container kopieren
+COPY --from=BUILD /hello_build/build/.../anwendung.jar \ /hello/anwendung.jar
+
+# Befehl, der ausgeführt wird, wenn ein neuer Container erzugt wird
+CMD java -jar /hello/anwendung.jar</code></pre><p id="affac467-0db8-44f5-9135-97a7cd40def0" class="">Der Container enthält nun nur noch die compilierte Anwendung.</p><p id="8b0d7bbe-fdf3-4a24-b323-b9b0747dd82a" class=""><strong>Problem: </strong>JDK enthalten Compiler → Kann ausgenutzt werden</p><h3 id="d6f31a47-a481-43a1-a246-7a2358990f02" class="">Netzwerk</h3><p id="f3f11b5c-32a2-44d3-b0f2-3fe5c09678e2" class="">Durch die Isolierung erhält jeder Container ein eigenes Netzwerk (IP, Portnummern, ...). Innerhalb verschiedener Container können die selben Portnummern verwendet werden. Mit der <code>EXPOSE</code> Einstellung im Dockerfile kann eingestellt werden welcher Port nur innerhalb des Docker Netzwerks erreichbar ist. Mit <code>-p &quot;9000:80&quot;</code> ist der Port 9000 nicht innerhalb des Netzwerkes erreichbar.</p><figure id="ef626ec7-1494-4a6f-9dcd-209722758bbe" class="image"><a href="Bilder/Untitled%2013.png"><img style="width:480px" src="Bilder/Untitled%2013.png"/></a></figure><h3 id="3b4946cb-1623-47fc-8309-7dcb8f0e5e70" class="">Volumes</h3><p id="8477d3ab-3133-4671-a142-c98b3ffe69bf" class="">Daten die während der Ausführung entstehen und gespeichert werden sollen, liegen nur innerhalb des Containers. Nach einem Neustart verschwinden die Daten. Mit einem Volume Binding werden die Daten des Containers im darunterliegenden OS gespeichert und nicht im Container:</p><pre id="1184e738-b2c6-437e-931b-395f6ed7602e" class="code"><code>-v &quot;$PWD/data:/var/lib/mysql&quot;</code></pre><h3 id="ed77b923-3af7-4f5d-99f9-4ce3c08f74e4" class="">Docker Compose</h3><p id="c19ce01c-1faa-4641-b019-f8ffff1c40d1" class="">Wird verwendet, um mehrere Container gleichzeitig zu Orchestrieren. Standartmäßig sind alle Container die im Compose File gestartet werden im selben Netzwerk.</p><h3 id="b7e6c3ea-5c17-4d34-ad52-f392cf527418" class="">Entwicklung</h3><p id="2f737c30-5563-430f-96cc-9c1e0ca7d3a8" class="">Während der Entwicklung sollte die Anwendung nicht in einem Container ausgeführt werden. Nur Services wie Datenbanken oder schon fertige Systeme sollten in Containern laufen.</p><h1 id="71c741e6-124b-4f24-aa58-0b6d5915eec1" class="">Woche 10</h1><h2 id="9960801d-561f-456b-b971-f207ede10e45" class="">Architekturmuster II</h2><h3 id="ec4ad49f-3377-4c2c-a19e-ac4a62f9debc" class="">Pipes and Filters</h3><p id="8db8c29e-956e-418c-b459-e34df270b3e1" class="">Pipes and Filters ist Teil der Data Flow Architektur, die das System als eine Reihe von Transformationen auf Datensätzen.</p><p id="bdf87daf-d13f-4282-aa24-c541caddec24" class="">Filter verändern Daten, die sie durch den Input erhalten. Pipes sind Verbindungen die Zugang zu den transformierten Daten geben.</p><p id="4d7fc90f-8e49-489d-9e3f-bd342ed78be9" class="">Die Anordnung der Filter können das Enresultat verändern (Mathematische Operationen).</p><p id="fcd1542b-a6e6-4f65-a16b-6a21fc734e2e" class=""><strong>Pro:</strong></p><ul id="a1fc9bbe-d5b1-4852-9859-2660831f9f4a" class="bulleted-list"><li style="list-style-type:disc">Lose und Flexible Verknüpfungen zwischen Komponenten (Filtern)</li></ul><ul id="9b0ad487-48d8-4da5-a3f4-54a94e12d11b" class="bulleted-list"><li style="list-style-type:disc">Filter operieren unabhänig von anderen Filtern<ul id="8a8f8f24-e5a2-4fe1-89ef-e9caf936cbe8" class="bulleted-list"><li style="list-style-type:circle">Kümmern sich nur um ihren Input und den Output von Daten</li></ul></li></ul><ul id="0680d2d0-51af-405a-97f8-dab4c07185bb" class="bulleted-list"><li style="list-style-type:disc">Austauschbarkeit von Filtern</li></ul><ul id="3c4e627f-5db5-49c2-8ff9-30010097652c" class="bulleted-list"><li style="list-style-type:disc">Wiederverwendbarkeit<ul id="05defe19-c869-4b63-9847-ef37ecf2c539" class="bulleted-list"><li style="list-style-type:circle">Innerhalb des Systems öfter verwenden mit unterschiedlichen Datensätzen</li></ul><ul id="681e881a-b36b-45e8-8a1e-86c64117282e" class="bulleted-list"><li style="list-style-type:circle">In anderen Systemen</li></ul></li></ul><p id="efdac452-eed2-4cc8-8fc3-20bfd3d83635" class=""><strong>Contra:</strong></p><ul id="ac56662a-2f08-4ef6-995c-aa7a111efaed" class="bulleted-list"><li style="list-style-type:disc">Performance Einbußen, durch vorhandenem Verarbeitungs-Überschuss in jedem Filter<ul id="cbeaa1ec-dd16-4339-a12c-f528855dda4e" class="bulleted-list"><li style="list-style-type:circle">Jeder Filter erhält Input der geparst werden muss</li></ul><ul id="176a3f46-a468-4a83-81a9-89ee602c335c" class="bulleted-list"><li style="list-style-type:circle">Die eingegangenen Daten werden transformiert</li></ul><ul id="92e485be-cefd-46d6-9b21-25684190cee7" class="bulleted-list"><li style="list-style-type:circle">Daten werden über den Output abgegeben</li></ul><ul id="c8c0644f-dd59-4a74-a825-ef518dd191d7" class="bulleted-list"><li style="list-style-type:circle"><strong>Ist nur ein Nachteil, wenn diese Systeme als separete Programme eingesetzt werden (UNIX-Programme). </strong><ul id="efd853e2-9304-45b9-8e7e-953b1ae8ab6d" class="bulleted-list"><li style="list-style-type:square">Es können auch Datenstrukturen ausgegeben und direkt im Input verarbeitet werden.</li></ul></li></ul></li></ul><ul id="7f4b4e5f-eb02-4f2b-bc73-449e94e99c90" class="bulleted-list"><li style="list-style-type:disc">Kann nicht für interaktive Anwendung verwendet werden, da es zu langsam sein kann wenn viele Daten auf einmal verarbeitet werden müssen.</li></ul><p id="d3a22957-3f7e-4e2e-b7e1-59172c64611a" class=""> </p><h3 id="33522690-c04a-433c-ac0f-ea831937da9c" class="">Microkernel</h3><p id="bf7a2db4-4b07-4bbf-ba8f-c5bc69cc140b" class="">Ist hilfreich, wenn Anwendungen im Nachhinein erweiterbar sein sollen. Dar Core-System hat Schnittstellen, die von Plugins genutzt werden können um weitere Funktionen hinzuzufügen.</p><p id="ea0cc56a-d403-4c7b-a9a3-5e6748828828" class="">Pro:</p><ul id="dd956e99-0e6d-46a3-b24b-241b03622193" class="bulleted-list"><li style="list-style-type:disc">Die Basisanwendung kann erweitert werden, ohne sie verändern zu müssen</li></ul><ul id="51a316e5-f757-47bf-a469-91bc6d8c8a87" class="bulleted-list"><li style="list-style-type:disc">Open/Close Prinzip auf Architekturebene</li></ul><h2 id="451148a3-145d-4646-819b-a79c488bab56" class="">Bounded Context</h2><h3 id="1b6e315c-b2a5-41ba-979c-888d084c7bb7" class="">DDD</h3><p id="d4a0aaa8-d746-4549-b59b-b55393415cfb" class="">DDD ist ein Ansatz um die Geschäftslogik des Unternehmens zu verstehen, sie in Software und in Architekturmustern darstellen zu können und um die Probelme der Geschäftslogik vereinfachen zu können.</p><h3 id="aee0f34c-1aa2-4499-8bc7-37b4ed003970" class="">Domain</h3><p id="70648be6-abaf-4c64-b1b2-ce8f8edd1eb0" class="">Das Unternehmen oder die Umgebung wofür man Software entwickelt.</p><h3 id="3b84b774-a709-485b-a1d6-597e22f80ba3" class="">Domain Experts</h3><p id="6e730ce7-0f83-4b6c-a154-5a4e0397d063" class="">Personen die in dem Unternehmen arbeiten und wofür die Software geschrieben wird. Es ist die Aufgabe des Softwareentwicklers das Wissen der Domain Experts in der Software wiederzuspiegeln.</p><h3 id="2dc43829-d465-42ef-82e9-6ee96df84edf" class="">Ubiquitous Language</h3><p id="40e3736f-3e3c-4c03-bd5d-65d9e1a6dba8" class="">Die Sprache die in der Unternehmensumgebung gesprochen wird. Die Software muss die selbe Sprache verwenden wie das Unternehmen. Man muss mit den Domain Experts reden, um Objekte und Prozesse im Arbeitsablauf des Unternehmens festzustellen und welche Bezeichnungen / Wörter sie für diese benutzen. Diese Wörter weden in der Software benutzt um Objekte, Entitäten und Services zu bennen. Kommt es zu Konflikten zwischen er technischen und der unternehmens Sprache, so überwiegt die Benennung in der unternehmens Sprache.</p><h3 id="9d6cc1e0-5cd3-4b05-b3be-daace99be6c4" class="">Bounded Contexts</h3><p id="1e031652-82bc-46bb-9a3e-cd2747bfa738" class="">Ubiquitous Language hilft dabei eine logische Trennung im Code zu schaffen. Bestimmte Objekte (z.B. ein Auto) können unterschiedliche Bedeutungen und Aufgaben in verscheidenen Kontexten haben. </p><p id="f2bfe987-91a0-461b-aed9-e9847f47b678" class="">Der Bounded Context ist eine logische Grenze zwischen verschiedenen Bereichen im Unternehmen. Bounded Contexts dürfen nichts von einander wissen und nicht miteinander kommunizieren.</p><ul id="ec20d18d-2f88-4a0e-8708-72e76f603734" class="toggle"><li><details open=""><summary>Beispiel:</summary><p id="13a063d9-5179-4d23-aeb5-bdfa2b258d55" class="">Wenn man eine Anwendung für ein Autohaus schreibt, so sind die spezifischen Eigenschaften (Ineriör, Metrial der Sitze, Farbe, Multimedia System) des Autos sehr wichtig. Für einen Mechaniker sind jedoch die Eigenschaften des Motors, der Bremssoftware, des Katalysators, etc. wichtiger. </p><p id="f4d99466-c0e1-45f8-b4e0-c7892d0ccb43" class="">Versucht man das alles in ein Objekt zu führen, so erhält man ein großes Objekt, welches das SRP verletzt und zu viele Anlässe hat sich zu ändern.</p></details></li></ul><h3 id="bd055e15-f734-4134-91f2-3e5eff4e41aa" class="">Entities</h3><p id="d076dc96-b24e-478b-934f-1a058ea54c92" class="">Eine Entität innerhalb des DDD ist eine Klasse, die eine Identität hat, welche sie von anderen identitschen Objekten unterscheidet. Die Identität einer Entität verändert sich nicht, wenn sich die Eigenschaften des Objektes ändern. Die Identität ist unabhängig von der Id, die innerhalb der Datenbank verwendet wird.</p><h3 id="0913ec34-226c-4f7c-96f0-4817a4e29da9" class="">Aggregates</h3><p id="3af01d9f-6150-4958-be3f-7fb84b87934a" class="">Aggregate ist eine Ansammlung von Objekten, die ein Konzept innerhalb des Unternehmens wiederspiegeln. Man kann mehrere Aggregate innerhalb eines Bounded Context haben, sie dürfen aber nicht direkt miteinander kommunizieren. Diese Kommunikation kann mithilfe von Events geschehen.</p><p id="d27e6249-75b4-44dd-b517-95a63ccdd0a8" class="">Das Root Aggregate ist der Einstiegspunkt bzw. die Schnittstelle zum Aggregat. Jede Kommunikation mit dem Rest des Systems muss über das Root Aggregat laufen.</p><h3 id="7fe3b94a-8b20-4da5-bd30-331342dd1e26" class="">Invarianten</h3><p id="24d796f4-a7fb-4842-9462-476fe889e281" class="">Invarianten sind Unternehmensregeln die im Domain Code verarbeitet werden müssen</p><h3 id="21dc4c51-c0dc-4010-8da1-f4aeb5afe04c" class="">Domain Services</h3><p id="c97579ea-6a0a-47a2-b98f-e9f58e22ade8" class="">Domain Services enthalten Logik, die nicht innerhalb der Aggregate passen. Sie haben Informationen über die Aggregate und können Methoden von ihnen aufrufen.</p><h3 id="18b9a3f1-6977-4ed6-bfcd-a2540c654d04" class="">Application Services</h3><p id="61391422-bbb8-4857-85f7-21a6511ddc8a" class="">Application Services orchestrieren die Ausführung von Domain Logik, abhängig vom Input (Website, etc.). Sie enthalten jedoch keine Domain Logik.</p><h2 id="03ea91a5-b6ef-4cce-99da-88a69ff29ba5" class="">Domain Events</h2><p id="f7862e89-2677-43d2-b9e9-2471a5b6adba" class="">Die grundsätzliche Idee dabei ist, dass wir eine Komponente, z.B. einen Bounded Context oder auch ein Aggregat, nicht direkt aufrufen, sondern einen Mechanismus verwenden, bei dem sich die Komponente für bestimmte Arten von Ereignissen anmeldet.</p><p id="3dfd84f8-52a2-4701-89af-a701f6f6e730" class="">Wir bekommen so eine Entkopplung der Komponenten, denn die sendende Komponente muss nicht mehr wissen, wer Empfänger der Nachricht ist oder welche Methode aufgerufen werden muss. Im Extremfall können die Nachrichten auch zwischengespeichert werden, die empfangende Komponente muss zum Sendezeitpunkt nicht einmal verfügbar sein.</p><h2 id="afc74827-218e-46da-b385-f988623a5bd1" class="">Deployment-Einheiten</h2><h2 id="54585509-6fb1-4546-b7d9-29a9fcea2a54" class="">Serverless Architecture und Function as a Service</h2><p id="b11310a3-1060-451c-a714-04347c5ddd52" class="">Man benötigt keinen eigenständigen Computer, VM oder Docker Container mehr, sondern man kann seine Anwendung direkt bei einem Serverless Provider hinterlegen. Ermöglicht hohe Skalierbarkeit. </p><p id="098188f9-7290-4354-9afd-c0858a559857" class="">Pro:</p><ul id="4f25bd9e-615a-4b0b-9849-82c9b4841c28" class="bulleted-list"><li style="list-style-type:disc">Vollständige Abstraktion von der Serverinfrastruktur</li></ul><ul id="6e86d563-7bd7-49e0-9eac-95bb388374f6" class="bulleted-list"><li style="list-style-type:disc">Keine Grenzen bei der Skalierung</li></ul><ul id="747d53ca-dddd-411d-b3ea-e4e9ead42b9e" class="bulleted-list"><li style="list-style-type:disc">Geringe Startinvestition notwendig</li></ul><ul id="58d41ac1-88b4-4952-8ab5-a7ec12dbf156" class="bulleted-list"><li style="list-style-type:disc">Kombination von Cloud Diensten</li></ul><ul id="feb0e4d1-9a17-4055-87f7-3a1bc455083d" class="bulleted-list"><li style="list-style-type:disc"><strong>Prototyping</strong></li></ul><ul id="0db1c707-f21a-45a7-b51c-e3c4045cc543" class="bulleted-list"><li style="list-style-type:disc">Nicht optimal, aber schnell.</li></ul><p id="47d4c828-d1ee-4c36-9f10-73f5929e2961" class="">Nachteil:</p><ul id="5f32461b-3400-4bc1-be44-0b316ec1e6b2" class="bulleted-list"><li style="list-style-type:disc">Abhängigkeit zum Provider</li></ul><ul id="adae510f-9134-47e8-933a-4bb830f61425" class="bulleted-list"><li style="list-style-type:disc">On Premise Hardware ist später günstiger</li></ul><h3 id="cadb77cc-5dec-4ca6-adb7-31ea4d0ffa00" class="">Monolithen</h3><h3 id="fb3dc7fe-fcf5-468b-95d4-11a38fb96dc2" class="">Pro</h3><ul id="b6871d4d-fcac-4072-bacf-e94323c7fa24" class="bulleted-list"><li style="list-style-type:disc">Übersichtliche Gesamtstruktur (Build, Deployment, ...)</li></ul><ul id="d682316c-ced2-469d-88a2-1e97e9b130aa" class="bulleted-list"><li style="list-style-type:disc">Interaktion über normale Methodenaufrufe<ul id="728bbc91-e59d-415a-92fa-01112f788943" class="bulleted-list"><li style="list-style-type:circle">Hohe Performance</li></ul><ul id="dbbc683a-f330-4722-89ce-31aa1eecf84e" class="bulleted-list"><li style="list-style-type:circle">Zuverlässig</li></ul><ul id="f7488cc5-df9b-469a-a1fb-a17719d7ca47" class="bulleted-list"><li style="list-style-type:circle">Entwicklung einfacher</li></ul></li></ul><ul id="d1f0dced-81b9-4b1d-87a2-0c6fce0700ec" class="bulleted-list"><li style="list-style-type:disc">Transaktionen sind gut umsetzbar<ul id="2d7049c3-1914-4c62-b8a3-91893145dfb8" class="bulleted-list"><li style="list-style-type:circle">Konsistenz von Daten gut einhaltbar</li></ul></li></ul><h3 id="21d931c7-de26-4d3c-9ff0-15e428512e41" class="">Contra</h3><ul id="291cc72a-f874-43bf-ae57-da64e59e4cac" class="bulleted-list"><li style="list-style-type:disc">Modularisierung kann einfach umgangen werden<ul id="c88d4b40-f4f0-4036-8aab-7e1e1afba98d" class="bulleted-list"><li style="list-style-type:circle">Disziplin mit Archunit</li></ul><ul id="991931e4-cf08-4655-ac04-5cf04d0a047f" class="bulleted-list"><li style="list-style-type:circle">Modularisierung durch Submodule</li></ul></li></ul><ul id="77fd7ba8-1606-4c52-9c55-e5d5ce2bf384" class="bulleted-list"><li style="list-style-type:disc">Ein Prozess = Eine Plattform</li></ul><ul id="66a75576-3cdf-414c-81f2-371f4b439d1d" class="bulleted-list"><li style="list-style-type:disc">Blast Radius bei Fehlern<ul id="bacf1ae8-6997-49d2-aa6c-5ad33044378c" class="bulleted-list"><li style="list-style-type:circle">Bei einer ungefangenen Exception stürzt das gesammte System ab.</li></ul></li></ul><ul id="5eccba39-4bb2-4537-bc24-45e100cd9db6" class="bulleted-list"><li style="list-style-type:disc">Skalierung (Performance und Entwicklung)</li></ul><h2 id="c8e972d4-f166-426f-ac9c-35a4526f8fde" class="">Skalierung</h2><h3 id="c3054d3d-70a8-40ab-afb8-93c527333606" class="">Vertikale Skalierung (Scale Up)</h3><ul id="1a90aa5b-a8f2-4ead-9233-6d8e0219b685" class="bulleted-list"><li style="list-style-type:disc">Erhöhen der Ressourcen des Servers</li></ul><ul id="5d9740fb-c36c-4756-b365-df1dff8cf836" class="bulleted-list"><li style="list-style-type:disc">Pro<ul id="884a9933-cced-4a30-b168-de787aa3eeb4" class="bulleted-list"><li style="list-style-type:circle">Keine Änderung der Software notwendig</li></ul></li></ul><ul id="fbbb477a-7523-4b06-ac34-fe23682ba123" class="bulleted-list"><li style="list-style-type:disc">Contra<ul id="5308ec54-0b5e-47ba-a107-d1300b5975c0" class="bulleted-list"><li style="list-style-type:circle">Teuer</li></ul><ul id="54fc3890-5f54-42c8-96f3-e178c98e4b06" class="bulleted-list"><li style="list-style-type:circle">Irgendwann nicht mehr möglich.</li></ul></li></ul><h3 id="b57432ae-b2df-4d6e-b306-531805fe94fa" class="">Horizontale Skalierung (Scale Out)</h3><ul id="c41ac90a-150a-44f8-918b-3b17ad7ece5a" class="bulleted-list"><li style="list-style-type:disc">Erhöhung der Anzahl der Server</li></ul><ul id="8b9f4ca8-828c-4465-b1c9-8e107841b9e0" class="bulleted-list"><li style="list-style-type:disc">Pro<ul id="f3652c9a-23d9-46b7-b7ef-e5727e48fd2c" class="bulleted-list"><li style="list-style-type:circle">Günstiger</li></ul><ul id="94e31718-cf07-48c9-a0ca-9a54ac1b2fc4" class="bulleted-list"><li style="list-style-type:circle">Keine Harware Grenzen</li></ul></li></ul><ul id="466430d3-30b4-457e-8541-222fcbce31f2" class="bulleted-list"><li style="list-style-type:disc">Contra<ul id="3e6e204b-aee5-45d5-94df-da5437684ccf" class="bulleted-list"><li style="list-style-type:circle">Effzienz der Software entscheidend </li></ul><ul id="358e2300-78ef-48ca-a4b5-8174104e3fe5" class="bulleted-list"><li style="list-style-type:circle">Symmetrische Skalierung<ul id="04476ea8-4bf2-4f7e-9b78-ba8435c63fb9" class="bulleted-list"><li style="list-style-type:square">Wenn eine Anwendung im System viel öfter genutzt wird als andere Bestandteile, so muss trotzdem die gesamte Anwendung dupliziert werden.</li></ul><ul id="45ce8990-4038-4d5a-aeca-c73c3fe56631" class="bulleted-list"><li style="list-style-type:square">Einzelteile können nicht eigenständig skaliert werden</li></ul><ul id="eaba985e-19e6-4e23-9f03-1ab51bbcf622" class="bulleted-list"><li style="list-style-type:square">Führt zu Verschwendung von Ressourcen</li></ul></li></ul><ul id="60b0f5bd-1ac3-42e1-b1bf-25329539869e" class="bulleted-list"><li style="list-style-type:circle">Time to Market<ul id="019f3514-f370-4d82-85b9-fe03dd3700ce" class="bulleted-list"><li style="list-style-type:square">Koordination ist problematisch<ul id="c4bc1e23-7d14-47e0-aeb4-91f461a1505f" class="bulleted-list"><li style="list-style-type:disc">Feature Release<ul id="223f2b9e-b9e9-462c-b80c-655684b61d53" class="bulleted-list"><li style="list-style-type:circle">Man wartet auf das neue Feature das gebraucht wird, bis es fertig ist</li></ul></li></ul><ul id="eb301445-4125-4eff-98fd-a4428176720b" class="bulleted-list"><li style="list-style-type:disc">Release Trains<ul id="22ecb50e-bff4-4e21-9171-264f48968da1" class="bulleted-list"><li style="list-style-type:circle">Nach einem bestimmten Zeitintervall (z.B. alle drei Montate) werden alle fertigen Features released </li></ul></li></ul></li></ul></li></ul></li></ul><figure id="628bf3b5-22a5-480a-811b-12e7f6abe426" class="image"><a href="Bilder/Untitled%2014.png"><img style="width:480px" src="Bilder/Untitled%2014.png"/></a></figure><ul id="ec07d9be-9c74-41df-be7e-02162fd6685f" class="bulleted-list"><li style="list-style-type:disc">Zustand muss zwischen den Servern geteilt werden<ul id="4c33ae1e-c3fc-4e84-bc9e-46205f0c0513" class="bulleted-list"><li style="list-style-type:circle">Kann gelöst werden durch Sticky Sessions (Requests vom selben User gehen an den selben Server)</li></ul><ul id="e59bb106-b219-41b1-b87d-04f14b6e5d4f" class="bulleted-list"><li style="list-style-type:circle">Zustand kann immer mitgesendet werden</li></ul><ul id="3fd29889-527d-4c4d-8d73-7947062d819f" class="bulleted-list"><li style="list-style-type:circle">Zustand kann in einer geteilten Datenhaltung abgelegt werden</li></ul></li></ul><h2 id="550ec60f-2631-438a-a869-32656b05a70f" class="">Microservices</h2><p id="8cc15dd4-9406-41d7-b567-3e55a1f93bd4" class="">Monolith wird in mehrere Anwendungen aufgeteilt. Die Kommuniktation zwischen den Services geschieht nun über das Netzwerk.</p><h3 id="6ba85099-04f2-4557-92b8-56e51204b4f8" class=""><strong>Skalierung</strong></h3><p id="6818943f-50f1-468e-8684-e6a1f223e8ba" class="">→ Unabhängige Skalierung einzelner Bestandteile</p><h3 id="634be2ad-fef9-4723-8ebd-288704d84be0" class=""><strong>Komponentenbildung</strong></h3><p id="3df0eb60-2763-4a85-9e61-94faa0d3dd25" class="">→ Modularisierung nun stärker eingehalten. Netzwerkaufruf für jeden Aufruf zwischen Komponenten notwendig</p><h3 id="1ca6983e-7ab6-41fe-8533-6a3a73ec7db8" class=""><strong>Polyglotte Programmierung</strong></h3><p id="19ee7846-ed8e-490d-9d0c-5d5e4140251b" class="">→ Microservices können unabhängige Technologien verwenden. Man kann die passenste Technologie für die bewältigung der Aufgabe wählen.</p><h3 id="b3a50ba4-062e-4d3f-9ed5-a417ac383694" class=""><strong>Robustheit</strong></h3><p id="53818597-91a0-4bce-90fb-ec378c9b872b" class="">→ Blast Radius begrenzt. Stürzt ein Service ab laufen andere Services trotzdem weiter.</p><p id="fc29d054-9012-46d6-933a-ef6ec3284d3a" class="">Nicht automatisch robust. Abhängigkeiten zwischen Services führen trotzdem zu abstürzen. Die Aufrufe zwischen Services sind nicht mehr zuverlässig.</p><h3 id="79f5acd3-47f8-4775-8b45-dab64f319671" class=""><strong>Aufteilung</strong></h3><p id="4ccca7bd-3f92-4352-9935-d4af50ba9d48" class="">Bei falscher Aufteilung verschmelzen die Nachteile von Monolithen und Microservices. Wenn für das Deployment alle Services vorhanden seien müssen, so gibt es eine falsche Aufteilung. Services sollen unabhängig von einander deployed werden können. → Autonomie</p><ol type="1" id="586a55bb-fb52-4ed6-94ff-72a2cbe6f053" class="numbered-list" start="1"><li>Aufrufe minimieren</li></ol><ol type="1" id="f439d38e-81ac-4118-99f0-aba08474abb7" class="numbered-list" start="2"><li>Tennen zwischen Micro und Makroarchitektur</li></ol><h3 id="2267187c-79c5-4988-820b-e94c60751951" class=""><strong>Makroarchitektur</strong></h3><ul id="c4d4a82c-e007-4d3f-9e7a-b6e861afda3f" class="bulleted-list"><li style="list-style-type:disc">Regeln für die Systemintegration und Kommunikation</li></ul><ul id="8671269d-327d-4c03-aa01-e56b212678b1" class="bulleted-list"><li style="list-style-type:disc">Regeln für die Authentifizierung und andere Metadaten</li></ul><ul id="bdd277ea-f8b0-4327-97c9-cacfa2590230" class="bulleted-list"><li style="list-style-type:disc">Regeln für das Deployment und Konfiguration</li></ul><ul id="ee55ebcf-479b-46e4-b89d-c06c9062b7ff" class="bulleted-list"><li style="list-style-type:disc">Regeln für das Monitoring</li></ul><h3 id="02ea7d92-822d-4a99-8e0f-afebb4f57bbf" class=""><strong>Autonomie</strong></h3><ul id="946caafc-2f3a-4ea7-a0af-9676f5665330" class="bulleted-list"><li style="list-style-type:disc">Services werden unabhängig voneinander entwickelt und in Betrieb genommen</li></ul><ul id="0bdf8937-ce1e-40a2-a479-78121832b51b" class="bulleted-list"><li style="list-style-type:disc">fachlichen Schnitt wählen (Bounded Context)</li></ul><h3 id="d9a5c568-fb1b-44f0-87ca-139eda0cfa0b" class=""><strong>Pro</strong></h3><ul id="101cabe6-a3ed-419d-a308-4232e8ca3c43" class="bulleted-list"><li style="list-style-type:disc">Technologiestack frei wählbar</li></ul><ul id="db388d1b-1ad3-447d-90bc-4292b3f90561" class="bulleted-list"><li style="list-style-type:disc">Grenzen im Code (Modularisierung)</li></ul><ul id="debb1cbf-8b9f-45f9-a2b3-b1f6f12aab2f" class="bulleted-list"><li style="list-style-type:disc">Services können ausgetauscht werden</li></ul><ul id="5499091f-6739-4236-b513-f68419f6b257" class="bulleted-list"><li style="list-style-type:disc">System kann auch bei Ausfall eines Services weiter funktionieren</li></ul><ul id="63c8316d-e661-4501-905c-0314ca6e780c" class="bulleted-list"><li style="list-style-type:disc">Skalierung ist feingranularer</li></ul><ul id="e146466d-abb7-4fa9-95bc-6bcd752c1d9a" class="bulleted-list"><li style="list-style-type:disc">Weniger teamübergreifende Koordination</li></ul><h3 id="712a0250-2bb4-42a7-808c-e336b88b1e87" class=""><strong>Contra</strong></h3><ul id="f3ac3c5d-5e5a-4b51-9e16-d429229f5189" class="bulleted-list"><li style="list-style-type:disc">Aufrufe nicht mehr zuverlässig</li></ul><ul id="76d2c44b-b7a4-42b9-805e-b93bd675b481" class="bulleted-list"><li style="list-style-type:disc">Verteilte Transactionen</li></ul><ul id="6fd49dad-4e37-4bbf-bccb-212de247a028" class="bulleted-list"><li style="list-style-type:disc">Emergentes Verhalten (Verteilter Aufruf von Code)</li></ul><h2 id="0740050a-5338-4829-88c9-daac8c2562ab" class="">SCS (Self Contained Systems)</h2><p id="1682f473-5144-4c9c-99db-9576d6c47c97" class="">Ausgangspunkt ist ein System mit mehreren Fachlichkeiten und verschiedenen Domänen, dass verschiedene Module, Komponenten, Frameworks und Bibliotheken beinhaltet.</p><p id="48131bba-63f7-4f44-a035-b17c4f5a025d" class="">Dieses System wird nach seinen fachlichen Grenzen zerlegt. Jedes zerlegte System (SCS) erhält nun eine eigensändige Webanwendung mit Benutzeroberfläche, Geschäftslogik und Datenhaltung. Im Gegensatz zu den Microservices muss ein SCS diese drei Komponenten haben.</p><p id="d5926682-708a-4d6c-b2d1-ff0fd2f4adf6" class="">→ SCS sind Webanwendungen</p><ul id="85d52825-aaf3-49a7-a05a-5317c1162337" class="bulleted-list"><li style="list-style-type:disc">SCS können einzeln ausgetauscht und modernisiert werden</li></ul><ul id="d359177f-f27a-4b86-be90-d4e5b62a82c4" class="bulleted-list"><li style="list-style-type:disc">Es gibt klare Komponentengrenzen</li></ul><ul id="04ace30b-f9bb-4001-b5de-ed0d72939862" class="bulleted-list"><li style="list-style-type:disc">Die Entkopplung der SCS führt zu einem stabilieren Gesamtsystem</li></ul><ul id="0f8d300d-c9a3-4607-8582-b2929befd0cb" class="bulleted-list"><li style="list-style-type:disc">Jedes SCS kann eine eigene Plattform verwenden<ul id="8e86084a-c5ee-4c9c-bed8-4cdaeffef586" class="bulleted-list"><li style="list-style-type:circle">flexible technische Entscheidungen</li></ul></li></ul><ul id="8cd2751d-2188-4d8c-a63b-3c9f60c12671" class="bulleted-list"><li style="list-style-type:disc">Einzelne Systeme können individuell skaliert werden</li></ul><p id="6e65b5e9-de8b-483f-8248-eb00820d6f28" class="">⇒ SCS haben die Vorteile einer Microservice Architektur</p><p id="a45e735f-e202-44e2-ae25-ea87b3ef96f2" class="">Optimal → Anwendungsfall des Systems soll möglichst alleine abgearbeitet werden</p><ul id="a560c442-7997-439f-ae67-587ce55e891f" class="bulleted-list"><li style="list-style-type:disc">SCS sind meistens größer als Microservices</li></ul><ul id="adea882f-a755-4474-9fcb-928d08377100" class="bulleted-list"><li style="list-style-type:disc">Ein Team pro SCS</li></ul><ul id="30edde87-d27e-4a17-9344-aa505bfc368d" class="bulleted-list"><li style="list-style-type:disc">Das SCS enthält alle notwendigen Daten und Logik für den Anwendungsfall<ul id="94713399-e106-401a-80c8-ed587275fb2c" class="bulleted-list"><li style="list-style-type:circle">Autonome entscheidungen</li></ul></li></ul><ul id="f807c526-ad72-4a18-a8cb-3554644dfaca" class="bulleted-list"><li style="list-style-type:disc">SCS teilen keine Fachlogik, Daten, UI miteinander</li></ul><ul id="78ed5651-10d6-4016-b8a8-43dfe9bd511d" class="bulleted-list"><li style="list-style-type:disc">Bei Datenreplikation hat ein System die Datenhoheit<ul id="abb23cf9-ef28-4ef2-b30a-7f6506a6d746" class="bulleted-list"><li style="list-style-type:circle">Eventgetriebene Systeme</li></ul></li></ul><ul id="9ebe9216-7949-4961-a8b7-8384cb970c1f" class="bulleted-list"><li style="list-style-type:disc">Keine synchronen Aufrufe im eigenen Request-Response-Zykuls<ul id="eb6a3571-b294-4786-8671-c91a2c336b1f" class="bulleted-list"><li style="list-style-type:circle">Asynchrone Aufrufe sind besser</li></ul></li></ul><ul id="19e96081-bbbd-4731-94f9-fe1207ad29ff" class="bulleted-list"><li style="list-style-type:disc">ROCA (Resource Oriented Client Architecture) für die Benutzeroberfläche</li></ul><ul id="9f31b44c-9577-4246-b207-79b94d8e4f83" class="bulleted-list"><li style="list-style-type:disc">SCS kann zusätzlich API anbieten</li></ul><ul id="deb0fb44-64ae-44c4-99b7-02303d9c9453" class="bulleted-list"><li style="list-style-type:disc">SCS sollten vorzugsweise über ihre Weborberfäche integriert werden, um die Kopplung an andere Systeme minimal zu halten.<ul id="b37595d4-eb5f-4353-946c-95c284c51342" class="bulleted-list"><li style="list-style-type:circle">Links benutzen</li></ul><ul id="786aaa0c-f332-4acd-9030-2325acfbba84" class="bulleted-list"><li style="list-style-type:circle">Rücksprung-Adresse</li></ul></li></ul><h3 id="d150f94f-df11-4685-9903-9901332e8dd9" class="">Integration im Frontend</h3><ul id="5603d71d-6751-42f0-8261-7945609a9bdf" class="bulleted-list"><li style="list-style-type:disc"> Auf Serverseite z.B. mit ESI <figure id="bd238fd8-8d99-42f6-993d-7c7f93bf942a" class="image"><a href="Bilder/Untitled%2015.png"><img style="width:943px" src="Bilder/Untitled%2015.png"/></a></figure></li></ul><ul id="0d89db6d-df7f-4227-9b32-19b2cd5629fb" class="bulleted-list"><li style="list-style-type:disc">Auf Clientseite<ul id="7f301cb3-459a-4093-8f4f-7cc95fa5926a" class="bulleted-list"><li style="list-style-type:circle">Transklusion<figure id="04047f7d-dae6-4824-877e-0ae1b72463de" class="image"><a href="Bilder/Untitled%2016.png"><img style="width:934px" src="Bilder/Untitled%2016.png"/></a></figure><figure id="8a4039a1-fb1b-43ea-be78-718750a90d32" class="image"><a href="Bilder/Untitled%2017.png"><img style="width:876px" src="Bilder/Untitled%2017.png"/></a></figure></li></ul><ul id="92bfa356-f198-4d9e-a7fb-05eaa6734cfb" class="bulleted-list"><li style="list-style-type:circle">SPA (Single Page Application)</li></ul></li></ul><h1 id="ad16f463-320d-4c1e-9f7a-d66d3eacc5f8" class="">Woche 11</h1><h2 id="065d8872-9013-44f4-a6f9-8329fcaf85d1" class="">Accessibility (a11y)</h2><h1 id="0bbe6a2f-132f-41da-a0c2-4e64d17bd49f" class="">Woche 12 </h1><h2 id="8f859eae-f4e4-424d-9c8c-8fbf7888b1ab" class="">HTML-Unit</h2><h1 id="427f7427-2f08-4f46-9257-91bb1da95869" class="">Woche 13</h1><h2 id="02877ce5-199a-4501-a8d3-3d806f1287d9" class="">Entwicklungsprozesse</h2><p id="7cc7b9ca-298c-40d9-bdb4-d6fc6ba37460" class="">Abstrakte Vorgehensmodelle<div class="indented"><p id="5c8e111d-1d5a-4f0a-8609-dbb0914d4b2a" class="">Sequentielle Modelle</p><p id="ec840ebc-3075-4a86-babb-52aa8437cf3b" class="">Iterative, Evolutionäre, Agile Modelle</p></div></p><p id="83bffd3b-5d66-4785-9164-2687369a79ad" class="">Konkrete Vorgehensmodelle<div class="indented"><p id="ce0dd603-a547-43d5-859e-e2c93c5f2be6" class="">XP, Scrum, Kanban</p><p id="b317648e-14f2-4151-bcd3-31aa166e4a25" class="">V-Modell XT, Open Unified Process</p></div></p><p id="9d37c20d-5796-4d69-ad82-4f783ffbe54e" class="">Ein Vorgehendmodell liefert einen Leitfaden wie ein Problem in eine Lösung überführt wird. Es bietet einen logischen und zeitlichen geordneten und strukturierten Ablauf der Entwicklung. </p><h3 id="3f8bda5e-d4c1-433c-ba1d-8989d08c11b7" class="">Sequentielle Modelle</h3><p id="5bdaf6be-3085-4bd6-b5f8-b81bb70b237b" class="">Wasserfall Modell</p><ul id="b5acb3cc-eaa5-4864-b9db-8f6a4d110715" class="bulleted-list"><li style="list-style-type:disc">Aufteilung in sequentiellen Projekt-Phasen</li></ul><ul id="4eefa80f-c539-4bd1-ad8a-dc2ba67e7c3d" class="bulleted-list"><li style="list-style-type:disc">In den Phasen werden vom Modell vorgeschriebene Artifakte / Dokumente erstellt</li></ul><ul id="2aac43f8-401e-40dd-95a0-c5c52ce1b419" class="bulleted-list"><li style="list-style-type:disc">Am Ende einer Phase wir der Meilenstein abgenommen</li></ul><ul id="e3054309-3813-4d65-ab3e-0ac9d63344e4" class="bulleted-list"><li style="list-style-type:disc">Eine Phase beginnt erst, wenn die vorhergehende Phase abgeschlossen ist</li></ul><figure id="8143eff5-82ae-42c2-8b2e-ff76b6aa561d" class="image"><a href="Bilder/Untitled%2018.png"><img style="width:986px" src="Bilder/Untitled%2018.png"/></a></figure><p id="eff62dbc-3c7c-4bb1-8c19-88152cdcc7ee" class="">Pro:</p><ul id="73baba10-7a9b-4a93-b53c-a059d6f04eee" class="bulleted-list"><li style="list-style-type:disc">Einfaches Modell</li></ul><ul id="d6514413-bb72-453a-a9c2-082888d69dfb" class="bulleted-list"><li style="list-style-type:disc">Projektfortschritt transparent</li></ul><ul id="d181ec05-516e-4ea5-b57a-43a061913969" class="bulleted-list"><li style="list-style-type:disc">Produkt ist gut dokumentiert<ul id="411f84df-db34-4988-90bf-cabf89995150" class="bulleted-list"><li style="list-style-type:circle">Der Prozess ist auf Dokumente ausgelegt</li></ul><ul id="46007d2a-748a-4b74-a51e-bd58e67c1ce4" class="bulleted-list"><li style="list-style-type:circle">Die Dokumente weden abgenommen, müssen daher qualitativ gut sein</li></ul></li></ul><p id="3ae47950-d9a0-46b5-a1be-fba293ecae02" class="">Contra:</p><ul id="4b872ad9-ab08-4b9c-aa2d-594ae6faa848" class="bulleted-list"><li style="list-style-type:disc">Keine gute Auslastung der Kapazitäten</li></ul><ul id="877b07ab-389b-4378-825c-49a10e3b0024" class="bulleted-list"><li style="list-style-type:disc">Klare Phasengrenzen sind oft nicht realisierbar</li></ul><ul id="5c7060ac-643a-44fb-b90b-afa7e6c15d04" class="bulleted-list"><li style="list-style-type:disc">Lösungsalternativen werden früh verworfen</li></ul><ul id="a18315b2-933d-4b5e-95a4-e59c461b9d41" class="bulleted-list"><li style="list-style-type:disc">Mehraufwand durch Dokumentation</li></ul><ul id="7b4861ee-25ce-4b10-b6f5-c9792bd038c9" class="bulleted-list"><li style="list-style-type:disc">Unflexibel gegenüber Anforderungsänderungen</li></ul><ul id="614125a6-df75-46c9-ba4c-40b0ae7fd83a" class="bulleted-list"><li style="list-style-type:disc">Rücksprünge sind überlicherweise notwendig<ul id="26afc5c7-ca1e-4105-8708-fd00dac37bad" class="bulleted-list"><li style="list-style-type:circle">Wiederspruch in den Anforderungen</li></ul><ul id="e25fee5a-8d24-48af-9e21-62316379439b" class="bulleted-list"><li style="list-style-type:circle">Im Test werden Bugs gefunden</li></ul></li></ul><ul id="9b6d1911-bcb9-4634-b7bf-59b787e4eb42" class="bulleted-list"><li style="list-style-type:disc">Ein Rücksprung erfordert dass alle Meilensteine neu abgenommen werden</li></ul><p id="7a697ca4-78ac-46e2-8c82-9f2779dd5322" class="">Nur Sinnvoll, wenn Rücksprünge möglich sind und keine großen Anforderungsänderungen erwartet werden, z.B. in eingebetteten Systemen (spezifische Hardware) oder sicherheitskritische Anwendungen.</p><h3 id="be9934fd-8aa6-4b13-b4e4-1cba22ac0f32" class="">V-Modell</h3><p id="b244d6d2-9d7a-4021-80c8-955f95f26df5" class="">Basiert auf dem Wasserfall Modell und die Betonung liegt auf Qualitätssicherung. Jeder Konstruktionsphase wird eine Testphase gegenübergestellt.</p><figure id="71fbd94f-6465-43dd-b2c9-f37973faa52c" class="image"><a href="Bilder/Untitled%2019.png"><img style="width:948px" src="Bilder/Untitled%2019.png"/></a></figure><h3 id="ca4e5ee0-e166-4445-848a-2b76d4b843fb" class="">Prototypes und Spikes</h3><p id="784c21c7-8f16-48ca-981b-7e81fc93f196" class="">Entwicklung ablauffähiger Teile der Software</p><ul id="9259faa7-d8cb-4a4a-83e6-12fe92412651" class="bulleted-list"><li style="list-style-type:disc">Anforderungen klären</li></ul><ul id="fceabb73-aecb-494a-8d7b-a7f61101d94d" class="bulleted-list"><li style="list-style-type:disc">Machbarkeit überprüfen</li></ul><ul id="8d030232-0256-4ab4-b43b-dac733162e3c" class="bulleted-list"><li style="list-style-type:disc">Alternativen erforschen</li></ul><ul id="bef0d44e-2795-4ac9-8ab8-5903532a3cd4" class="bulleted-list"><li style="list-style-type:disc">Erfahrungen mit Technologien sammeln</li></ul><p id="3772a58e-a16c-4d6f-b823-c9a1e94cca81" class=""><strong>Vertikaler Prototyp</strong></p><ul id="e3b7bfed-09dc-4cfe-93b6-c159a6e4cfbf" class="bulleted-list"><li style="list-style-type:disc">Ausschnitt quer durch alle Schichten der Anwendung</li></ul><ul id="45c10be0-3a10-41df-9772-2af3a27dfa6e" class="bulleted-list"><li style="list-style-type:disc">Überprüfung der Machbarkeit</li></ul><ul id="2e3e7b83-d0e9-4649-ba97-7bfc85494e5f" class="bulleted-list"><li style="list-style-type:disc">Einzelne Funktionalitäten implementieren</li></ul><figure id="91730cb6-c20a-4569-b241-d10bf1f93a10" class="image"><a href="Bilder/Untitled%2020.png"><img style="width:397px" src="Bilder/Untitled%2020.png"/></a></figure><p id="06db9e82-9b38-40e5-9bab-0b674572e699" class=""><strong>Horizontale Prototyp</strong></p><ul id="e177a166-927e-4534-afae-1a1a45e520ab" class="bulleted-list"><li style="list-style-type:disc">Entwicklung einer einzelnen Schicht ohne Implementierung anderer Schichten</li></ul><ul id="ee2972e6-f9ef-472b-8d64-00dc543d82cb" class="bulleted-list"><li style="list-style-type:disc">Anforderungsstabilisierung</li></ul><ul id="e9d0ee16-be74-45e4-9b30-5689683f4240" class="bulleted-list"><li style="list-style-type:disc">Meistens UI</li></ul><figure id="c951679b-007e-40ca-8493-73c9390a2127" class="image"><a href="Bilder/Untitled%2021.png"><img style="width:390px" src="Bilder/Untitled%2021.png"/></a></figure><p id="bbb98d09-9781-4fb3-8bf7-3fb451b20a5a" class=""><strong>Vorteile:</strong></p><ul id="8060ca86-ef3e-4eb2-a519-5d509b838aff" class="bulleted-list"><li style="list-style-type:disc">Risikominimierung</li></ul><ul id="13f372e6-1766-4fac-9dbe-275de4a94d3d" class="bulleted-list"><li style="list-style-type:disc">Konkrete Vorstellung</li></ul><ul id="6456f2ff-8229-4491-88e4-7a599384cfb0" class="bulleted-list"><li style="list-style-type:disc">Basis für weitere Planung</li></ul><p id="1b9c8eff-c926-4e6c-b099-d0c1a07b23b0" class=""><strong>Nachteile:</strong></p><ul id="fd279466-761a-4a58-9e67-4dc2de3f7d28" class="bulleted-list"><li style="list-style-type:disc">Aufwand</li></ul><ul id="975eba45-9e4b-4ec2-843f-d66f6b56759d" class="bulleted-list"><li style="list-style-type:disc">Gefahr durch falsche Ausschnittswahl</li></ul><h3 id="6dd91cae-3499-4438-8c50-e4eec64c7576" class="">Evolutionäres Vorgehen</h3><p id="946d0409-09a9-42d2-8e26-6cfae3e7a67f" class="">Die Entwicklung findet in <strong>kurzen </strong>iterativen Zyklen statt. Man fängt mit den wichtigsten Anforderungen an und nach jedem Zyklus wird die Anwendung erprobt und daraus gelernt.</p><figure id="a5c9f46f-cc7f-46da-9673-ed7aac979f71" class="image"><a href="Bilder/Untitled%2022.png"><img style="width:690px" src="Bilder/Untitled%2022.png"/></a></figure><p id="f05f74ae-c0d6-4c6b-8316-1a06cf83bb20" class=""><strong>Vorteile:</strong></p><ul id="55a23f11-26ff-4920-a409-73f4214fb709" class="bulleted-list"><li style="list-style-type:disc">Hoch Flexibel</li></ul><ul id="34510b88-6093-446d-8f7d-d853ac1ac1d1" class="bulleted-list"><li style="list-style-type:disc">Auf Änderungen der Anforderungen kann besser reagiert werden</li></ul><ul id="027f3191-e791-40a0-a28c-719d4685ebcf" class="bulleted-list"><li style="list-style-type:disc">Fehlentwicklungen werden früher erkannt</li></ul><ul id="cd3f4a0b-4b19-4fb5-944e-8a012466f364" class="bulleted-list"><li style="list-style-type:disc">Kleinere Entwicklungsschritte</li></ul><ul id="e54883ce-5825-4eda-bba1-e2c6f754ce0e" class="bulleted-list"><li style="list-style-type:disc">Früherer ROI (Return of invest)</li></ul><p id="00326382-af77-4ad3-bb46-06221bb9ae1c" class=""><strong>Nachteile:</strong></p><ul id="c9126664-b35e-4d87-9306-a406afc47ce6" class="bulleted-list"><li style="list-style-type:disc">Flexibilität ist kostenintensiv</li></ul><ul id="87185edf-597f-49ff-aa26-29b77936e50e" class="bulleted-list"><li style="list-style-type:disc">Ablehnung des Kunden<ul id="ca7e7b53-3045-40c6-bc7b-e18c2809eb35" class="bulleted-list"><li style="list-style-type:circle">Störungen im Betriebsablauf</li></ul><ul id="3ccb27c8-895d-4935-b36a-5278ec3c4646" class="bulleted-list"><li style="list-style-type:circle">Schulungsaufwand</li></ul></li></ul><ul id="f4db48e6-c85b-4300-8731-3068ac36517c" class="bulleted-list"><li style="list-style-type:disc">Vertragsformulierung schwierig</li></ul><h3 id="50896730-1e7c-4ca1-8bdb-aee46ec814a0" class="">Agiles Vorgehen</h3><p id="01028451-e2c5-4fcd-8a78-a946e9f2942b" class="">Eine evolutionäre Entwicklung der Software ermöglicht es schnell auf Veränderungen einzugehen. </p><ol type="1" id="219f9df4-712b-457b-bb07-a575f01db64a" class="numbered-list" start="1"><li><strong>Individuen und Interaktionen</strong> &gt; Prozesse und Werkzeuge</li></ol><ol type="1" id="b17f9693-8f36-45a9-954b-c2b906ab71b6" class="numbered-list" start="2"><li><strong>Funktionierende Software</strong> &gt;Umfassende Dokumentation</li></ol><ol type="1" id="9297ca9f-bb1a-4abf-9c0a-a523052e402c" class="numbered-list" start="3"><li><strong>Zusammenarbeit mit dem Kunden</strong> &gt; Zusammenarbeit mit dem Kunden</li></ol><ol type="1" id="fc963b97-3ab6-485c-964f-66b18b6ba4a2" class="numbered-list" start="4"><li><strong>Reagiren auf Veränderung</strong> &gt; Befolgen eines Plans</li></ol><p id="d7c4366b-6a4f-48f1-ae7e-52f68839a454" class="">Vorteile:</p><ul id="dccc95fd-9356-472d-9231-f0a3268c5b44" class="bulleted-list"><li style="list-style-type:disc">Berücksichtigung von Anforderungsänderungen</li></ul><ul id="2a23bcaf-595b-4704-a6c7-07802a7b3c59" class="bulleted-list"><li style="list-style-type:disc">Feedback vom Kunden durch häufiges Ausliefern</li></ul><ul id="8e30a4f7-e056-4299-9572-1ca30994c349" class="bulleted-list"><li style="list-style-type:disc">Fördert Kooperation im Team</li></ul><ul id="f67a57dc-b850-4dbd-b822-57cc9266a9c6" class="bulleted-list"><li style="list-style-type:disc">Sehr gut geeignet für Neuentwicklungen</li></ul><p id="770c008e-3500-4036-91d0-12d9d0377eb9" class="">Nachteile:</p><ul id="68b859e6-d165-4e5e-8cc3-0b0ec9a8f746" class="bulleted-list"><li style="list-style-type:disc">Vertrag</li></ul><ul id="42837a7b-7aac-4ecb-b8b0-3101f8560ed8" class="bulleted-list"><li style="list-style-type:disc">Beteiligung des Kunden wichtig</li></ul><ul id="61b38773-08c3-49b7-9c0c-bc5b15d94c39" class="bulleted-list"><li style="list-style-type:disc">Dokumentation hat Lücken</li></ul><h2 id="a73d21c4-264f-4fc5-8f42-b51c57f2f7fb" class="">Scrum</h2><figure id="8da30f99-a745-4512-b62c-aaa7c844ec4e" class="image"><a href="Bilder/Agile-Produktentwicklung.webp"><img style="width:1400px" src="Bilder/Agile-Produktentwicklung.webp"/></a></figure><h3 id="73e5f9e9-8d3f-4a01-80bc-929bf9e2d914" class="">Rollen</h3><p id="1c0c1940-2a56-4237-b8b2-4e5f2b88aaf9" class=""><strong>Product Owner (PO)</strong> stellen die Schnittstelle zu den Stakeholdern dar. Sind für das Einfordern der Anforderungen und die Priorisierung dieser verantwortlich.</p><p id="0011727a-b381-4c6a-922b-0d9119f257ae" class="">Das <strong>Development Team</strong> setzt die Anforderungen vom PO um und ist verantwortlich für die Einhaltung der Qualitätsziele. Das Team schätzt den Aufwand der Implementierung.</p><p id="4fe735cc-c281-428c-9456-50be76d52700" class="">Der <strong>Scrum Master</strong> ist nicht Teil des Entwicklungsteams und verhält sich als Coach für den Scrum Prozess. Kommt es zu Problemen in der Zusammenarbeit vermittelt dieser und beseitigt Störungen, die von Außen kommen.</p><h3 id="3cba54b5-bb11-4e43-a331-befcfc3f44c2" class="">Product Backlog</h3><p id="22f4259f-fee5-4040-87d0-95a5a7f909e8" class="">Aufgaben und Ziele werden vom PO als Liste in dem Product Backlog nach Priorität sortiert.</p><p id="dc69462d-11d3-42a7-9cfc-3045e1da7bc4" class="">Die DoD (Definition of Done) wird vorher definiert und beinhaltet die Regeln, nachdem eine Anforderung als erfüllt gilt.</p><h3 id="fbfd7a2c-25c0-4ec5-bb6a-00b758aeefe4" class="">Sprint</h3><p id="e914d220-8437-4db2-8293-1d7eb731d8f9" class="">Ein Sprint stellt eine Entwicklungs-Iteration dar. Am Ende dieses Sprints wurde das Produkt um etwas erweitert. </p><ol type="1" id="1cecef42-a433-40fe-a231-1f0ce67b4be1" class="numbered-list" start="1"><li>Planungsmeeting<p id="4f45d650-337b-4d57-b44b-f070a531e52f" class="">Das Ziel ist es zu vermitteln was erreicht werden soll. Es wird auch der Arbeitsaufwand geschätzt.</p></li></ol><ol type="1" id="acd4684b-e469-42e8-ad8e-f99ab2afca20" class="numbered-list" start="2"><li>Planungsmeeting<p id="998a843b-48f5-4699-aca1-f9d1bdeb3a0d" class="">Hier werden die Stories in handhabbare Aufgaben zerlegt. Wird von Entwicklerteam festgelegt. Zerstückelte Stories werden in das Sprint Backlog hinzugefügt.</p></li></ol><h3 id="7fb3b883-564c-4116-9d84-b54ffc1b3692" class="">Daily Scrum</h3><p id="736812c8-4130-45b4-9daa-70bcab2065c1" class="">Jeden Morgen wird sich getroffen und es findet ein Informationsaustausch statt.</p><ul id="dc1519e0-a82a-483d-8d7d-31e40281974b" class="bulleted-list"><li style="list-style-type:disc">Was wurde gemacht</li></ul><ul id="d4cb369c-e4f4-40bc-b9f1-7b9d47bf358d" class="bulleted-list"><li style="list-style-type:disc">Was wird heute gemacht</li></ul><ul id="cdba98f0-8198-4fb8-ade7-2e86f56a7c11" class="bulleted-list"><li style="list-style-type:disc">Probleme und Blockaden</li></ul><p id="8636e474-c8f2-4e3d-9ad7-e61c8c7d8813" class="">Es wird nicht über die Lösung von Problemen geredet. Bei Fehleinschätzungen werden Aufgaben weiter unterteilt.</p><h3 id="e7e5c805-175b-4ca3-81d9-2ef92bb58451" class="">Sprint Review</h3><p id="494aae17-9baa-4732-bf39-4fb7284b7dff" class="">Entwicklerteam präsentiert die Sprint-Resulate den Stakeholtern. Sie erhalten Feedback, welches in das Product Backlog mit eingeht. Es werden die erreichten Ziele überprüft.</p><h3 id="5d9f6ae4-118d-4e6f-afca-5509471561eb" class="">Sprint Retrospektive</h3><p id="c5c15ad2-0bbd-42e8-9c4d-15b930a2f7ab" class="">Überprüfung der Arbeitsweise während eines Sprints. Dies soll zu effizienterer Arbeitsweise führen. </p><h2 id="a056276f-3b93-44c1-b770-cf4b14b60583" class="">Kanban</h2><p id="87e998d8-add9-4989-b421-715ef5cfd9b8" class="">Durch den Work in Progress wird festgelegt wie viele Tickets gleichzeitig in einer Phase seinen dürfen.</p><table id="d3eb2aa3-ed03-43ec-b137-60cd8f325f89" class="simple-table"><thead class="simple-table-header"><tr id="8f65bf57-4b17-4f94-9363-a167f32940b2"><th id="tJc=" class="simple-table-header-color simple-table-header" style="width:174.5px">RQMT (requirements)</th><th id="?w^h" class="simple-table-header-color simple-table-header" style="width:174.5px">Entwicklung</th><th id="W`zo" class="simple-table-header-color simple-table-header" style="width:174.5px">Testing</th><th id="}lbj" class="simple-table-header-color simple-table-header" style="width:174.5px">Betrieb</th></tr></thead><tbody><tr id="a861fe42-da63-4f46-86b1-0c14199e09a6"><td id="tJc=" class="" style="width:174.5px">WiP:6</td><td id="?w^h" class="" style="width:174.5px">WiP:4</td><td id="W`zo" class="" style="width:174.5px">WiP:2</td><td id="}lbj" class="" style="width:174.5px">WiP:1</td></tr></tbody></table><h2 id="19b75d9e-c12c-4b1c-8674-486e59812a48" class="">Scrum vs. Kanban</h2><p id="314234f3-6bbe-4bdb-af1f-8ed8c8cfd50c" class="">Scrum passiert in Iterationen, Kanban ist ein kontinuierlicher Prozess. </p><p id="8003b081-af02-44bc-80cf-fde7024a7d81" class="">Man erhält mit Kanban keinen natürliche Produktinkrementation. </p><p id="8e4b34e1-fd3a-44db-9d01-d0941ed9c194" class="">In Scrum hat man bestimmte Rollen wohingehend in Kanban diese nicht vorhanden sind. Man kann Kanban ohne großen Aufwand nebenbei einführen. </p><p id="e2ac2c0f-45fd-4de4-ac08-61277aa6e32f" class="">Scrum muss hingehend ganz oder garnicht eingeführt werden. </p><h2 id="a43049e4-b552-4d42-a312-4d863a21a97c" class="">Architekturdokumentation</h2><ol type="1" id="c6ff139e-326d-43af-affa-488670b4ac27" class="numbered-list" start="1"><li>Einführung und Ziele</li></ol><ol type="1" id="65bf0a73-1075-4d67-a7cf-064cf06b67a1" class="numbered-list" start="2"><li>Randbedingungen</li></ol><ol type="1" id="fa551208-f6fa-461c-98d1-f862182e05dd" class="numbered-list" start="3"><li>Kontextabgrenzung</li></ol><ol type="1" id="95f8049e-e2bb-4c38-b4bf-0586e6106644" class="numbered-list" start="4"><li>Lösungsstrategie</li></ol><ol type="1" id="35a3b809-31f9-4eb1-a3ce-a5fa5fa5ac35" class="numbered-list" start="5"><li>Bausteinsicht</li></ol><ol type="1" id="fff1909b-14b0-41f1-a044-f1fc8f4ad22c" class="numbered-list" start="6"><li>Laufzeitsicht</li></ol><ol type="1" id="f8af397a-06a5-4304-a0fc-6f02985051b7" class="numbered-list" start="7"><li>Verteilungssicht</li></ol><ol type="1" id="a4b9eee0-6763-437f-9567-ac3b0815a776" class="numbered-list" start="8"><li>Querschnittliche Konzepte</li></ol><ol type="1" id="2c076ed1-6ea5-4d12-bd58-5fd4e7a7645d" class="numbered-list" start="9"><li>Entscheidungen</li></ol><ol type="1" id="9c5a9689-600b-4f7c-97d2-8ab4424d5688" class="numbered-list" start="10"><li>Qualitätsanforderungen</li></ol><ol type="1" id="794847d8-c617-4f1f-ab82-3d1d05afada6" class="numbered-list" start="11"><li>Risiken</li></ol><ol type="1" id="f58b09c4-5631-491b-b890-479bc51694ac" class="numbered-list" start="12"><li>Glossar</li></ol></div></article></body></html>
