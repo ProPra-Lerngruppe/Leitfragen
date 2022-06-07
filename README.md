@@ -14,6 +14,6 @@
 - [] Woche 10
 - [] Woche 11
 
-## Neue Blätter hinzufüfen
+## Neue Blätter hinzufügen
 
 Erstellt im Ordner `public` einen neuen Ordner `WocheX` mit den neuen Leitfragen. Das Leitfragendokument sollte bestenfalls `leitfragenWocheX.html`heißen.
